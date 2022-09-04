@@ -1,59 +1,44 @@
-import React from "react";
-import { useWeb3React } from "@web3-react/core";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useWeb3React } from '@web3-react/core'
+import { connectors } from './web3/connectors';
+import { Redirect, Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Connect from "./views/connect";
 
-import "./App.css";
-import Loader from "./components/Loader/Loader";
-import WrongNetworkModal from "./components/WrongNetworkModal";
+export default function App() {
 
-const App = () => {
-  const { active, chainId } = useWeb3React();
+  let { 
+    library,
+    chainId,
+    account,
+    activate,
+    deactivate,
+    active
+  } = useWeb3React();
 
-  let mainContent = (
-    <>
-      <Route
-        exact
-        path="/"
-        component={React.lazy(() => import("./views/Login/Login"))}
-      />
-      {localStorage.getItem("userData") === null && <Redirect to="/" />}
-    </>
-  );
-
-  if (active) {
-    localStorage.setItem("shouldEagerConnect", true);
-
-    mainContent = (
-      <>
-        <Route
-          path="/"
-          component={React.lazy(() =>
-            import("./views/MainContainer/MainContainer")
-          )}
-        />
-      </>
-    );
+  const refreshState = () => {
+    window.localStorage.setItem("provider", undefined);
   }
 
-  const onChangeNetworkClick = async () => {
-    // Metamask adds Ropsten chain by default, so no need to check wether chain is added or not
-    await window.ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x3" }],
-    });
-  };
+  const disconnect = () => {
+    refreshState();
+    deactivate();
+  }
+
+  useEffect(() => {
+    const provider = window.localStorage.getItem('provider');
+    if (provider) activate(connectors[provider])
+  }, []);
 
   return (
-    <React.Suspense fallback={<Loader />}>
-      <WrongNetworkModal
-        show={chainId !== 3 && active}
-        onChangeNetworkClick={onChangeNetworkClick}
-      />
-      <BrowserRouter>
-        <Switch>{mainContent}</Switch>
-      </BrowserRouter>
-    </React.Suspense>
+    <Router>
+      <Switch>
+        <Route path="/">
+          {active ? <Redirect to="/menu" /> : <Connect />}
+        </Route>
+        <Route path="/connect">
+          {active ? <Redirect to="/menu" /> : <Connect />}
+        </Route>
+      </Switch>
+    </Router>
   );
 };
-
-export default App;
