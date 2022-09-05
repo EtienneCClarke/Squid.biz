@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;1,100;1,300;1,400;1,500;1,700;1,800&display=swap');
+
+:root {
+    --color-background: #F2F2F2;
+    --color-black: #000000;
+    --color-blue: #1212F7;
+    --color-white: #FFFFFF;
+    --color-dark-grey: #4A4A4A; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-background);
+}
+
+.title-large {
+    color: var(--color-black);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+
+.logo {
+    margin-top: -50px;
+    width: 20vh;
+    height: 20vh;
+    max-width: 175px;
+    max-height: 175px;
+    min-width: 75px;
+    min-height: 75px;
+}
+
+.connect-button {
+    color: var(--color-white);
+    font-weight: 500;
+    padding: 3px 50px 5px 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.powered-tag {
+    font-size: 0.5rem;
+    font-weight: 800;
+    color: var(--color-black);
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
+}
+
+.plain-text-button {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-dark-grey);
+}
+
+.bg-blue {
+    background-color: var(--color-blue);
+}
+
+/* ====================== Vertical Margins ====================== */
+
+.vtspace-200 { margin-top: 200px; }
+
+.vtspace-175 { margin-top: 175px; }
+
+.vtspace-150 { margin-top: 150px; }
+
+.vtspace-125 { margin-top: 125px; }
+
+.vtspace-100 { margin-top: 100px; }
+
+.vtspace-75 { margin-top: 75px; }
+
+.vtspace-50 { margin-top: 50px; }
+
+.vtspace-25 { margin-top: 25px; }
+
+.vbspace-200 { margin-bottom: 200px; }
+
+.vbspace-175 { margin-bottom: 175px; }
+
+.vbspace-150 { margin-bottom: 150px; }
+
+.vbspace-125 { margin-bottom: 125px; }
+
+.vbspace-100 { margin-bottom: 100px; }
+
+.vbspace-75 { margin-bottom: 75px; }
+
+.vbspace-50 { margin-bottom: 50px; }
+
+.vbspace-25 { margin-bottom: 25px; }
