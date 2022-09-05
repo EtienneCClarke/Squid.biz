@@ -7,27 +7,24 @@ import Connect from "./views/connect";
 export default function App() {
 
   let { 
-    library,
-    chainId,
-    account,
     activate,
-    deactivate,
+    // deactivate,
     active
   } = useWeb3React();
 
-  const refreshState = () => {
-    window.localStorage.setItem("provider", undefined);
-  }
+  // const refreshState = () => {
+  //   window.localStorage.setItem("provider", undefined);
+  // }
 
-  const disconnect = () => {
-    refreshState();
-    deactivate();
-  }
+  // const disconnect = () => {
+  //   refreshState();
+  //   deactivate();
+  // }
 
-  useEffect(() => {
-    const provider = window.localStorage.getItem('provider');
-    if (provider) activate(connectors[provider])
-  }, []);
+  // useEffect(() => {
+  //   const provider = window.localStorage.getItem('provider');
+  //   if (provider) activate(connectors[provider])
+  // }, []);
 
   return (
     <Router>
