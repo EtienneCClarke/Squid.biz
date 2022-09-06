@@ -1,16 +1,18 @@
 import React from "react";
 import {
     Modal,
-    ModalHeader,
-    ModalCloseButton,
     ModalBody,
+    ModalCloseButton,
     ModalContent,
     ModalOverlay,
-    VStack,
-    Button
 } from "@chakra-ui/react";
 import { useWeb3React } from "@web3-react/core";
 import { connectors } from "../web3/connectors";
+
+import MetaMaskLogo from "../assets/icons/metamask.png";
+import CoinbaseLogo from "../assets/icons/coinbase.png";
+import WalletConnectLogo from "../assets/icons/walletconnect.png";
+import "../css/style.css";
 
 export default function SelectWalletModal({ isOpen, closeModal }) {
     
@@ -21,48 +23,63 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={closeModal} isCentered>
-            <ModalOverlay />
-            <ModalContent w="300px">
-                <ModalHeader>Connect a wallet</ModalHeader>
-                <ModalCloseButton
-                    _focus={{
-                        boxShadow: "none"
-                    }}
-                />
-                <ModalBody paddingBottom="1.5rem">
-                    <VStack>
-                        <Button
-                            variant="outline"
-                            onClick={() => {
-                                activate(connectors.coinbaseWallet);
-                                setProvider("coinbaseWallet");
-                                closeModal();
-                            }}
-                        >
-                            Coinbase Wallet
-                        </Button>
-                        <Button
-                            variant="outline"
-                            onClick={() => {
-                                activate(connectors.walletConnect);
-                                setProvider("walletConnect");
-                                closeModal();
-                            }}
-                        >
-                            Wallet Connect
-                        </Button>
-                        <Button
-                            variant="outline"
+        <Modal 
+            isOpen={isOpen}
+            onClose={closeModal}
+            size={"xs"}
+            isCentered
+        >
+            <ModalOverlay
+                bg='blackAlpha.50'
+                backdropFilter='blur(2px)'
+            />
+            <ModalContent>
+                <ModalBody className="modal">
+                    <div className="modal-header modal-center">
+                        <p className="modal-title">Connect a wallet</p>
+                        <ModalCloseButton />
+                    </div>
+                    <div className="modal-body flex flex-column">
+                        <div
+                            className="connector-button flex flex-row flex-row-align"
                             onClick={() => {
                                 activate(connectors.injected);
                                 setProvider("injected");
                                 closeModal();
                             }}
                         >
-                            Metamask
-                        </Button>
-                    </VStack>
+                            MetaMask
+                            <div className="connector-icon push-right">
+                                <img src={MetaMaskLogo} />
+                            </div>
+                        </div>
+                        <div
+                            className="connector-button flex flex-row flex-row-align"
+                            onClick={() => {
+                                activate(connectors.coinbaseWallet);
+                                setProvider("coinbaseWallet");
+                                closeModal();
+                            }}
+                        >
+                            Coinbase
+                            <div className="connector-icon push-right">
+                                <img src={CoinbaseLogo} />
+                            </div>
+                        </div>
+                        <div
+                            className="connector-button flex flex-row flex-row-align"
+                            onClick={() => {
+                                activate(connectors.walletConnect);
+                                setProvider("walletConnect");
+                                closeModal();
+                            }}
+                        >
+                            WalletConnect
+                            <div className="connector-icon push-right">
+                                <img src={WalletConnectLogo} />
+                            </div>
+                        </div>
+                    </div>
                 </ModalBody>
             </ModalContent>
         </Modal>
