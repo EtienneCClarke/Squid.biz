@@ -82,14 +82,16 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
                         </div>
                         <p
                             className="tc-warning"
-                            onClick={() => {
-                                window.location.assign("https://dreamkollab.com/termsandconditions");
-                            }}
                         >
                             By connecting a wallet you agree to the terms and conditions.
                             <br/>
                             Click
-                            <span className="inline-link">
+                            <span
+                                className="inline-link"
+                                onClick={() => {
+                                    window.location.assign("https://dreamkollab.com/termsandconditions");
+                                }}
+                            >
                                  {' '}here{' '}
                             </span>
                             to learn more
