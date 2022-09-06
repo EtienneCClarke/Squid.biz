@@ -5,7 +5,23 @@
     --color-black: #000000;
     --color-blue: #1212F7;
     --color-white: #FFFFFF;
-    --color-dark-grey: #4A4A4A; 
+    --color-dark-grey: #4A4A4A;
+    --color-grey: #939393;
+    --color-light-grey: #E8E8E8;
+    --transition-duration: 200ms;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-light-grey);
+    border-radius: 5px;
 }
 
 body {
@@ -54,6 +70,29 @@ body {
     cursor: pointer;
 }
 
+.connector-button {
+    min-height: 45px;
+    padding: 0 15px;
+    width: 100%;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid var(--color-light-grey);
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    transition: var(--transition-duration);
+}
+
+.connector-button:hover {
+    background-color: var(--color-light-grey);
+}
+
+.connector-icon {
+    width: 33px;
+    display: flex;
+    justify-content: center;
+}
+
 .powered-tag {
     font-size: 0.5rem;
     font-weight: 800;
@@ -74,7 +113,99 @@ body {
     background-color: var(--color-blue);
 }
 
-/* ====================== Vertical Margins ====================== */
+.tc-warning {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 8px;
+}
+
+.inline-link {
+    cursor: pointer;
+    color: var(--color-blue);
+}
+
+/* =====================         Modal       ====================== */
+
+
+.modal-header {
+    padding: 15px 0 15px 0;
+    border-bottom: 1px solid var(--color-light-grey);
+}
+
+.modal-header-icon {
+    margin: 0 10px 0 25px;
+}
+
+.modal-title {
+    font-weight: 700;
+    color: var(--color-dark-grey);
+    font-size: 15px;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.modal-content {
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 20px 15px 10px;
+    min-height: fit-content;
+    max-height: 70vh;
+}
+
+.modal-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =====================    Content Layout   ====================== */
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-row-align {
+    align-items: center;
+}
+
+.flex-start {
+    justify-content: start;
+}
+
+.push-right {
+    margin-left: auto;
+}
+
+/* ===================== Chakra UI Overrides ====================== */
+
+.modal {
+    -webkit-padding-start: 0 !important;
+    padding-inline-start: 0 !important;
+    -webkit-padding-end: 0 !important;
+    padding-inline-end: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.chakra-modal__content {
+    border-radius: 15px !important;
+}
+
+.scrollable-y {
+    overflow-y: scroll;
+}
+
+/* ======================  Vertical Margins  ====================== */
 
 .vtspace-200 { margin-top: 200px; }
 
