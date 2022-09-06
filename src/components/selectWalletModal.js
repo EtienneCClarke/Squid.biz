@@ -13,6 +13,7 @@ import MetaMaskLogo from "../assets/icons/metamask.png";
 import CoinbaseLogo from "../assets/icons/coinbase.png";
 import WalletConnectLogo from "../assets/icons/walletconnect.png";
 import "../css/style.css";
+import { Redirect } from "react-router";
 
 export default function SelectWalletModal({ isOpen, closeModal }) {
     
@@ -79,6 +80,20 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
                                 <img src={WalletConnectLogo} />
                             </div>
                         </div>
+                        <p
+                            className="tc-warning"
+                            onClick={() => {
+                                window.location.assign("https://dreamkollab.com/termsandconditions");
+                            }}
+                        >
+                            By connecting a wallet you agree to the terms and conditions.
+                            <br/>
+                            Click
+                            <span className="inline-link">
+                                 {' '}here{' '}
+                            </span>
+                            to learn more
+                        </p>
                     </div>
                 </ModalBody>
             </ModalContent>
