@@ -2,7 +2,6 @@ import React from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import SelectWalletModal from "../components/selectWalletModal";
 import InfoModal from "../components/infoModal";
-
 import logo256 from "../assets/logo/logo256.png"
 import "../css/style.css";
 
@@ -21,7 +20,7 @@ export default function Connect () {
     } = useDisclosure();
 
     return (
-        <div className="view">
+        <div className="view scrollable-y flex flex-column flex-center flex-align-center">
             <img src={logo256} alt="Dream Kollab Logo" className="logo"/>
             <h1 className="title-large">Kollab Share</h1>
             <p 
