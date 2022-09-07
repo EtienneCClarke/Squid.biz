@@ -10,7 +10,7 @@ import {
 import "../css/style.css";
 import InfoIcon from "../assets/icons/info.png";
 
-export default function InfoModal({ isOpen, closeModal, Title, Content, Size }) {
+export default function InfoModal ({ isOpen, closeModal, Title, Content }) {
 
     return(
         <Modal
@@ -26,13 +26,13 @@ export default function InfoModal({ isOpen, closeModal, Title, Content, Size }) 
             <ModalContent>
                 <ModalBody className="modal">
                     <div className="modal-header">
-                        <p className="modal-title flex flex-row flex-row-align flex-start">
+                        <p className="modal-title flex flex-row flex-align-center flex-start">
                             <span className="modal-header-icon">
-                                <img src={InfoIcon} />
+                                <img src={InfoIcon} alt="info"/>
                             </span>
                             {Title}
                         </p>
-                        <ModalCloseButton />
+                        <ModalCloseButton size={"sm"}/>
                     </div>
                     <div className="modal-body">
                         <div className="modal-content scrollable-y">
