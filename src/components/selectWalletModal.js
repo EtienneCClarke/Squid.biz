@@ -13,9 +13,8 @@ import MetaMaskLogo from "../assets/icons/metamask.png";
 import CoinbaseLogo from "../assets/icons/coinbase.png";
 import WalletConnectLogo from "../assets/icons/walletconnect.png";
 import "../css/style.css";
-import { Redirect } from "react-router";
 
-export default function SelectWalletModal({ isOpen, closeModal }) {
+export default function SelectWalletModal ({ isOpen, closeModal }) {
     
     const { activate } = useWeb3React();
 
@@ -38,11 +37,11 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
                 <ModalBody className="modal">
                     <div className="modal-header modal-center">
                         <p className="modal-title">Connect a wallet</p>
-                        <ModalCloseButton />
+                        <ModalCloseButton size={"sm"}/>
                     </div>
                     <div className="modal-body flex flex-column">
                         <div
-                            className="connector-button flex flex-row flex-row-align"
+                            className="connector-button flex flex-row flex-align-center"
                             onClick={() => {
                                 activate(connectors.injected);
                                 setProvider("injected");
@@ -51,11 +50,11 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
                         >
                             MetaMask
                             <div className="connector-icon push-right">
-                                <img src={MetaMaskLogo} />
+                                <img src={MetaMaskLogo} alt="metamask logo"/>
                             </div>
                         </div>
                         <div
-                            className="connector-button flex flex-row flex-row-align"
+                            className="connector-button flex flex-row flex-align-center"
                             onClick={() => {
                                 activate(connectors.coinbaseWallet);
                                 setProvider("coinbaseWallet");
@@ -64,11 +63,11 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
                         >
                             Coinbase
                             <div className="connector-icon push-right">
-                                <img src={CoinbaseLogo} />
+                                <img src={CoinbaseLogo} alt="coinbase logo"/>
                             </div>
                         </div>
                         <div
-                            className="connector-button flex flex-row flex-row-align"
+                            className="connector-button flex flex-row flex-align-center"
                             onClick={() => {
                                 activate(connectors.walletConnect);
                                 setProvider("walletConnect");
@@ -77,7 +76,7 @@ export default function SelectWalletModal({ isOpen, closeModal }) {
                         >
                             WalletConnect
                             <div className="connector-icon push-right">
-                                <img src={WalletConnectLogo} />
+                                <img src={WalletConnectLogo} alt="wallet connect logo"/>
                             </div>
                         </div>
                         <p
