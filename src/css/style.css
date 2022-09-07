@@ -1,13 +1,20 @@
+/* =====================       Imports       ====================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;1,100;1,300;1,400;1,500;1,700;1,800&display=swap');
+
+/* =====================        Global       ====================== */
 
 :root {
     --color-background: #F2F2F2;
-    --color-black: #000000;
     --color-blue: #1212F7;
-    --color-white: #FFFFFF;
+    --color-green: #4BC57B;
+    --color-purple: #7712F7;
+    --color-pink: #F53261;
+    --color-black: #000000;
     --color-dark-grey: #4A4A4A;
     --color-grey: #939393;
     --color-light-grey: #E8E8E8;
+    --color-white: #FFFFFF;
     --transition-duration: 200ms;
 }
 
@@ -32,10 +39,6 @@ body {
 }
 
 .view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100vw;
     height: 100vh;
     background-color: var(--color-background);
@@ -57,6 +60,86 @@ body {
     min-width: 75px;
     min-height: 75px;
 }
+
+.plain-text-button {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-dark-grey);
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* =====================      Navigation     ====================== */
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+    transition: var(--transition-duration);
+}
+
+.nav-container:first-child {
+    filter: drop-shadow(0px 8px 30px rgba(0, 0, 0, 0.1));
+}
+
+.nav-container:hover {
+    height: 60vh;
+}
+
+.nav-content {
+    padding: 10vh 10vw;
+}
+
+.nav-content:hover {
+    cursor: pointer;
+}
+
+.nav-title {
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--color-grey);
+}
+
+.nav-label {
+    color: var(--color-grey);
+    font-size: 0.6rem;
+}
+
+.nav-icon {
+    min-width: 100px;
+    width: 10vh;
+    max-width: 400px;
+}
+
+.nav-curve {
+    position: absolute;
+    top: 50vh;
+    transition: var(--transition-duration);
+}
+
+.button {
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* =====================     Connections     ====================== */
 
 .connect-button {
     color: var(--color-white);
@@ -93,31 +176,20 @@ body {
     justify-content: center;
 }
 
-.powered-tag {
-    font-size: 0.5rem;
-    font-weight: 800;
-    color: var(--color-black);
-    position: absolute;
-    left: 50%;
-    bottom: 5px;
-    transform: translateX(-50%);
-}
-
-.plain-text-button {
+.connected-account {
+    margin-top: 15px;
     font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-dark-grey);
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
-.bg-blue {
-    background-color: var(--color-blue);
+.disconnector {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    padding: 5px;
+}
+
+.disconnector:hover {
+    cursor: pointer;
 }
 
 .tc-warning {
@@ -126,9 +198,14 @@ body {
     font-size: 8px;
 }
 
-.inline-link {
-    cursor: pointer;
-    color: var(--color-blue);
+.powered-tag {
+    font-size: 0.5rem;
+    font-weight: 800;
+    color: var(--color-black);
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%);
 }
 
 /* =====================         Modal       ====================== */
@@ -167,6 +244,20 @@ body {
     align-items: center;
 }
 
+.no-border {
+    border: none !important;
+}
+
+/* =====================       Overflow     ====================== */
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.scrollable-y {
+    overflow-y: scroll;
+}
+
 /* =====================    Content Layout   ====================== */
 
 .flex {
@@ -181,7 +272,7 @@ body {
     flex-direction: row;
 }
 
-.flex-row-align {
+.flex-align-center {
     align-items: center;
 }
 
@@ -189,8 +280,28 @@ body {
     justify-content: start;
 }
 
+.flex-center {
+    justify-content: center;
+}
+
+.flex-end {
+    justify-content: end;
+}
+
 .push-right {
     margin-left: auto;
+}
+
+.push-left {
+    margin-right: auto;
+}
+
+.push-top {
+    margin-bottom: auto;
+}
+
+.push-bottom {
+    margin-top: auto;
 }
 
 /* ===================== Chakra UI Overrides ====================== */
@@ -208,8 +319,46 @@ body {
     border-radius: 15px !important;
 }
 
-.scrollable-y {
-    overflow-y: scroll;
+.inline-link {
+    cursor: pointer;
+    color: var(--color-blue);
+}
+/* ======================  Background Color  ====================== */
+
+.bg-blue {
+    background-color: var(--color-blue);
+}
+
+.bg-green {
+    background-color: var(--color-green);
+}
+
+.bg-purple {
+    background-color: var(--color-purple);
+}
+
+.bg-pink {
+    background-color: var(--color-pink);
+}
+
+.bg-black {
+    background-color: var(--color-black);
+}
+
+.bg-dark-grey {
+    background-color: var(--color-dark-grey);
+}
+
+.bg-grey {
+    background-color: var(--color-grey);
+}
+
+.bg-light-grey {
+    background-color: var(--color-light-grey);
+}
+
+.bg-white {
+    background-color: var(--color-white);
 }
 
 /* ======================  Vertical Margins  ====================== */
