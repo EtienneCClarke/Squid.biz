@@ -8,7 +8,6 @@ import App from './App';
 
 function getLibrary(provider) {
   const library = new ethers.providers.Web3Provider(provider);
-  library.pollingInterval = 8000;
   return library;
 }
 
