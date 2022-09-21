@@ -1,12 +1,10 @@
 import React, { Component, useState } from "react";
-import useKollabShare from "../web3/useKollabShare";
-import "../css/style.css";
-import { useWeb3React } from "@web3-react/core";
-import DisconnectIcon from "../assets/svg/disconnect.svg";
 import { ethers } from "ethers";
-import InfoModal from "../components/infoModal";
 import { useDisclosure } from "@chakra-ui/react";
-import DisconnectModal from "../components/disconnectModal";
+import useKollabShare from "../web3/useKollabShare";
+import Disconnector from "../components/Disconector";
+import InfoModal from "../components/infoModal";
+import Back from "../components/Back";
 import "../css/style.css";
 
 export default function Create() {
@@ -21,12 +19,6 @@ export default function Create() {
         isOpen: isErrorOpen,
         onOpen: onErrorOpen,
         onClose: onErrorClose
-    } = useDisclosure();
-
-    const {
-        isOpen: isDcOpen,
-        onOpen: onDcOpen,
-        onClose: onDcClose
     } = useDisclosure();
 
     const createSplitter = async () => {
@@ -69,22 +61,15 @@ export default function Create() {
             }}>Add Data</p>
             <p onClick={createSplitter}>Create</p>
             <p onClick={getData}>GetData</p> */}
-            <div
-                className="disconnector"
-                onClick={onDcOpen}
-            >
-                <img 
-                    width={"20px"}
-                    src={DisconnectIcon}
-                />
-            </div>
+            <h1>Create New Kollab</h1>
             <InfoModal 
                 isOpen={isErrorOpen}
                 closeModal={onErrorClose}
                 Title={"Something went wrong!"}
                 Content={error}
             />
-            <DisconnectModal isOpen={isDcOpen} closeModal={onDcClose}/>
+            <Back />
+            <Disconnector />
         </div>
     );
 

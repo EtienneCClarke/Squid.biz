@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useWeb3React } from "@web3-react/core";
-import { useDisclosure } from "@chakra-ui/react";
-import DisconnectModal from "../components/disconnectModal";
 import createIcon from "../assets/icons/nav-create-icon.png";
 import manageIcon from "../assets/icons/nav-manage-icon.png";
-import DisconnectIcon from "../assets/svg/disconnect.svg";
-import "../css/style.css";
+import Disconnector from "../components/Disconector";
 import { Redirect } from "react-router";
+import "../css/style.css";
 
 export default function Navigation () {
-
-    const { 
-        isOpen,
-        onOpen,
-        onClose
-    } = useDisclosure();
-
-    let {
-        active
-    } = useWeb3React();
 
     const [create, setCreate] = useState();
     const [manage, setManage] = useState();
@@ -31,15 +18,6 @@ export default function Navigation () {
             {manage &&
                 <Redirect push to="/manage" />
             }
-            <div
-                className="disconnector"
-                onClick={onOpen}
-            >
-                <img 
-                    width={"20px"}
-                    src={DisconnectIcon}
-                />
-            </div>
             <div className="nav-container bg-white">
                 <div 
                     className="nav-content flex flex-column flex-align-center"
@@ -68,7 +46,7 @@ export default function Navigation () {
                     <p className="nav-label">Manage payment splitters</p>
                 </div>
             </div>
-            <DisconnectModal isOpen={isOpen} closeModal={onClose} />
+            <Disconnector />
         </div>
     );
 }

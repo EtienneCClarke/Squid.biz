@@ -11,7 +11,7 @@
     --color-purple: #7712F7;
     --color-pink: #F53261;
     --color-black: #000000;
-    --color-dark-grey: #4A4A4A;
+    --color-dark-grey: #646464;
     --color-grey: #939393;
     --color-light-grey: #E8E8E8;
     --color-white: #FFFFFF;
@@ -74,6 +74,35 @@ body {
     user-select: none;
 }
 
+.back-button {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 25px;
+    left: 25px;
+    padding: 5px;
+    cursor: pointer;
+    color: var(--color-dark-grey);
+}
+
+.back-button-text {
+    margin-left: 20px;
+}
+
+.button {
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.3));
+}
+
 /* =====================      Navigation     ====================== */
 
 .nav-container {
@@ -125,18 +154,6 @@ body {
     position: absolute;
     top: 50vh;
     transition: var(--transition-duration);
-}
-
-.button {
-    color: var(--color-white);
-    font-size: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 30px;
-    border-radius: 30px;
-    cursor: pointer;
 }
 
 /* =====================     Connections     ====================== */
