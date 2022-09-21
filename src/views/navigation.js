@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import { useDisclosure } from "@chakra-ui/react";
 import DisconnectModal from "../components/disconnectModal";
 import createIcon from "../assets/icons/nav-create-icon.png";
 import manageIcon from "../assets/icons/nav-manage-icon.png";
 import DisconnectIcon from "../assets/svg/disconnect.svg";
 import "../css/style.css";
+import { Redirect } from "react-router";
 
 export default function Navigation () {
 
@@ -14,8 +16,21 @@ export default function Navigation () {
         onClose
     } = useDisclosure();
 
+    let {
+        active
+    } = useWeb3React();
+
+    const [create, setCreate] = useState();
+    const [manage, setManage] = useState();
+
     return (
         <div className="view flex flex-column flex-align-center overflow-hidden">
+            {create &&
+                <Redirect push to="/create" />
+            }
+            {manage &&
+                <Redirect push to="/manage" />
+            }
             <div
                 className="disconnector"
                 onClick={onOpen}
@@ -26,7 +41,12 @@ export default function Navigation () {
                 />
             </div>
             <div className="nav-container bg-white">
-                <div className="nav-content flex flex-column flex-align-center">
+                <div 
+                    className="nav-content flex flex-column flex-align-center"
+                    onClick={() => {
+                        setCreate(true);
+                    }}
+                >
                     <img
                         src={createIcon}
                         className="nav-icon"
@@ -37,7 +57,12 @@ export default function Navigation () {
                 </div>
             </div>
             <div className="nav-container">
-                <div className="nav-content flex flex-column flex-align-center">
+                <div
+                    className="nav-content flex flex-column flex-align-center"
+                    onClick={() => {
+                        setManage(true);
+                    }}
+                >
                     <img src={manageIcon} className="nav-icon" alt="manage-icon" />
                     <p className="nav-title">Current Shares</p>
                     <p className="nav-label">Manage payment splitters</p>
