@@ -6,7 +6,10 @@ import Disconnector from "../components/Disconector";
 import InfoModal from "../components/infoModal";
 import Back from "../components/Back";
 import addPayeeIcon from "../assets/svg/add-payee.svg";
+import delPayeeIcon from "../assets/svg/del-payee.svg";
 import "../css/style.css";
+import { TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 export default function Create() {
 
@@ -18,10 +21,7 @@ export default function Create() {
     const [description, setDescription] = useState();
     const [tempPayeeAddr, setTempPayeeAddr] = useState();
     const [tempPayeeShare, setTempPayeeShare] = useState();
-    const [shareholders, setShareholders] = useState([{
-        address: String,
-        share: Number,
-    }]);
+    const [shareholders, setShareholders] = useState([]);
 
     const {
         isOpen: isErrorOpen,
@@ -54,7 +54,7 @@ export default function Create() {
     }
 
     return (
-        <div className="view flex flex-column flex-align-center">
+        <div className="view flex flex-column flex-align-center scrollable-y">
             <div className="create-container">
                 <h1 className="title-large vtspace-75 text-center">Create New Kollab</h1>
                 <h3 className="input-label vtspace-25 hlspace-15">Enter Details</h3>
@@ -98,18 +98,34 @@ export default function Create() {
                         onClick={addShareHolder}
                     />
                 </div>
-                <div className="flex flex-row">
+                <div className="shareholders-title">
                     <h3 className="input-label vtspace-25 hlspace-15">Payees</h3>
-                    <h3 className="input-label vtspace-25 push-right hrspace-15">Shares</h3>
+                    <h3 className="input-label vtspace-25 text-center">Shares</h3>
                 </div>
-                {shareholders.map((shareholder, index) => {
-                    return(
-                        <div key={shareholder.address}>
-                            <p>{shareholder.address}</p>
-                            <p>{shareholder.share}</p>
-                        </div>
-                    );
-                })}
+                <TransitionGroup component="div">
+                    {shareholders.map((shareholder, index) => {
+                        return(
+                            <CSSTransition key={shareholder.address} timeout={200} classNames="shareholder">
+                                <div className="shareholders-row">
+                                    <p>
+                                        {shareholder.address}
+                                    </p>
+                                    <p className="text-center">
+                                        {shareholder.share}
+                                    </p>
+                                    <img
+                                        key={shareholder.address}
+                                        className="del-payee-icon h-center"
+                                        src={delPayeeIcon}
+                                        onClick={() => {
+                                            setShareholders(shareholders.filter((s) => s !== shareholder));
+                                        }}
+                                    />
+                                </div>
+                            </CSSTransition>
+                        );
+                    })}
+                </TransitionGroup>
             </div>
             <InfoModal 
                 isOpen={isErrorOpen}
