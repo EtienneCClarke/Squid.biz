@@ -6,6 +6,7 @@
 
 :root {
     --color-background: #F2F2F2;
+    --color-warning: #FF2424;
     --color-blue: #1212F7;
     --color-green: #4BC57B;
     --color-purple: #7712F7;
@@ -123,6 +124,8 @@ html, body {
     font-weight: 700;
     font-size: 0.9rem;
     color: var(--color-dark-grey);
+    border-left: 6px solid transparent;
+    transition: var(--transition-duration);
 }
 
 .text-input:focus {
@@ -130,7 +133,8 @@ html, body {
 }
 
 .error-input {
-    border: var(--color-pink) 1px dashed;
+    border-left: 6px solid var(--color-warning);
+    border-radius: 0 10px 10px 0;
 }
 
 /* =====================      Navigation     ====================== */
