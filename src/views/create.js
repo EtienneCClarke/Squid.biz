@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { ethers } from "ethers";
 import { useDisclosure } from "@chakra-ui/react";
 import useKollabShare from "../web3/useKollabShare";
@@ -17,11 +17,14 @@ export default function Create() {
     const [error, setError] = useState();
     const [payeeAddrError, setAddrPayeeError] = useState();
     const [payeeShareError, setSharePayeeError] = useState();
+    const [nameError, setNameError] = useState();
+    const [descriptionError, setDescriptionError] = useState();
     const [name, setName] = useState();
     const [description, setDescription] = useState();
     const [tempPayeeAddr, setTempPayeeAddr] = useState();
     const [tempPayeeShare, setTempPayeeShare] = useState();
     const [shareholders, setShareholders] = useState([]);
+    const [totalShares, setTotalShares] = useState(0);
 
     const {
         isOpen: isErrorOpen,
@@ -29,24 +32,73 @@ export default function Create() {
         onClose: onErrorClose
     } = useDisclosure();
 
+    function checkDuplicates() {
+        const currentShareholders = [];
+        shareholders.forEach((shareholder) => {
+            currentShareholders.push(shareholder.address);
+        });
+        if(currentShareholders.indexOf(tempPayeeAddr) > -1) { 
+            setError('Sorry! You cannot enter the same address twice.');
+            onErrorOpen();
+            return null;
+        }
+        return true;
+    }
+
     function addShareHolder() {
         !tempPayeeAddr || tempPayeeAddr == '' ? setAddrPayeeError('error-input') : setAddrPayeeError('');
         !tempPayeeShare || tempPayeeShare == '' ? setSharePayeeError('error-input') : setSharePayeeError('');
         if(!tempPayeeAddr || tempPayeeAddr == '' || !tempPayeeShare || tempPayeeShare == '') { return null; }
-        setShareholders([{ address: tempPayeeAddr, share: tempPayeeShare}, ...shareholders]);
+        checkDuplicates();
+        setShareholders([{ address: tempPayeeAddr, share: parseInt(tempPayeeShare)}, ...shareholders]);
+        setTotalShares(totalShares + parseInt(tempPayeeShare));
+        setTempPayeeAddr('');
+        setTempPayeeShare('');
     }
 
-    const createSplitter = async () => {
+    function checkForm() {
+        let flag = 0;
+        if(!name || name == '') {
+            flag +=1;
+            setNameError('error-input');
+        } else {
+            setNameError('');
+        }
+        if(!description || description == '') {
+            flag +=1;
+            setDescriptionError('error-input');
+        } else {
+            setDescriptionError('');
+        }
+        if(flag > 0) { return false; }
+        if(shareholders.length == 0 || !checkDuplicates()) { 
+            setError('Please add payees!');
+            onErrorOpen();
+            return false;
+        }
+        return true;
+    }
+
+    async function createSplitter() {
+        if(!checkForm()) { return null;}
+        let addresses = [];
+        let shares = [];
+        shareholders.forEach((shareholder) => {
+            addresses.push(shareholder.address);
+            shares.push(shareholder.share);
+        })
         try {
             await kollab_share.createSplitter(
                 name,
                 description,
-                shareholders.addresses,
-                shareholders.shares,
+                addresses,
+                shares,
                 {
                     value: ethers.utils.parseEther("0.01")
                 }
-            );
+            ).then((res) => {
+                console.log(res);
+            });
         } catch (e) {
             setError(e.reason);
             onErrorOpen();
@@ -59,7 +111,7 @@ export default function Create() {
                 <h1 className="title-large vtspace-75 text-center">Create New Kollab</h1>
                 <h3 className="input-label vtspace-25 hlspace-15">Enter Details</h3>
                 <input
-                    className="text-input vtspace-15"
+                    className={"text-input vtspace-15 " + nameError}
                     type="text"
                     placeholder="Name"
                     onChange={(txt) => {
@@ -67,7 +119,7 @@ export default function Create() {
                     }}
                 />
                 <textarea
-                    className="text-input vtspace-15"
+                    className={"text-input vtspace-15 " + descriptionError}
                     placeholder="Description"
                     rows={5}
                     onChange={(txt) => {
@@ -80,6 +132,7 @@ export default function Create() {
                         className={"text-input " + payeeAddrError}
                         type="text"
                         placeholder="Wallet Address"
+                        value={tempPayeeAddr}
                         onChange={(txt) => {
                             setTempPayeeAddr(txt.target.value);
                         }}
@@ -88,6 +141,7 @@ export default function Create() {
                         className={"text-input w-50 hlspace-10 " + payeeShareError}
                         type="number"
                         placeholder="Shares"
+                        value={tempPayeeShare}
                         onChange={(num) => {
                             setTempPayeeShare(num.target.value);
                         }}
@@ -103,7 +157,7 @@ export default function Create() {
                     <h3 className="input-label vtspace-25 text-center">Shares</h3>
                 </div>
                 <TransitionGroup component="div">
-                    {shareholders.map((shareholder, index) => {
+                    {shareholders.map((shareholder) => {
                         return(
                             <CSSTransition key={shareholder.address} timeout={200} classNames="shareholder">
                                 <div className="shareholders-row">
@@ -114,11 +168,11 @@ export default function Create() {
                                         {shareholder.share}
                                     </p>
                                     <img
-                                        key={shareholder.address}
-                                        className="del-payee-icon h-center"
+                                        className="del-payee-icon push-right"
                                         src={delPayeeIcon}
                                         onClick={() => {
                                             setShareholders(shareholders.filter((s) => s !== shareholder));
+                                            setTotalShares(totalShares - parseInt(shareholder.share));
                                         }}
                                     />
                                 </div>
@@ -127,6 +181,17 @@ export default function Create() {
                     })}
                 </TransitionGroup>
             </div>
+            <div className="text-center vtspace-100">
+                    <p className="total-shares">Total Shares:{' ' + totalShares}</p>
+                    <p className="creation-fee vtspace-15">Fee 0.01 Eth + Gas</p>
+                    <p
+                        className="button bg-blue txt-spacing vtspace-25"
+                        onClick={createSplitter}
+                    >
+                        CREATE
+                    </p>
+            </div>
+            <p className="powered-tag-flex">Powered By Dream Kollab</p>
             <InfoModal 
                 isOpen={isErrorOpen}
                 closeModal={onErrorClose}
