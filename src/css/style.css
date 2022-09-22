@@ -11,6 +11,7 @@
     --color-purple: #7712F7;
     --color-pink: #F53261;
     --color-black: #000000;
+    --color-darkest-grey: #303030;
     --color-dark-grey: #646464;
     --color-grey: #939393;
     --color-light-grey: #E8E8E8;
@@ -31,22 +32,28 @@
     border-radius: 5px;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.5px;
 }
 
 .view {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: var(--color-background);
 }
 
 .title-large {
     color: var(--color-black);
     font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
+
+.title-medium {
+    color: var(--color-black);
+    font-size: 1.7rem;
     font-weight: bold;
     margin-top: 1.5rem;
 }
@@ -103,6 +110,29 @@ body {
     filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.3));
 }
 
+.input-label {
+    color: var(--color-darkest-grey);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.text-input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-dark-grey);
+}
+
+.text-input:focus {
+    outline: none;
+}
+
+.error-input {
+    border: var(--color-pink) 1px dashed;
+}
+
 /* =====================      Navigation     ====================== */
 
 .nav-container {
@@ -154,6 +184,27 @@ body {
     position: absolute;
     top: 50vh;
     transition: var(--transition-duration);
+}
+
+/* =====================       Create        ====================== */
+
+.create-container {
+    width: 90vw;
+    max-width: 1000px;
+}
+
+.add-payee-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-payee-button {
+    cursor: pointer;
+}
+
+.w-50 {
+    width: 30vw !important;
+    max-width: 100px;
 }
 
 /* =====================     Connections     ====================== */
@@ -265,6 +316,12 @@ body {
     border: none !important;
 }
 
+.test {
+    background-color: red;
+    width: 10px;
+    height: 4000px;
+}
+
 /* =====================       Overflow     ====================== */
 
 .overflow-hidden {
@@ -319,6 +376,10 @@ body {
 
 .push-bottom {
     margin-top: auto;
+}
+
+.text-center {
+    text-align: center;
 }
 
 /* ===================== Chakra UI Overrides ====================== */
@@ -378,7 +439,7 @@ body {
     background-color: var(--color-white);
 }
 
-/* ======================  Vertical Margins  ====================== */
+/* ======================       Margins      ====================== */
 
 .vtspace-200 { margin-top: 200px; }
 
@@ -396,6 +457,14 @@ body {
 
 .vtspace-25 { margin-top: 25px; }
 
+.vtspace-20 { margin-top: 20px; }
+
+.vtspace-15 { margin-top: 15px; }
+
+.vtspace-10 { margin-top: 10px; }
+
+.vtspace-5 { margin-top: 5px; }
+
 .vbspace-200 { margin-bottom: 200px; }
 
 .vbspace-175 { margin-bottom: 175px; }
@@ -411,3 +480,59 @@ body {
 .vbspace-50 { margin-bottom: 50px; }
 
 .vbspace-25 { margin-bottom: 25px; }
+
+.vbspace-20 { margin-bottom: 20px; }
+
+.vbspace-15 { margin-bottom: 15px; }
+
+.vbspace-10 { margin-bottom: 10px; }
+
+.vbspace-5 { margin-bottom: 5px; }
+
+.hlspace-200 { margin-left: 200px; }
+
+.hlspace-175 { margin-left: 175px; }
+
+.hlspace-150 { margin-left: 150px; }
+
+.hlspace-125 { margin-left: 125px; }
+
+.hlspace-100 { margin-left: 100px; }
+
+.hlspace-75 { margin-left: 75px; }
+
+.hlspace-50 { margin-left: 50px; }
+
+.hlspace-25 { margin-left: 25px; }
+
+.hlspace-20 { margin-left: 20px; }
+
+.hlspace-15 { margin-left: 15px; }
+
+.hlspace-10 { margin-left: 10px; }
+
+.hlspace-5 { margin-left: 5px; }
+
+.hrspace-200 { margin-right: 200px; }
+
+.hrspace-175 { margin-right: 175px; }
+
+.hrspace-150 { margin-right: 150px; }
+
+.hrspace-125 { margin-right: 125px; }
+
+.hrspace-100 { margin-right: 100px; }
+
+.hrspace-75 { margin-right: 75px; }
+
+.hrspace-50 { margin-right: 50px; }
+
+.hrspace-25 { margin-right: 25px; }
+
+.hrspace-20 { margin-right: 20px; }
+
+.hrspace-15 { margin-right: 15px; }
+
+.hrspace-10 { margin-right: 10px; }
+
+.hrspace-5 { margin-right: 5px; }
