@@ -96,9 +96,7 @@ export default function Create() {
                 {
                     value: ethers.utils.parseEther("0.01")
                 }
-            ).then((res) => {
-                console.log(res);
-            });
+            );
         } catch (e) {
             setError(e.reason);
             onErrorOpen();
