@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import createIcon from "../assets/icons/nav-create-icon.png";
 import manageIcon from "../assets/icons/nav-manage-icon.png";
 import Disconnector from "../components/Disconector";

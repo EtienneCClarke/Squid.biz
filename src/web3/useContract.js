@@ -4,7 +4,7 @@ import { useMemo } from "react";
 
 const useContract = (address = undefined, ABI) => {
 
-    const { account, library } = useWeb3React();
+    const { library } = useWeb3React();
 
     return useMemo(() => {
         if(!address || !ABI || !library) return null;

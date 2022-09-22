@@ -15,6 +15,7 @@ export default function Create() {
 
     const kollab_share = useKollabShare();
     const [error, setError] = useState();
+    const [info, setInfo] = useState();
     const [payeeAddrError, setAddrPayeeError] = useState();
     const [payeeShareError, setSharePayeeError] = useState();
     const [nameError, setNameError] = useState();
@@ -30,6 +31,12 @@ export default function Create() {
         onOpen: onErrorOpen,
         onClose: onErrorClose
     } = useDisclosure();
+
+    const {
+        isOpen: isInfoOpen,
+        onOpen: onInfoOpen,
+        onClose: onInfoClose
+    } =useDisclosure();
 
     function checkDuplicates() {
         const currentShareholders = [];
@@ -89,7 +96,15 @@ export default function Create() {
                 {
                     value: ethers.utils.parseEther("0.01")
                 }
-            );
+            ).then(() => {
+                setName('');
+                setDescription('');
+                setTempPayeeAddr('');
+                setTempPayeeShare();
+                setShareholders([]);
+                setInfo('Contract creation can be monitored from your wallet.');
+                onInfoOpen();
+            });
         } catch (e) {
             setError(e.reason);
             onErrorOpen();
@@ -105,6 +120,7 @@ export default function Create() {
                     className={"text-input vtspace-15 " + nameError}
                     type="text"
                     placeholder="Name"
+                    value={name}
                     onChange={(txt) => {
                         setName(txt.target.value);
                     }}
@@ -113,6 +129,7 @@ export default function Create() {
                     className="text-input vtspace-15"
                     placeholder="Description"
                     rows={5}
+                    value={description}
                     onChange={(txt) => {
                         setDescription(txt.target.value)
                     }}
@@ -138,6 +155,7 @@ export default function Create() {
                         }}
                     />
                     <img
+                        alt="Add Payee"
                         className="add-payee-button hlspace-15"
                         src={addPayeeIcon}
                         onClick={addShareHolder}
@@ -159,6 +177,7 @@ export default function Create() {
                                         {shareholder.share}
                                     </p>
                                     <img
+                                        alt="Delete Payee"
                                         className="del-payee-icon push-right"
                                         src={delPayeeIcon}
                                         onClick={() => {
@@ -188,6 +207,12 @@ export default function Create() {
                 closeModal={onErrorClose}
                 Title={"Something went wrong!"}
                 Content={error}
+            />
+            <InfoModal 
+                isOpen={isInfoOpen}
+                closeModal={onInfoClose}
+                Title="Alert"
+                Content={info}
             />
             <Back />
             <Disconnector />
