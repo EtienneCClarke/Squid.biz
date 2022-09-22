@@ -37,6 +37,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
 .view {
@@ -114,7 +115,7 @@ html, body {
 .input-label {
     color: var(--color-darkest-grey);
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .text-input {
@@ -135,6 +136,10 @@ html, body {
 .error-input {
     border-left: 6px solid var(--color-warning);
     border-radius: 0 10px 10px 0;
+}
+
+.txt-spacing {
+    letter-spacing: 1.5px;
 }
 
 /* =====================      Navigation     ====================== */
@@ -208,13 +213,13 @@ html, body {
 
 .shareholders-title {
     display: grid;
-    grid-template-columns: 70% 15% 15%;
+    grid-template-columns: minmax(50%, 70%) minmax(60px, 15%) minmax(10px, 15%);
     width: 100%;
 }
 
 .shareholders-row {
     display: grid;
-    grid-template-columns: 70% 15% 15%;
+    grid-template-columns: minmax(50%, 70%) minmax(60px, 15%) minmax(10px, 15%);;
     padding: 10px 15px;
     width: 100%;
 }
@@ -225,6 +230,15 @@ html, body {
 
 .del-payee-icon {
     cursor: pointer;
+}
+
+.total-shares {
+    font-weight: 500;
+}
+
+.creation-fee {
+    font-size: 0.7rem;
+    color: var(--color-dark-grey);
 }
 
 .w-50 {
@@ -299,6 +313,16 @@ html, body {
     left: 50%;
     bottom: 5px;
     transform: translateX(-50%);
+}
+
+.powered-tag-flex {
+    font-size: 0.5rem;
+    font-weight: 800;
+    color: var(--color-black);
+    margin-top: auto;
+    text-align: center;
+    margin-bottom: 5px;
+    padding-top: 50px;
 }
 
 .shareholder-exit-active {
@@ -442,6 +466,7 @@ html, body {
     cursor: pointer;
     color: var(--color-blue);
 }
+
 /* ======================  Background Color  ====================== */
 
 .bg-blue {
