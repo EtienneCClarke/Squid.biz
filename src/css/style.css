@@ -206,6 +206,27 @@ html, body {
     cursor: pointer;
 }
 
+.shareholders-title {
+    display: grid;
+    grid-template-columns: 70% 15% 15%;
+    width: 100%;
+}
+
+.shareholders-row {
+    display: grid;
+    grid-template-columns: 70% 15% 15%;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.shareholders-row:nth-of-type(even) {
+    background-color: var(--color-light-grey);
+}
+
+.del-payee-icon {
+    cursor: pointer;
+}
+
 .w-50 {
     width: 30vw !important;
     max-width: 100px;
@@ -280,6 +301,16 @@ html, body {
     transform: translateX(-50%);
 }
 
+.shareholder-exit-active {
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease-out;
+}
+
+.shareholder-enter-active {
+    opacity: 1;
+    transition: opacity var(--transition-duration) ease-in;
+}
+
 /* =====================         Modal       ====================== */
 
 
@@ -334,6 +365,7 @@ html, body {
 
 .scrollable-y {
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /* =====================    Content Layout   ====================== */
@@ -384,6 +416,11 @@ html, body {
 
 .text-center {
     text-align: center;
+}
+
+.h-center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ===================== Chakra UI Overrides ====================== */
