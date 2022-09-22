@@ -18,9 +18,8 @@ export default function Create() {
     const [payeeAddrError, setAddrPayeeError] = useState();
     const [payeeShareError, setSharePayeeError] = useState();
     const [nameError, setNameError] = useState();
-    const [descriptionError, setDescriptionError] = useState();
     const [name, setName] = useState();
-    const [description, setDescription] = useState();
+    const [description, setDescription] = useState('');
     const [tempPayeeAddr, setTempPayeeAddr] = useState();
     const [tempPayeeShare, setTempPayeeShare] = useState();
     const [shareholders, setShareholders] = useState([]);
@@ -46,9 +45,9 @@ export default function Create() {
     }
 
     function addShareHolder() {
-        !tempPayeeAddr || tempPayeeAddr == '' ? setAddrPayeeError('error-input') : setAddrPayeeError('');
-        !tempPayeeShare || tempPayeeShare == '' ? setSharePayeeError('error-input') : setSharePayeeError('');
-        if(!tempPayeeAddr || tempPayeeAddr == '' || !tempPayeeShare || tempPayeeShare == '') { return null; }
+        !tempPayeeAddr || tempPayeeAddr === '' ? setAddrPayeeError('error-input') : setAddrPayeeError('');
+        !tempPayeeShare || tempPayeeShare === '' ? setSharePayeeError('error-input') : setSharePayeeError('');
+        if(!tempPayeeAddr || tempPayeeAddr === '' || !tempPayeeShare || tempPayeeShare === '') { return null; }
         checkDuplicates();
         setShareholders([{ address: tempPayeeAddr, share: parseInt(tempPayeeShare)}, ...shareholders]);
         setTotalShares(totalShares + parseInt(tempPayeeShare));
@@ -58,20 +57,14 @@ export default function Create() {
 
     function checkForm() {
         let flag = 0;
-        if(!name || name == '') {
+        if(!name || name === '') {
             flag +=1;
             setNameError('error-input');
         } else {
             setNameError('');
         }
-        if(!description || description == '') {
-            flag +=1;
-            setDescriptionError('error-input');
-        } else {
-            setDescriptionError('');
-        }
         if(flag > 0) { return false; }
-        if(shareholders.length == 0 || !checkDuplicates()) { 
+        if(shareholders.length === 0 || !checkDuplicates()) { 
             setError('Please add payees!');
             onErrorOpen();
             return false;
@@ -117,7 +110,7 @@ export default function Create() {
                     }}
                 />
                 <textarea
-                    className={"text-input vtspace-15 " + descriptionError}
+                    className="text-input vtspace-15"
                     placeholder="Description"
                     rows={5}
                     onChange={(txt) => {
@@ -129,7 +122,7 @@ export default function Create() {
                     <input
                         className={"text-input " + payeeAddrError}
                         type="text"
-                        placeholder="Wallet Address"
+                        placeholder="Wallet Address (0xFf9...)"
                         value={tempPayeeAddr}
                         onChange={(txt) => {
                             setTempPayeeAddr(txt.target.value);
