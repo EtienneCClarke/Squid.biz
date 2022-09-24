@@ -1,4 +1,7 @@
 import React from "react"
+import { ethers } from "ethers";
+import KollabView from "../KollabView";
+import "../../css/style.css";
 
 export const COLUMNS_CREATED = [
     {
@@ -15,7 +18,10 @@ export const COLUMNS_CREATED = [
     },
     {
         Header: 'Global Balance',
-        accessor: 'total_balance'
+        accessor: 'total_balance',
+        Cell: ({row: {original}}) => (
+            <p>{ethers.utils.formatEther(original.personal_balance)}</p>
+        )
     },
     {
         Header: 'Address',
@@ -24,11 +30,7 @@ export const COLUMNS_CREATED = [
     {
         Header: ' ',
         Cell: ({row : {original}}) => (
-            <button
-                onClick={() => console.log(original)}
-            >
-                Click Me
-            </button>
+            <KollabView data={original} />
         )
     }
 
