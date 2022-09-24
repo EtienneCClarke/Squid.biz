@@ -7,9 +7,9 @@ import InfoModal from "../components/infoModal";
 import Back from "../components/Back";
 import addPayeeIcon from "../assets/svg/add-payee.svg";
 import delPayeeIcon from "../assets/svg/del-payee.svg";
-import "../css/style.css";
 import { TransitionGroup } from "react-transition-group";
 import { CSSTransition } from "react-transition-group";
+import "../css/style.css";
 
 export default function Create() {
 
@@ -36,17 +36,17 @@ export default function Create() {
         isOpen: isInfoOpen,
         onOpen: onInfoOpen,
         onClose: onInfoClose
-    } =useDisclosure();
+    } = useDisclosure();
 
     function checkDuplicates() {
         const currentShareholders = [];
         shareholders.forEach((shareholder) => {
             currentShareholders.push(shareholder.address);
         });
-        if(currentShareholders.indexOf(tempPayeeAddr) > -1) { 
+        if(currentShareholders.indexOf(tempPayeeAddr) > -1) {
             setError('Sorry! You cannot enter the same address twice.');
             onErrorOpen();
-            return null;
+            return false;
         }
         return true;
     }
@@ -55,7 +55,7 @@ export default function Create() {
         !tempPayeeAddr || tempPayeeAddr === '' ? setAddrPayeeError('error-input') : setAddrPayeeError('');
         !tempPayeeShare || tempPayeeShare === '' ? setSharePayeeError('error-input') : setSharePayeeError('');
         if(!tempPayeeAddr || tempPayeeAddr === '' || !tempPayeeShare || tempPayeeShare === '') { return null; }
-        checkDuplicates();
+        if(!checkDuplicates()) { return null };
         setShareholders([{ address: tempPayeeAddr, share: parseInt(tempPayeeShare)}, ...shareholders]);
         setTotalShares(totalShares + parseInt(tempPayeeShare));
         setTempPayeeAddr('');
@@ -100,7 +100,7 @@ export default function Create() {
                 setName('');
                 setDescription('');
                 setTempPayeeAddr('');
-                setTempPayeeShare();
+                setTempPayeeShare(0);
                 setShareholders([]);
                 setInfo('Contract creation can be monitored from your wallet.');
                 onInfoOpen();
