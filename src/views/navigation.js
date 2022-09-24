@@ -11,7 +11,7 @@ export default function Navigation () {
     const [manage, setManage] = useState();
 
     return (
-        <div className="view flex flex-column flex-align-center overflow-hidden">
+        <div className="view flex flex-column flex-align-center max-height-100 overflow-hidden">
             {create &&
                 <Redirect push to="/create" />
             }
