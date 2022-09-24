@@ -37,13 +37,16 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
 }
 
 .view {
     width: 100vw;
     min-height: 100vh;
     background-color: var(--color-background);
+}
+
+.max-height-100 {
+    max-height: 100vh !important;
 }
 
 .title-large {
@@ -142,6 +145,19 @@ html, body {
     letter-spacing: 1.5px;
 }
 
+.txt-bold {
+    font-weight: 700;
+}
+
+.w-50 {
+    width: 30vw !important;
+    max-width: 100px;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
 /* =====================      Navigation     ====================== */
 
 .nav-container {
@@ -195,6 +211,42 @@ html, body {
     transition: var(--transition-duration);
 }
 
+/* =====================       Manage        ====================== */
+
+.manage-container {
+    width: 100vw;
+    min-height: calc(100vh - 100px);
+    max-width: 1500px;
+    background-color: var(--color-white);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.manage-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+}
+
+.manage-nav-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-grey);
+    margin-left: 75px;
+    cursor: pointer;
+    transition: var(--transition-duration);
+}
+
+.manage-nav-active {
+    font-size: 1.3rem;
+    color: var(--color-black);
+    transition: var(--transition-duration);
+}
+
 /* =====================       Create        ====================== */
 
 .create-container {
@@ -239,11 +291,6 @@ html, body {
 .creation-fee {
     font-size: 0.7rem;
     color: var(--color-dark-grey);
-}
-
-.w-50 {
-    width: 30vw !important;
-    max-width: 100px;
 }
 
 /* =====================     Connections     ====================== */
@@ -375,16 +422,22 @@ html, body {
     border: none !important;
 }
 
-.test {
-    background-color: red;
-    width: 10px;
-    height: 4000px;
+.details-modal {
+    background-color: var(--color-background);
+    padding: 0;
+}
+
+.balance-container {
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    height: 100px;
 }
 
 /* =====================       Overflow     ====================== */
 
 .overflow-hidden {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .scrollable-y {
