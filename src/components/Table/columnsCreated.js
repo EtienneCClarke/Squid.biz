@@ -6,12 +6,14 @@ import "../../css/style.css";
 export const COLUMNS_CREATED = [
     {
         Header: 'UUID',
+        accessor: 'uuid',
         Cell: ({row: {original}}) => (
             <p>#{original.uuid}</p>
         )
     },
     {
         Header: 'Name',
+        accessor: 'name',
         Cell: ({row: {original}}) => (
             <p className="txt-bold">{original.name}</p>
         )
