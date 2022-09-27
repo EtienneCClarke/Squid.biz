@@ -6,6 +6,7 @@ import Connect from "./views/connect";
 import Navigation from "./views/navigation";
 import Manage from "./views/manage";
 import Create from "./views/create";
+import FAQ from "./views/FAQ";
 
 export default function App () {
 
@@ -36,6 +37,9 @@ export default function App () {
         </Route>
         <Route exact path="/connect">
           {active ? <Navigation /> : <Connect />}
+        </Route>
+        <Route exact path="/faq">
+          <FAQ />
         </Route>
       </Switch>
     </Router>

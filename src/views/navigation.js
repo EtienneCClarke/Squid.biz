@@ -4,6 +4,7 @@ import manageIcon from "../assets/icons/nav-manage-icon.png";
 import Disconnector from "../components/Disconector";
 import { Redirect } from "react-router";
 import "../css/style.css";
+import FAQButton from "../components/faqButton";
 
 export default function Navigation () {
 
@@ -47,6 +48,7 @@ export default function Navigation () {
                 </div>
             </div>
             <Disconnector />
+            <FAQButton />
         </div>
     );
 }

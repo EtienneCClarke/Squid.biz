@@ -20,7 +20,7 @@ export default function Table({ _data, toDisplay }) {
             return(toDisplay ? ['global_balance', 'address', 'creator'] : ['address']);
         }
         if(width < 990 && width >= 650) {
-            return(toDisplay ? ['address', 'creator'] : ['']);
+            return(toDisplay ? ['address', 'creator'] : ['address']);
         }
         if(width < 1550 && width >= 990) {
             return(toDisplay ? ['creator'] : ['']);

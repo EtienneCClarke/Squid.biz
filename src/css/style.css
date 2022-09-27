@@ -212,6 +212,22 @@ html, body {
     transition: var(--transition-duration);
 }
 
+.faq-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--color-green);
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
 /* =====================       Manage        ====================== */
 
 .manage-container {
@@ -240,6 +256,15 @@ html, body {
     margin-left: 75px;
     cursor: pointer;
     transition: var(--transition-duration);
+}
+
+@media screen and (max-width: 700px) {
+    .manage-nav {
+        justify-content: space-around !important;
+    }
+    .manage-nav-title {
+        margin-left: 0 !important;
+    }
 }
 
 .manage-nav-active {
