@@ -4,7 +4,7 @@ import DetailsIcon from "../assets/icons/more-details.png";
 import SplitterModal from "./SplitterModal";
 import "../css/table.css";
 
-export default function KollabView({data}) {
+export default function KollabView({data, isCreator}) {
 
     const {
         isOpen,
@@ -19,7 +19,7 @@ export default function KollabView({data}) {
                 src={DetailsIcon}
                 onClick={onOpen}
             />
-            <SplitterModal isOpen={isOpen} closeModal={onClose} data={data} />
+            <SplitterModal isOpen={isOpen} closeModal={onClose} data={data} isCreator={isCreator}/>
         </div>
     )
 
