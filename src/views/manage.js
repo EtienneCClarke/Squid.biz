@@ -39,14 +39,17 @@ export default function Manage () {
                     uuids.created.push(ethers.BigNumber.from(element).toNumber());
                 });
             });
+        } catch (e) {
+            console.log(e);
+        }
+        try {
             await kollab_share.getSplitterIds(account).then((res) => {
                 res.forEach(element => {
                     uuids.current.push(ethers.BigNumber.from(element).toNumber());
-                })
+                });
             });
         } catch (e) {
-            setError(e);
-            onErrorOpen();
+            console.log(e);
         }
         return uuids;
     }
@@ -57,6 +60,16 @@ export default function Manage () {
             let temp_current = [];
             let temp_created = [];
             for(let i = 0; i < ids.current.length; i++) {
+                let shareholders = [];
+                await kollab_share.getShareholders(ids.current[i]).then((res) => {
+                    console.log(res);
+                    for(let i = 0; i < res.length; i+=2) {
+                        shareholders.push({
+                            address: res[i],
+                            share: res[i+1]
+                        });
+                    }
+                })
                 await kollab_share.getSplitter(ids.current[i], account).then((res) => {
                     temp_current.push({
                         uuid: ids.current[i],
@@ -68,11 +81,22 @@ export default function Manage () {
                         personal_balance: res[5],
                         total_balance: res[6],
                         last_withdraw: res[7],
-                        creator: res[8]
+                        creator: res[8],
+                        shareholders: shareholders
                     });
                 });
             }
             for(let i = 0; i < ids.created.length; i++) {
+                let shareholders = [];
+                await kollab_share.getShareholders(ids.created[i]).then((res) => {
+                    console.log(res);
+                    for(let i = 0; i < res.length; i+=2) {
+                        shareholders.push({
+                            address: res[i],
+                            share: res[i+1]
+                        });
+                    }
+                })
                 await kollab_share.getSplitter(ids.created[i], account).then((res) => {
                     temp_created.push({
                         uuid: ids.created[i],
@@ -84,14 +108,15 @@ export default function Manage () {
                         personal_balance: res[5],
                         total_balance: res[6],
                         last_withdraw: res[7],
-                        creator: res[8]
+                        creator: res[8],
+                        shareholders: shareholders
                     });
                 });
             }
             setCreated(temp_created);
             setCurrent(temp_current);
         } catch (e) {
-            setError(e);
+            setError(e.reason);
             onErrorOpen();
         }
     }
@@ -149,5 +174,4 @@ export default function Manage () {
             />
         </div>
     );
-
 };

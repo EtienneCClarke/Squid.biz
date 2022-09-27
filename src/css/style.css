@@ -8,6 +8,7 @@
     --color-background: #F2F2F2;
     --color-warning: #FF2424;
     --color-blue: #1212F7;
+    --color-coral-blue: #2B927F;
     --color-green: #4BC57B;
     --color-purple: #7712F7;
     --color-pink: #F53261;
@@ -247,6 +248,120 @@ html, body {
     transition: var(--transition-duration);
 }
 
+.splitter-details-container {
+    background-color: var(--color-background);
+    border-radius: 25px;
+}
+
+.br-25 {
+    border-radius: 25px !important;
+}
+
+.balance-container {
+    background-color: var(--color-white);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    color: var(--color-black);
+}
+
+.balance-label {
+    font-size: 0.8rem;
+}
+
+.balance-label-small {
+    font-size: 0.6rem;
+    color: var(--color-grey);
+}
+
+.balance {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: min-content;
+}
+
+.balance-val {
+    margin-left: 20px;
+    font-weight: 700;
+    font-size: 4rem;
+}
+
+.splitter-content {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+.content-header {
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+    columns: var(--color-darkest-grey);
+}
+
+.content-title {
+    color: var(--color-coral-blue);
+}
+
+.content-uuid {
+    color: var(--color-darkest-grey);
+}
+
+.content-description {
+    font-size: 0.8rem;
+    color: var(--color-grey);
+}
+
+.content-info {
+    font-size: 0.9rem;
+    color: var(--color-grey);
+}
+
+.splitter-details {
+    width: fit-content;
+    min-width: 300px;
+    max-height: 400px;
+    padding-right: 5px;
+}
+
+.splitter-shareholders {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: minmax(70px,100px) auto;
+    grid-auto-flow: dense;
+    grid-auto-rows: min-content;
+    row-gap: 0;
+    max-height: 250px;
+    overflow: hidden;
+    overflow-y: scroll !important;
+    padding-left: 5px;
+}
+
+.sticky {
+    position: sticky !important;
+    top: 0;
+}
+
+.shareholder-header {
+    background: var(--color-background);
+    padding: 5px 0;
+    font-weight: 700;
+    color: var(--color-darkest-grey);
+}
+
+.splitter-shareholders p {
+    max-height: max-content;
+}
+
+.data-cell {
+    padding: 5px 0;
+}
+
 /* =====================       Create        ====================== */
 
 .create-container {
@@ -427,13 +542,6 @@ html, body {
     padding: 0;
 }
 
-.balance-container {
-    background-color: var(--color-white);
-    display: flex;
-    flex-direction: column;
-    height: 100px;
-}
-
 /* =====================       Overflow     ====================== */
 
 .overflow-hidden {
@@ -459,6 +567,10 @@ html, body {
     flex-direction: row;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .flex-align-center {
     align-items: center;
 }
@@ -473,6 +585,10 @@ html, body {
 
 .flex-end {
     justify-content: end;
+}
+
+.flex-space-between {
+    justify-content: space-between;
 }
 
 .push-right {
@@ -512,7 +628,8 @@ html, body {
 }
 
 .chakra-modal__content {
-    border-radius: 15px !important;
+    border-radius: 25px !important;
+    box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.2) !important;
 }
 
 .inline-link {
@@ -556,6 +673,10 @@ html, body {
 
 .bg-white {
     background-color: var(--color-white);
+}
+
+.bg-universal {
+    background-color: var(--color-background);
 }
 
 /* ======================       Margins      ====================== */
