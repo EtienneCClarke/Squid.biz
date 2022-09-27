@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { COLUMNS_CURRENT } from "./columnsCurrent";
 import { COLUMNS_CREATED } from "./columnsCreated";
 import { useTable, useSortBy } from "react-table";
+import useWindowDimensions from "../../utils/useWindowDimensions";
 import sortedAsc from "../../assets/icons/sorted-asc.png";
 import sortedDesc from "../../assets/icons/sorted-desc.png";
 import unsorted from "../../assets/icons/unsorted.png";
@@ -9,8 +10,27 @@ import "../../css/table.css";
 
 export default function Table({ _data, toDisplay }) {
 
+    const { height, width } = useWindowDimensions();
+
     const columns = useMemo(() => toDisplay ? COLUMNS_CURRENT : COLUMNS_CREATED);
     const data = useMemo(() => _data);
+
+    const hideColumns = () => {
+        if(width < 650) {
+            return(toDisplay ? ['global_balance', 'address', 'creator'] : ['address']);
+        }
+        if(width < 990 && width >= 650) {
+            return(toDisplay ? ['address', 'creator'] : ['']);
+        }
+        if(width < 1550 && width >= 990) {
+            return(toDisplay ? ['creator'] : ['']);
+        }
+        return [];
+    }
+
+    const initialState = {
+        hiddenColumns: hideColumns()
+    }
 
     const {
         getTableProps,
@@ -18,10 +38,10 @@ export default function Table({ _data, toDisplay }) {
         headerGroups,
         rows,
         prepareRow,
-        allColumns,
-        getToggleHideAllColumnsProps
     } = useTable({
-        columns, data
+        columns,
+        data,
+        initialState
     },
         useSortBy
     );
