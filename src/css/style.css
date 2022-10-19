@@ -19,6 +19,7 @@
     --color-light-grey: #E8E8E8;
     --color-white: #FFFFFF;
     --transition-duration: 200ms;
+    --transition-duration-slow: 1500ms;
 }
 
 ::-webkit-scrollbar {
@@ -39,6 +40,47 @@ html, body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
+
+@media screen and (max-width: 1300px) {
+    html, body {
+        font-size: 0.9em !important;
+    }
+}
+
+/* @media screen and (max-width: 600px) {
+    html, body {
+        font-size: 0.7rem !important;
+    }
+} */
+
+.banner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 100;
+    transform: translateX(-50%);
+    height: min-content;
+    text-align: center;
+    color: white;
+    padding: 10px 100px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-warning);
+    transition: var(--transition-duration-slow);
+}
+
+.hide {
+    top: -100px;
+}
+
+@media screen and (max-width: 850px) {
+    .banner {
+        padding: 10px 20px;
+        font-size: 0.7rem;
+    }
+}
+
+
 
 .view {
     width: 100vw;
@@ -231,7 +273,7 @@ html, body {
 /* =====================       Manage        ====================== */
 
 .manage-container {
-    width: 100vw;
+    width: 90vw;
     min-height: calc(100vh - 100px);
     max-width: 1500px;
     background-color: var(--color-white);
@@ -301,6 +343,11 @@ html, body {
     color: var(--color-grey);
 }
 
+.label-small {
+    font-size: 0.6rem;
+    color: var(--color-grey);
+}
+
 .balance {
     display: flex;
     flex-direction: row;
@@ -348,14 +395,14 @@ html, body {
 }
 
 .splitter-details {
-    width: fit-content;
+    width: min-content;
     min-width: 300px;
     max-height: 400px;
     padding-right: 5px;
 }
 
 .splitter-shareholders {
-    width: fit-content;
+    width: 49%;
     display: grid;
     grid-template-columns: minmax(70px,100px) auto;
     grid-auto-flow: dense;
@@ -387,9 +434,16 @@ html, body {
     padding: 5px 0;
 }
 
+.br {
+    /* border-right: 1px solid var(--color-grey); */
+    /* width: 48% !important; */
+}
+
 /* =====================       Create        ====================== */
 
 .create-container {
+    display: flex;
+    flex-direction: column;
     width: 90vw;
     max-width: 1000px;
 }
@@ -565,6 +619,14 @@ html, body {
 .details-modal {
     background-color: var(--color-background);
     padding: 0;
+}
+
+.chakra-modal__content-container {
+    min-height: 700px !important;
+}
+
+.chakra-portal {
+    min-height: 700px !important;
 }
 
 /* =====================       Overflow     ====================== */

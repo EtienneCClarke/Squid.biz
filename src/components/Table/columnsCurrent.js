@@ -21,7 +21,7 @@ export const COLUMNS_CURRENT = [
         )
     },
     {
-        Header: 'Personal Balance',
+        Header: 'My Share',
         accessor: 'personal_balance',
         id: 'personal_balance',
         Cell: ({row: {original}}) => (

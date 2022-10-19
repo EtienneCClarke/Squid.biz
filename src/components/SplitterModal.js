@@ -31,14 +31,16 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
         onClose: onInfoClose
     } = useDisclosure();
 
-    function date(date) {
-        if(!date || date === '' || date === 0) { return " N/A"; }
-        const d = new Date(date);
-        return d.toLocaleDateString("en-GB");
+    function date(timestamp) {
+        let unix = parseInt(timestamp);
+        if(!date || date === '' || date === 0 || isNaN(unix)) { return " N/A"; }
+        const d = new Date(unix * 1000);
+        return d.toString();
     }
 
     async function payoutGlobal() {
         try {
+            console.log(data.uuid);
             await kollab_share.payoutAll(data.uuid).then(() => {
                 setInfo("Withdrawl process has begun! This can be monitored from your wallet.");
                 onInfoOpen();
@@ -97,7 +99,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                                 {data.description}
                             </p>
                             <div className="content-info flex flex-row flex-space-between flex-wrap vbspace-25 w-100">
-                                <div className={"splitter-details  vtspace-25 " + (width < 840 ? "h-center w-100" : "")}>
+                                <div className={"splitter-details  vtspace-25 " + (width < 840 ? "h-center w-100" : "br")}>
                                     <p>Splitter Address: <br/>{data.address}</p>
                                     <p className="vtspace-10">Your Shares:{" " + data.personal_shares}</p>
                                     <p>Total Shares:{" " + data.total_shares}</p>

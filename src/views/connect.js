@@ -1,11 +1,15 @@
 import React from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import SelectWalletModal from "../components/selectWalletModal";
+import useWindowDimensions from "../utils/useWindowDimensions";
+import FAQButton from "../components/faqButton";
 import InfoModal from "../components/infoModal";
 import logo256 from "../assets/logo/logo256.png"
 import "../css/style.css";
 
 export default function Connect () {
+
+    const { height, width } = useWindowDimensions();
 
     const {
         isOpen: isConnectOpen,
@@ -24,7 +28,7 @@ export default function Connect () {
             <img src={logo256} alt="Dream Kollab Logo" className="logo"/>
             <h1 className="title-large">Kollab Share</h1>
             <p 
-                className="connect-button bg-blue vtspace-200"
+                className={"connect-button bg-blue " + (height < 700 ? "vtspace-75" : "vtspace-200")}
                 onClick={onConnectOpen}
             >
                 Connect Wallet
@@ -49,6 +53,7 @@ export default function Connect () {
                 "}
             />
             <p className="powered-tag">Powered By Dream Kollab</p>
+            <FAQButton />
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useWeb3React } from '@web3-react/core'
 import { connectors } from './web3/connectors';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
@@ -10,6 +10,8 @@ import FAQ from "./views/FAQ";
 
 export default function App () {
 
+  const [isActive, setIsActive] = useState('');
+
   let { 
     activate,
     active
@@ -20,8 +22,16 @@ export default function App () {
     if (provider) activate(connectors[provider])
   }, []);
 
+  function handleClick() {
+    setIsActive('hide');
+  }
+
   return (
     <Router>
+      <div
+        className={"banner " + isActive}
+        onClick={handleClick}
+      >The website is currently in beta. In order to use please ensure you are on the Goerli testnet.</div>
       <Switch>
         <Route exact path="/create">
           {active ? <Create /> : <Connect />}

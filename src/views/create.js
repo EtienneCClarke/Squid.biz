@@ -19,6 +19,7 @@ export default function Create() {
     const [payeeAddrError, setAddrPayeeError] = useState();
     const [payeeShareError, setSharePayeeError] = useState();
     const [nameError, setNameError] = useState();
+    const [descriptionError, setDescriptionError] = useState();
     const [name, setName] = useState();
     const [description, setDescription] = useState('');
     const [tempPayeeAddr, setTempPayeeAddr] = useState();
@@ -64,11 +65,17 @@ export default function Create() {
 
     function checkForm() {
         let flag = 0;
-        if(!name || name === '') {
+        if(!name || name === '' || name.length > 25) {
             flag +=1;
             setNameError('error-input');
         } else {
             setNameError('');
+        }
+        if(description.length > 50) {
+            flag=+1;
+            setDescriptionError('error-input');
+        } else {
+            setDescriptionError('');
         }
         if(flag > 0) { return false; }
         if(shareholders.length === 0 || !checkDuplicates()) { 
@@ -77,6 +84,17 @@ export default function Create() {
             return false;
         }
         return true;
+    }
+
+    function remainingCharacters(target) {
+        if(target === 'name') {
+            if(!name) { return 25; }
+            return (25 - name.length);
+        } else if (target === 'description') {
+            if(!description) { return 50; }
+            return (50 - description.length);
+        }
+        return -1;
     }
 
     async function createSplitter() {
@@ -88,7 +106,7 @@ export default function Create() {
             shares.push(shareholder.share);
         })
         try {
-            await kollab_share.createSplitter(
+            await kollab_share.create(
                 name,
                 description,
                 addresses,
@@ -101,6 +119,7 @@ export default function Create() {
                 setDescription('');
                 setTempPayeeAddr('');
                 setTempPayeeShare(0);
+                setTotalShares(0);
                 setShareholders([]);
                 setInfo('Contract creation can be monitored from your wallet.');
                 onInfoOpen();
@@ -121,19 +140,23 @@ export default function Create() {
                     type="text"
                     placeholder="Name"
                     value={name}
+                    maxLength={25}
                     onChange={(txt) => {
                         setName(txt.target.value);
                     }}
                 />
+                <p className="label-small push-right vtspace-5">{remainingCharacters("name")} / 25</p>
                 <textarea
-                    className="text-input vtspace-15"
+                    className={"text-input vtspace-15 " + descriptionError}
                     placeholder="Description"
-                    rows={5}
+                    rows={3}
                     value={description}
+                    maxLength={50}
                     onChange={(txt) => {
                         setDescription(txt.target.value)
                     }}
                 />
+                <p className="label-small push-right vtspace-5">{remainingCharacters("description")} / 50</p>
                 <h3 className="input-label vtspace-25 hlspace-15">Add Payee</h3>
                 <div className="add-payee-form vtspace-10">
                     <input

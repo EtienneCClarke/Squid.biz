@@ -16,7 +16,10 @@ export default function Table({ _data, toDisplay }) {
     const data = useMemo(() => _data);
 
     const hideColumns = () => {
-        if(width < 650) {
+        if(width < 500) {
+            return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance'] : ['address', 'global_balance']);
+        }
+        if(width >= 500 && width < 650) {
             return(toDisplay ? ['global_balance', 'address', 'creator'] : ['address']);
         }
         if(width < 990 && width >= 650) {
@@ -28,10 +31,6 @@ export default function Table({ _data, toDisplay }) {
         return [];
     }
 
-    const initialState = {
-        hiddenColumns: hideColumns()
-    }
-
     const {
         getTableProps,
         getTableBodyProps,
@@ -41,7 +40,15 @@ export default function Table({ _data, toDisplay }) {
     } = useTable({
         columns,
         data,
-        initialState
+        initialState: {
+            sortBy: [
+                {
+                    id: 'uuid',
+                    desc: true
+                }
+            ],
+            hiddenColumns: hideColumns()
+        }
     },
         useSortBy
     );

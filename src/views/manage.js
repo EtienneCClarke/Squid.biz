@@ -34,7 +34,7 @@ export default function Manage () {
             created: []
         };
         try {
-            await kollab_share.getCreatedSplitterIds(account).then((res) => {
+            await kollab_share.getCreatedIds(account).then((res) => {
                 res.forEach(element => {
                     uuids.created.push(ethers.BigNumber.from(element).toNumber());
                 });
@@ -43,7 +43,7 @@ export default function Manage () {
             console.log(e);
         }
         try {
-            await kollab_share.getSplitterIds(account).then((res) => {
+            await kollab_share.getIds(account).then((res) => {
                 res.forEach(element => {
                     uuids.current.push(ethers.BigNumber.from(element).toNumber());
                 });
@@ -62,15 +62,14 @@ export default function Manage () {
             for(let i = 0; i < ids.current.length; i++) {
                 let shareholders = [];
                 await kollab_share.getShareholders(ids.current[i]).then((res) => {
-                    console.log(res);
                     for(let i = 0; i < res.length; i+=2) {
                         shareholders.push({
                             address: res[i],
                             share: res[i+1]
                         });
                     }
-                })
-                await kollab_share.getSplitter(ids.current[i], account).then((res) => {
+                });
+                await kollab_share.getShareData(ids.current[i], account).then((res) => {
                     temp_current.push({
                         uuid: ids.current[i],
                         address: res[0],
@@ -89,7 +88,6 @@ export default function Manage () {
             for(let i = 0; i < ids.created.length; i++) {
                 let shareholders = [];
                 await kollab_share.getShareholders(ids.created[i]).then((res) => {
-                    console.log(res);
                     for(let i = 0; i < res.length; i+=2) {
                         shareholders.push({
                             address: res[i],
@@ -97,7 +95,7 @@ export default function Manage () {
                         });
                     }
                 })
-                await kollab_share.getSplitter(ids.created[i], account).then((res) => {
+                await kollab_share.getShareData(ids.created[i], account).then((res) => {
                     temp_created.push({
                         uuid: ids.created[i],
                         address: res[0],
@@ -141,7 +139,7 @@ export default function Manage () {
                             setNav(true);
                         }}
                     >
-                        Current Kollabs
+                        My Shares
                     </p>
                     <p
                         className={"manage-nav-title " + (!nav ? "manage-nav-active" : " ")}
@@ -149,7 +147,7 @@ export default function Manage () {
                             setNav(false);
                         }}
                     >
-                        My Kollabs
+                        Created Kollabs
                     </p>
                 </div>
                 <div className="w-100">
@@ -157,9 +155,15 @@ export default function Manage () {
                         <img className="vtspace-50 h-center" src={loadingGif} alt="loading"/>
                     ) : (
                         nav ? (
-                            <Table _data={current} toDisplay={nav} />
+                            <Table
+                                _data={current}
+                                toDisplay={nav}
+                            />
                         ) : (
-                            <Table _data={created} toDisplay={nav} />
+                            <Table
+                                _data={created}
+                                toDisplay={nav}
+                            />
                         )
                     )}
                 </div>
