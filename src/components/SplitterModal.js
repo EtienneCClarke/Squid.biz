@@ -32,10 +32,9 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
     } = useDisclosure();
 
     function date(timestamp) {
-        let unix = parseInt(timestamp);
-        if(!date || date === '' || date === 0 || isNaN(unix)) { return " N/A"; }
-        const d = new Date(unix * 1000);
-        return d.toString();
+        if(!timestamp || timestamp === '' || timestamp === 0 || isNaN(timestamp)) { return " N/A"; }
+        const d = new Date(timestamp * 1000);
+        return (" " + d.toLocaleDateString() + " " + d.toLocaleTimeString());
     }
 
     async function payoutGlobal() {
@@ -69,6 +68,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
             onClose={closeModal}
             size={"xl"}
             isCentered
+            scrollBehavior="outside"
         >
             <ModalOverlay
                 bg='blackAlpha.50'
@@ -103,7 +103,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                                     <p>Splitter Address: <br/>{data.address}</p>
                                     <p className="vtspace-10">Your Shares:{" " + data.personal_shares}</p>
                                     <p>Total Shares:{" " + data.total_shares}</p>
-                                    <p className="vtspace-10">Last Withdrawl:{date(data.last_withdrawl)}</p>
+                                    <p className="vtspace-10">Last Withdrawl:{date(data.last_withdraw)}</p>
                                     <p className="vtspace-10">Creator: <br/>{data.creator}</p>
                                 </div>
                                 <div className={"splitter-shareholders  vtspace-25 " + (width < 840 ? "h-center w-100" : "")}>
