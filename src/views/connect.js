@@ -53,7 +53,7 @@ export default function Connect () {
                 "}
             />
             <p className="powered-tag">Powered By Dream Kollab</p>
-            <FAQButton />
+            {/* <FAQButton /> */}
         </div>
     );
 }
