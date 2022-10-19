@@ -31,7 +31,7 @@ export default function App () {
       <div
         className={"banner " + isActive}
         onClick={handleClick}
-      >The website is currently in beta. In order to use please ensure you are on the Goerli testnet.</div>
+      >Kollab Share is currently in beta. In order to use please ensure you are on the Goerli testnet.</div>
       <Switch>
         <Route exact path="/create">
           {active ? <Create /> : <Connect />}

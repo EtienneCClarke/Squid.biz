@@ -48,7 +48,7 @@ export default function Navigation () {
                 </div>
             </div>
             <Disconnector />
-            <FAQButton />
+            {/* <FAQButton /> */}
         </div>
     );
 }
