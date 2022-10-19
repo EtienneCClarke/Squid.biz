@@ -60,6 +60,7 @@ html, body {
     z-index: 100;
     transform: translateX(-50%);
     height: min-content;
+    width: max-content;
     text-align: center;
     color: white;
     padding: 10px 100px;
@@ -74,6 +75,7 @@ html, body {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+    font-size: 0.8rem;
     cursor: pointer;
 }
 
@@ -84,7 +86,7 @@ html, body {
 @media screen and (max-width: 850px) {
     .banner {
         padding: 10px 20px;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 }
 
