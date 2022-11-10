@@ -111,6 +111,7 @@ export default function Create() {
                 description,
                 addresses,
                 shares,
+                false,
                 {
                     value: ethers.utils.parseEther("0.01")
                 }

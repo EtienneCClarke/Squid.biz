@@ -39,7 +39,6 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
 
     async function payoutGlobal() {
         try {
-            console.log(data.uuid);
             await kollab_share.payoutAll(data.uuid).then(() => {
                 setInfo("Withdrawl process has begun! This can be monitored from your wallet.");
                 onInfoOpen();

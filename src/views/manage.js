@@ -81,6 +81,7 @@ export default function Manage () {
                         total_balance: res[6],
                         last_withdraw: res[7],
                         creator: res[8],
+                        type: res[9],
                         shareholders: shareholders
                     });
                 });
@@ -107,6 +108,7 @@ export default function Manage () {
                         total_balance: res[6],
                         last_withdraw: res[7],
                         creator: res[8],
+                        type: res[9],
                         shareholders: shareholders
                     });
                 });
@@ -119,13 +121,27 @@ export default function Manage () {
         }
     }
 
+    function checkEmpty(data) {
+        if(!loading) {
+            if(data[0] == undefined) {
+                return (
+                    <div className="empty-table-hero">
+                        <p>
+                            Hmmmm... We could not locate any kollab shares for you.
+                        </p>
+                    </div>
+                );
+            }
+        }
+    }
+
     useEffect(() => {
         setNav('current');
         const fetchData = async () => {
             await getData().then(() => {
                 setLoading(false);
-            })
-        }
+            });
+        };
         fetchData();
     }, []);
 

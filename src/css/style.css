@@ -443,6 +443,18 @@ html, body {
     padding: 5px 0;
 }
 
+.empty-table-hero {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+    height: fit-content;
+}
+
+.empty-table-hero p {
+    font-size: 1rem;
+    font-style: italic;
+}
+
 /* =====================       Create        ====================== */
 
 .create-container {
