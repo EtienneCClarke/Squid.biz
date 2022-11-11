@@ -2,7 +2,6 @@ import React from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import SelectWalletModal from "../components/selectWalletModal";
 import useWindowDimensions from "../utils/useWindowDimensions";
-import FAQButton from "../components/faqButton";
 import InfoModal from "../components/infoModal";
 import logo256 from "../assets/logo/logo256.png"
 import "../css/style.css";

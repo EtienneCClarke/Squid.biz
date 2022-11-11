@@ -26,7 +26,7 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
         <Modal 
             isOpen={isOpen}
             onClose={closeModal}
-            size={"xs"}
+            size={"sm"}
             isCentered
         >
             <ModalOverlay
@@ -98,7 +98,7 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                                     window.location.assign("https://kollabshare.com/privacy_policy");
                                 }}
                             >
-                                 {' '}privace_policy{' '}
+                                 {' '}privacy policy{' '}
                             </span>
                         </p>
                     </div>

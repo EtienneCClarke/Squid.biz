@@ -7,6 +7,7 @@ import Navigation from "./views/navigation";
 import Manage from "./views/manage";
 import Create from "./views/create";
 import Privacy from "./views/privacy";
+import Terms from "./views/terms";
 
 export default function App () {
 
@@ -50,6 +51,9 @@ export default function App () {
         </Route>
         <Route exact path="/privacy_policy">
           <Privacy />
+        </Route>
+        <Route exact path="/terms_and_conditions">
+          <Terms />
         </Route>
       </Switch>
     </Router>
