@@ -121,20 +121,6 @@ export default function Manage () {
         }
     }
 
-    function checkEmpty(data) {
-        if(!loading) {
-            if(data[0] == undefined) {
-                return (
-                    <div className="empty-table-hero">
-                        <p>
-                            Hmmmm... We could not locate any kollab shares for you.
-                        </p>
-                    </div>
-                );
-            }
-        }
-    }
-
     useEffect(() => {
         setNav('current');
         const fetchData = async () => {
@@ -168,7 +154,10 @@ export default function Manage () {
                 </div>
                 <div className="w-100">
                     {loading ? (
-                        <img className="vtspace-50 h-center" src={loadingGif} alt="loading"/>
+                        <div>
+                            <img className="vtspace-50 h-center" src={loadingGif} alt="loading"/>
+                            <p className="loading-text vtspace-25">Retrieving information from the blockchain...</p>
+                        </div>
                     ) : (
                         nav ? (
                             <Table

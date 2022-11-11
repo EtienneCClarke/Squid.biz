@@ -7,6 +7,7 @@ import Navigation from "./views/navigation";
 import Manage from "./views/manage";
 import Create from "./views/create";
 import FAQ from "./views/FAQ";
+import Privacy from "./views/privacy";
 
 export default function App () {
 
@@ -50,6 +51,9 @@ export default function App () {
         </Route>
         <Route exact path="/faq">
           <FAQ />
+        </Route>
+        <Route exact path="/privacy_policy">
+          <Privacy />
         </Route>
       </Switch>
     </Router>

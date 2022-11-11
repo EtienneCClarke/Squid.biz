@@ -82,18 +82,24 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                         <p
                             className="tc-warning"
                         >
-                            By connecting a wallet you agree to the terms and conditions.
-                            <br/>
-                            Click
+                            By connecting a wallet you agree to the
                             <span
-                                className="inline-link"
+                                className="link"
                                 onClick={() => {
-                                    window.location.assign("https://dreamkollab.com/termsandconditions");
+                                    window.location.assign("https://kollabshare.com/terms_and_conditions");
                                 }}
                             >
-                                 {' '}here{' '}
+                                 {' '}terms and conditions{' '}
                             </span>
-                            to learn more
+                            and our
+                            <span
+                                className="link"
+                                onClick={() => {
+                                    window.location.assign("https://kollabshare.com/privacy_policy");
+                                }}
+                            >
+                                 {' '}privace_policy{' '}
+                            </span>
                         </p>
                     </div>
                 </ModalBody>
