@@ -34,14 +34,8 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    font-size: 2vh;
+    font-size: min(16px, max(2vh, 10px));
 }
-
-/* @media screen and (max-width: 1300px) {
-    html, body {
-        font-size: 0.9em !important;
-    }
-} */
 
 .banner {
     position: absolute;
@@ -146,7 +140,7 @@ html, body {
 
 .button {
     color: var(--color-white);
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -155,6 +149,11 @@ html, body {
     border-radius: 30px;
     cursor: pointer;
     filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.3));
+}
+
+.inline-link {
+    cursor: pointer;
+    color: var(--color-blue);
 }
 
 .input-label {
@@ -198,6 +197,13 @@ html, body {
 
 .w-100 {
     width: 100% !important;
+}
+
+.full-height {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* =====================      Navigation     ====================== */
@@ -321,6 +327,7 @@ html, body {
 .splitter-details-container {
     background-color: var(--color-background);
     border-radius: 25px;
+    height: 100%;
 }
 
 .br-25 {
@@ -330,6 +337,7 @@ html, body {
 .balance-container {
     background-color: var(--color-white);
     border-radius: 25px;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -357,6 +365,7 @@ html, body {
     align-items: center;
     justify-content: center;
     min-height: min-content;
+    overflow-x: scroll;
 }
 
 .balance-val {
@@ -369,7 +378,11 @@ html, body {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 }
 
 .content-header {
@@ -381,10 +394,12 @@ html, body {
 
 .content-title {
     color: var(--color-coral-blue);
+    font-size: 1.1rem;
 }
 
 .content-uuid {
     color: var(--color-darkest-grey);
+    font-size: 1.1rem;
 }
 
 .content-description {
@@ -412,21 +427,20 @@ html, body {
     grid-auto-rows: min-content;
     row-gap: 0;
     max-height: 250px;
-    overflow: hidden;
     overflow-y: scroll !important;
     padding-left: 5px;
 }
 
 .sticky {
-    position: sticky !important;
+    position: sticky;
     top: 0;
 }
 
 .shareholder-header {
-    background: var(--color-background);
     padding: 5px 0;
     font-weight: 700;
     color: var(--color-darkest-grey);
+    background-color: var(--color-background);
 }
 
 .splitter-shareholders p {
@@ -447,6 +461,12 @@ html, body {
 .empty-table-hero p {
     font-size: 1rem;
     font-style: italic;
+}
+
+.withdraw {
+    max-width: min-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* =====================       Create        ====================== */
@@ -620,7 +640,7 @@ html, body {
     min-height: 45px;
     padding: 0 15px;
     width: 100%;
-    font-size: 15px;
+    font-size: 1rem;
     cursor: pointer;
     border: 1px solid var(--color-light-grey);
     border-radius: 10px;
@@ -658,7 +678,7 @@ html, body {
 .tc-warning {
     margin-top: 10px;
     text-align: center;
-    font-size: 8px;
+    font-size: 0.5rem;
 }
 
 .powered-tag {
@@ -706,7 +726,7 @@ html, body {
 .modal-title {
     font-weight: 700;
     color: var(--color-dark-grey);
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .modal-body {
@@ -717,8 +737,6 @@ html, body {
     width: 100%;
     margin-top: 10px;
     padding: 0 20px 15px 10px;
-    min-height: fit-content;
-    max-height: 70vh;
 }
 
 .modal-center {
@@ -734,14 +752,6 @@ html, body {
 .details-modal {
     background-color: var(--color-background);
     padding: 0;
-}
-
-.chakra-modal__content-container {
-    min-height: 700px !important;
-}
-
-.chakra-portal {
-    min-height: 700px !important;
 }
 
 /* =====================       Overflow     ====================== */
@@ -839,10 +849,14 @@ html, body {
     box-shadow: 0px 4px 36px rgba(0, 0, 0, 0.2) !important;
 }
 
-.inline-link {
-    cursor: pointer;
-    color: var(--color-blue);
+.chakra-modal__content-container {
+    min-height: fit-content !important;
 }
+
+.chakra-portal {
+    min-height: fit-content !important;
+}
+
 
 /* ======================  Background Color  ====================== */
 

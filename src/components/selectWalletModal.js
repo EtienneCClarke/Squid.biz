@@ -26,7 +26,7 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
         <Modal 
             isOpen={isOpen}
             onClose={closeModal}
-            size={"sm"}
+            size={"md"}
             isCentered
         >
             <ModalOverlay

@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import {
     Modal,
     ModalBody,
@@ -17,14 +17,17 @@ import "../css/style.css";
 export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
 
     const kollab_share = useKollabShare();
-    const { width } = useWindowDimensions();
+    const { width, height } = useWindowDimensions();
+    const [small, setSmall] = useState(false);
     const [error, setError] = useState();
     const [info, setInfo] = useState();
+
     const {
         isOpen: isErrorOpen,
         onOpen: onErrorOpen,
         onClose: onErrorClose
     } = useDisclosure();
+
     const {
         isOpen: isInfoOpen,
         onOpen: onInfoOpen,
@@ -32,9 +35,44 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
     } = useDisclosure();
 
     function date(timestamp) {
-        if(!timestamp || timestamp === '' || timestamp === 0 || isNaN(timestamp)) { return " N/A"; }
+        if(!timestamp || timestamp === '' || timestamp < 1000000000 || isNaN(timestamp)) { return " N/A"; }
         const d = new Date(timestamp * 1000);
         return (" " + d.toLocaleDateString() + " " + d.toLocaleTimeString());
+    }
+
+    function truncate(str, value, cu) {
+        if(str.length > 5) {
+            if (str.includes('.')) {
+                const parts = str.split('.');
+                return parts[0] + '.' + parts[1].slice(0, value) + '...';
+            }
+            return str.slice(0, value) + '...'
+        }
+        return str;
+    }
+
+    function displayBalance() {
+        if(isCreator) {
+            if(width < 380) {
+                return truncate(ethers.utils.formatEther(data.total_balance), 3);
+            }
+            if(width < 600) {
+                return truncate(ethers.utils.formatEther(data.total_balance), 5);
+            }
+            if(width < 1100) {
+                return truncate(ethers.utils.formatEther(data.total_balance), 10);
+            }
+        }
+        if(width < 380) {
+            return truncate(ethers.utils.formatEther(data.personal_balance), 3);
+        }
+        if(width < 600) {
+            return truncate(ethers.utils.formatEther(data.personal_balance), 5);
+        }
+        if(width < 1100) {
+            return truncate(ethers.utils.formatEther(data.personal_balance), 10);
+        }
+        return ethers.utils.formatEther(data.personal_balance);
     }
 
     async function payoutGlobal() {
@@ -61,13 +99,22 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
         }
     }
 
+    function checkScreen() {
+        if(width < 620 || height < 700) { setSmall(true); }
+        else { setSmall(false); }
+    }
+
+    useEffect(() => {
+        checkScreen();
+    });
+
     return(
         <Modal
             isOpen={isOpen}
             onClose={closeModal}
-            size={"xl"}
+            size={small ? "full" : "xl"}
             isCentered
-            scrollBehavior="outside"
+            scrollBehavior="inside"
         >
             <ModalOverlay
                 bg='blackAlpha.50'
@@ -77,13 +124,13 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                 minW={width < 1200 ? "80%" : "900"}
             >
                 <ModalBody className="modal bg-universal br-25 overflow-y">
-                    <ModalCloseButton />
-                    <div className="splitter-details-container">
-                        <div className="balance-container">
+                    <ModalCloseButton zIndex={2}/>
+                    <div className={small ? "splitter-details-container full-height" : "splitter-details-container"}>
+                        <div className="balance-container sticky">
                             <div className="balance">
-                                <img src={ethIcon} width="20px"/>
+                                {width < 300 ? <></> : <img src={ethIcon} width="20px"/>}
                                 <p className="balance-val">
-                                    {isCreator ? ethers.utils.formatEther(data.total_balance) : ethers.utils.formatEther(data.personal_balance)}
+                                    {displayBalance()}
                                 </p>
                             </div>
                             <p className="balance-label">{isCreator ? 'Total Pot Value' : 'Personal Balance'}</p>
@@ -98,14 +145,14 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                                 {data.description}
                             </p>
                             <div className="content-info flex flex-row flex-space-between flex-wrap vbspace-25 w-100">
-                                <div className={"splitter-details  vtspace-25 " + (width < 840 ? "h-center w-100" : "br")}>
-                                    <p>Splitter Address: <br/>{data.address}</p>
+                                <div className={"splitter-details  vtspace-25 " + (width < 1130 ? "h-center w-100" : "br")}>
+                                    <p>Splitter Address: <br/><span className="txt-bold">{data.address}</span></p>
                                     <p className="vtspace-10">Your Shares:{" " + data.personal_shares}</p>
                                     <p>Total Shares:{" " + data.total_shares}</p>
                                     <p className="vtspace-10">Last Withdrawl:{date(data.last_withdraw)}</p>
                                     <p className="vtspace-10">Creator: <br/>{data.creator}</p>
                                 </div>
-                                <div className={"splitter-shareholders  vtspace-25 " + (width < 840 ? "h-center w-100" : "")}>
+                                <div className={"splitter-shareholders  vtspace-25 " + (width < 1130 ? "h-center w-100" : "")}>
                                     <p className="sticky shareholder-header">Share</p>
                                     <p className="sticky shareholder-header">Address</p>
                                     {data.shareholders.map((s, index) => {
@@ -120,14 +167,14 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                             </div>
                             {isCreator ? (
                                 <div
-                                    className="button bg-purple vtspace-75 vbspace-25"
+                                    className="button bg-purple push-bottom vtspace-75 vbspace-25"
                                     onClick={payoutGlobal}
                                 >
                                     Global Payout
                                 </div>
                             ) : (
                                 <div
-                                    className="button bg-blue vtspace-75 vbspace-25"
+                                    className="button bg-blue push-bottom vtspace-75 vbspace-25"
                                     onClick={payout}
                                 >
                                     Withdraw

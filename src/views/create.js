@@ -113,7 +113,7 @@ export default function Create() {
                 shares,
                 false,
                 {
-                    value: ethers.utils.parseEther("0.00")
+                    value: ethers.utils.parseEther("0.01")
                 }
             ).then(() => {
                 setName('');

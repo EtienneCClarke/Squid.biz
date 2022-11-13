@@ -3,6 +3,17 @@ import { ethers } from "ethers";
 import KollabView from "../KollabView";
 import "../../css/style.css";
 
+function truncate(str) {
+    if(str.length > 6) {
+        if (str.includes('.')) {
+            const parts = str.split('.');
+            return parts[0] + '.' + parts[1].slice(0, 4) + '...';
+        }
+        return str.slice(0, 5) + '...'
+    }
+    return str;
+}
+
 export const COLUMNS_CREATED = [
     {
         Header: 'UUID',
@@ -25,7 +36,7 @@ export const COLUMNS_CREATED = [
         accessor: 'total_balance',
         id: 'global_balance',
         Cell: ({row: {original}}) => (
-            <p>{ethers.utils.formatEther(original.total_balance)}</p>
+            <p>{truncate(ethers.utils.formatEther(original.total_balance))}</p>
         )
     },
     {

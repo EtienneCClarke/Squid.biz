@@ -29,10 +29,6 @@ export default function App () {
 
   return (
     <Router>
-      <div
-        className={"banner " + isActive}
-        onClick={handleClick}
-      >Kollab Share is currently in beta. In order to use please ensure you are on the Goerli testnet.</div>
       <Switch>
         <Route exact path="/create">
           {active ? <Create /> : <Connect />}

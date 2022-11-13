@@ -16,13 +16,16 @@ export default function Table({ _data, toDisplay }) {
     const data = useMemo(() => _data);
 
     const hideColumns = () => {
-        if(width < 500) {
+        if(width < 330) {
+            return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance', 'uuid'] : ['address', 'global_balance', 'uuid']);
+        }
+        if(width < 500 && width >= 330) {
             return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance'] : ['address', 'global_balance']);
         }
         if(width >= 500 && width < 650) {
             return(toDisplay ? ['global_balance', 'address', 'creator'] : ['address']);
         }
-        if(width < 990 && width >= 650) {
+        if(width < 1100 && width >= 650) {
             return(toDisplay ? ['address', 'creator'] : ['address']);
         }
         if(width < 1550 && width >= 990) {
