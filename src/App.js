@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useWeb3React } from '@web3-react/core'
 import { connectors } from './web3/connectors';
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
+import Landing from "./views/landing";
 import Connect from "./views/connect";
 import Navigation from "./views/navigation";
 import Manage from "./views/manage";
@@ -23,27 +24,24 @@ export default function App () {
     if (provider) activate(connectors[provider])
   }, []);
 
-  function handleClick() {
-    setIsActive('hide');
-  }
 
   return (
     <Router>
       <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
         <Route exact path="/create">
-          {active ? <Create /> : <Connect />}
+          {active ? <Create /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/manage">
-          {active ? <Manage /> : <Connect />}
+          {active ? <Manage /> : <Redirect tp="/" />}
         </Route>
         <Route exact path="/navigation">
-          {active ? <Navigation /> : <Connect />}
-        </Route>
-        <Route exact path="/">
-          {active ? <Navigation /> : <Connect />}
+          {active ? <Navigation /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/connect">
-          {active ? <Navigation /> : <Connect />}
+          {active ? <Redirect to="/navigation" /> : <Connect />}
         </Route>
         <Route exact path="/privacy_policy">
           <Privacy />

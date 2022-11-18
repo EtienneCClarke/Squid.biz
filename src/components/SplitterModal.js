@@ -62,6 +62,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
             if(width < 1100) {
                 return truncate(ethers.utils.formatEther(data.total_balance), 10);
             }
+            return ethers.utils.formatEther(data.total_balance);
         }
         if(width < 380) {
             return truncate(ethers.utils.formatEther(data.personal_balance), 3);
