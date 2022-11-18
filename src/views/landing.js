@@ -18,8 +18,8 @@ export default function Landing() {
                 <div className="landing-hero-content">
                     <div className="landing-hero-left">
                         <h1 className="white bold">Accomplish</h1>
-                        <h1 className="white bold vtspace-15">More</h1>
-                        <h1 className="white bold">Together</h1>
+                        <h1 className="white bold">more</h1>
+                        <h1 className="white bold">together.</h1>
                         <p className="white vtspace-50">Share revenue streams easily and securely.</p>
                         <a
                             className="push-bottom no-select"

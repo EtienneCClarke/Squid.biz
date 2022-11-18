@@ -637,7 +637,8 @@ html, body {
 .connect-button {
     color: var(--color-white);
     font-weight: 500;
-    padding: 3px 50px 5px 50px;
+    line-height: 100%;
+    padding: 7px 50px 7px 50px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     display: flex;

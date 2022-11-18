@@ -14,11 +14,12 @@ export default function App () {
 
   let { 
     activate,
-    active
+    active,
+    deactivate
   } = useWeb3React();
 
   useEffect(() => {
-    const provider = window.localStorage.getItem('provider');
+    const provider = window.localStorage.setItem('provider', undefined);
     if (provider) activate(connectors[provider]);
   }, []);
 
