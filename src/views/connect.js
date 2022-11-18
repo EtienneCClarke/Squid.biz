@@ -8,7 +8,7 @@ import "../css/style.css";
 
 export default function Connect () {
 
-    const { height, width } = useWindowDimensions();
+    const { height } = useWindowDimensions();
 
     const {
         isOpen: isConnectOpen,

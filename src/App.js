@@ -12,8 +12,6 @@ import Terms from "./views/terms";
 
 export default function App () {
 
-  const [isActive, setIsActive] = useState('');
-
   let { 
     activate,
     active
@@ -21,7 +19,7 @@ export default function App () {
 
   useEffect(() => {
     const provider = window.localStorage.getItem('provider');
-    if (provider) activate(connectors[provider])
+    if (provider) activate(connectors[provider]);
   }, []);
 
 
