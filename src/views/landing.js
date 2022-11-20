@@ -23,7 +23,7 @@ export default function Landing() {
                         <p className="white vtspace-50">Share revenue streams easily and securely.</p>
                         <a
                             className="push-bottom no-select"
-                            onClick={() => alert('Sorry, this is under construction.')}
+                            href="./connect"
                         >
                             Learn More
                         </a>
