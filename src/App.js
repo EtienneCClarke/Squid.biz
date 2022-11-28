@@ -23,7 +23,6 @@ export default function App () {
     if (provider) activate(connectors[provider]);
   }, []);
 
-
   return (
     <Router>
       <Switch>
@@ -34,7 +33,7 @@ export default function App () {
           {active ? <Create /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/manage">
-          {active ? <Manage /> : <Redirect tp="/" />}
+          {active ? <Manage /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/navigation">
           {active ? <Navigation /> : <Redirect to="/" />}
@@ -47,6 +46,9 @@ export default function App () {
         </Route>
         <Route exact path="/terms_and_conditions">
           <Terms />
+        </Route>
+        <Route exact path="*">
+          <Landing />
         </Route>
       </Switch>
     </Router>

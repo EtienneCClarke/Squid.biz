@@ -16,7 +16,7 @@ export default function Privacy() {
                 <ul>
                     <li>
                         DreamKollab’s Kollab Share mobile application software (<span>App</span>) 
-                        [available on our site] on [WEB ADDRESS]] (<span>App Site</span>), once you 
+                        [available on our site] on [www.kollabshare.com] (<span>App Site</span>), once you 
                         have downloaded or streamed a copy of the App onto your mobile 
                         telephone or handheld device (<span>Device</span>), and should be read in conjunction 
                         with our Terms and Conditions.

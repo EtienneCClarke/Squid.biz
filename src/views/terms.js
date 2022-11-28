@@ -82,10 +82,6 @@ export default function Terms() {
                 <h2>13.	Applicable Law</h2>
                 <p>These terms of use, their subject matter and their formation, are governed by English law. You and we both agree that the courts of England and Wales will have exclusive jurisdiction except that if you are a resident of Northern Ireland you may also bring proceedings in Northern Ireland, and if you are resident of Scotland, you may also bring proceedings in Scotland.</p>
                 <p>If you are a business, these terms of use, their subject matter and their formation (and any non-contractual disputes or claims) are governed by English law. We both agree to the exclusive jurisdiction of the courts of England and Wales.</p>
-                <h2>Our trade marks are registered</h2>
-                <p>
-                    ["TRADE MARK 1"] and ["TRADE MARK 2"] are [UK registered] trade marks of [COMPANY NAME]. You are not permitted to use them without our approval, unless they are part of material you are using as permitted under How you may use material on our site [https://www.kollabshare.com]. 
-                </p>
             </div>
             <p className="powered-tag-flex">Powered By Dream Kollab</p>
             <Back />
