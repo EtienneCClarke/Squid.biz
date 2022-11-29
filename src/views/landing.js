@@ -36,6 +36,16 @@ export default function Landing() {
 
     const sendEmail = (e) => {
         e.preventDefault();
+
+        let form_inputs = form.current.getElementsByClassName('text-input');
+        for(let i = 0; i < form_inputs.length; i++){
+            if(!form_inputs[i].value) {
+                setInfo('Please ensure all fields are correctly filled!');
+                onOpen();
+                return;
+            }
+        }
+
         emailjs.sendForm(
             process.env.REACT_APP_EMAILJS_SERVICE_ID,
             process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
@@ -61,7 +71,7 @@ export default function Landing() {
             <section className="landing-hero">
                 <div className="landing-hero-content">
                     <div className="landing-hero-left">
-                        <h1 className="white bold">Achieve</h1>
+                        <h1 className="white bold">Achieving</h1>
                         <h1 className="white bold">more</h1>
                         <h1 className="white bold">together.</h1>
                         <p className="white vtspace-50">Redirect cash flow easily and securely.</p>
@@ -139,7 +149,13 @@ export default function Landing() {
                     </div>
                     <div className="pricing-right">
                         <h2 className="bold">Pricing</h2>
-                        <p className="vtspace-25">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem.</p>
+                        <p className="vtspace-25">
+                            Save thousands of pounds on legal fees and get your project 
+                            going with zero anxiety. For just 0.01 ETH <span>&#8211;</span> approximately $10 <span>&#8211; </span> 
+                            you will have a secure, full reserve smart contract perfect 
+                            for international projects or with new people. Don<span>&#39;</span>t 
+                            miss out and get your idea off the ground today.
+                        </p>
                     </div>
                 </div>
                 <a className="bold" href="./connect">Get Started</a>
@@ -149,7 +165,10 @@ export default function Landing() {
                 <div className="contact-container">
                     <div className="contact-info">
                         <h2 className="white bold">Get in touch</h2>
-                        <p className="white vtspace-25">Lorem ipsum dolor sit amet consectetur. Magna praesent dolor tristique eros. Sed mauris in ac fermentum semper. In interdum amet urna arcu ut cras rhoncus. Purus a risus ut molestie lorem nibh id eu natoque.</p>
+                        <p className="white vtspace-25">
+                            Want to understand further how Kollab Share can transform your business?
+                            Feel free to contact us and we will respond as soon as possible.
+                        </p>
                     </div>
                     <div className="contact-form">
                         <form ref={form} onSubmit={sendEmail}>

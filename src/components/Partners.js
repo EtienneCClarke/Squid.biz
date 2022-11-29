@@ -26,7 +26,7 @@ export default function Partners() {
                     },
                 }}
                 autoplay={{
-                    delay: 1000,
+                    delay: 1500,
                     disableOnInteraction: false,
                 }}
                 centeredSlides={true}

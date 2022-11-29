@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="footer-content">
                 <div className="footer-left">
                     <h2 className="bold">Kollab Share</h2>
-                    <p className="vtspace-15">Achieve more together.</p>
+                    <p className="vtspace-15">Achieving more together.</p>
                     <div className="socials push-bottom">
                         <a href="https://www.facebook.com/DreamKollab"><img src={facebook} alt="Facebook"/></a>
                         <a href="https://twitter.com/dreamkollab"><img src={twitter} alt="Twitter"/></a>
@@ -22,7 +22,6 @@ export default function Footer() {
                 </div>
                 <div className="footer-right">
                     <a href="./connect">CONNECT</a>
-                    {/* <a href="./faqs">FAQs</a> */}
                     <a href="./terms_and_conditions">TERMS AND CONDITIONS</a>
                     <a href="./privacy_policy">PRIVACY POLICY</a>
                     <a href="https://dreamkollab.com">DREAM KOLLAB</a>
