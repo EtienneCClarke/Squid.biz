@@ -1,5 +1,6 @@
 import React from "react";
-import DisconnectIcon from "../assets/svg/disconnect.svg";
+import SettingsIcon from "../assets/svg/settings.svg";
+import disconnect from "../assets/svg/disconnect.svg";
 import DisconnectModal from "../components/disconnectModal";
 import { useDisclosure } from "@chakra-ui/react";
 import "../css/style.css";
@@ -19,7 +20,7 @@ export default function Disconnector() {
         >
             <img 
                 width={"20px"}
-                src={DisconnectIcon}
+                src={disconnect}
             />
             <DisconnectModal isOpen={isOpen} closeModal={onClose} />
         </div>

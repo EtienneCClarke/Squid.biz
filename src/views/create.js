@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useDisclosure } from "@chakra-ui/react";
 import useKollabShare from "../web3/useKollabShare";
-import Disconnector from "../components/Disconector";
 import InfoModal from "../components/infoModal";
 import Back from "../components/Back";
 import addPayeeIcon from "../assets/svg/add-payee.svg";
@@ -10,10 +9,13 @@ import delPayeeIcon from "../assets/svg/del-payee.svg";
 import { TransitionGroup } from "react-transition-group";
 import { CSSTransition } from "react-transition-group";
 import "../css/style.css";
+import { useWeb3React } from "@web3-react/core";
+import Options from "../components/Options";
 
 export default function Create() {
 
     const kollab_share = useKollabShare();
+    const { chainId } = useWeb3React();
     const [error, setError] = useState();
     const [info, setInfo] = useState();
     const [payeeAddrError, setAddrPayeeError] = useState();
@@ -26,6 +28,7 @@ export default function Create() {
     const [tempPayeeShare, setTempPayeeShare] = useState();
     const [shareholders, setShareholders] = useState([]);
     const [totalShares, setTotalShares] = useState(0);
+    const [fee, setFee] = useState("");
 
     const {
         isOpen: isErrorOpen,
@@ -51,6 +54,10 @@ export default function Create() {
         }
         return true;
     }
+
+    useEffect(() => {
+        chainId == 137 || chainId == 80001 ? setFee("10") : setFee("0.01");
+    }, [chainId])
 
     function addShareHolder() {
         !tempPayeeAddr || tempPayeeAddr === '' ? setAddrPayeeError('error-input') : setAddrPayeeError('');
@@ -113,7 +120,7 @@ export default function Create() {
                 shares,
                 false,
                 {
-                    value: ethers.utils.parseEther("0.01")
+                    value: ethers.utils.parseEther(fee)
                 }
             ).then(() => {
                 setName('');
@@ -126,7 +133,13 @@ export default function Create() {
                 onInfoOpen();
             });
         } catch (e) {
-            setError(e.reason);
+            if(chainId == 1 || chainId == 5) {
+                setError(e.reason);
+            } else if (chainId == 137 || chainId == 80001) {
+                setError(e.data.message);
+            } else {
+                setError(e);
+            }
             onErrorOpen();
         }
     }
@@ -217,7 +230,7 @@ export default function Create() {
             </div>
             <div className="text-center vtspace-100">
                     <p className="total-shares">Total Shares:{' ' + totalShares}</p>
-                    <p className="creation-fee vtspace-15">Fee 0.01 Eth + Gas</p>
+                    <p className="creation-fee vtspace-15">Fee {chainId == 1 || chainId == 5 ? "0.01 Eth " : "10 Matic "}+ Gas</p>
                     <p
                         className="button bg-blue txt-spacing vtspace-25"
                         onClick={createSplitter}
@@ -239,7 +252,7 @@ export default function Create() {
                 Content={info}
             />
             <Back />
-            <Disconnector />
+            <Options />
         </div>
     );
 

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import createIcon from "../assets/icons/nav-create-icon.png";
 import manageIcon from "../assets/icons/nav-manage-icon.png";
 import Disconnector from "../components/Disconector";
+import NetworkSwitcher from "../components/NetworkSwitcher";
+import Options from "../components/Options";
 import { Redirect } from "react-router";
 import "../css/style.css";
-import FAQButton from "../components/faqButton";
 
 export default function Navigation () {
 
@@ -47,7 +48,7 @@ export default function Navigation () {
                     <p className="nav-label">Manage payment splitters</p>
                 </div>
             </div>
-            <Disconnector />
+            <Options />
             {/* <FAQButton /> */}
         </div>
     );

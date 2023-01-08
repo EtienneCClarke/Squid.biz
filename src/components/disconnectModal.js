@@ -39,17 +39,19 @@ export default function DisconnectModal ({ isOpen, closeModal}) {
             <ModalContent>
                 <ModalBody className="modal">
                     <ModalCloseButton size={"sm"}/>
-                    <div className="modal-header modal-center no-border flex-column">
-                        <p className="modal-title">Connected Account</p>
+                    <div className="modal-header modal-center no-border flex-column text-center">
+                        <p className="modal-title vtspace-10">Connected Account</p>
                         <p className="connected-account">{account}</p>
-                        <div
-                            className="button bg-pink vtspace-50"
-                            onClick={() => {
-                                closeModal();
-                                disconnect();
-                            }}
-                        >
-                            Disconnect
+                        <div className="flex flex-align-center flex-row flex-wrap vtspace-50 vbspace-10">
+                            <div
+                                className="button bg-pink"
+                                onClick={() => {
+                                    closeModal();
+                                    disconnect();
+                                }}
+                            >
+                                Disconnect
+                            </div>
                         </div>
                     </div>
                 </ModalBody>

@@ -14,6 +14,7 @@
     --color-pink: #F53261;
     --color-black: #000000;
     --color-darkest-grey: #303030;
+    --color-darker-grey: #4A4A4A;
     --color-dark-grey: #646464;
     --color-grey: #939393;
     --color-light-grey: #E8E8E8;
@@ -675,15 +676,97 @@ html, body {
     font-size: 0.8rem;
 }
 
-.disconnector {
+.options-container {
     position: absolute;
-    top: 25px;
-    right: 25px;
+    top: 20px;
+    right: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media screen and (width <= 400px){
+    .options-container {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+    }
+}
+
+.networkSwitcher-container {
+    margin-right: 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.networkSwitcher-container select {
+    font-size: 1rem;
+    padding: 0.3em 4em 0.5em 1.5em;
+    background: var(--color-light-grey);
+    color: var(--color-darker-grey);
+    font-weight: 500;
+    border: 0;
+}
+
+.networkSwitcher-container select:focus {
+    outline: none;
+}
+
+.networkSwitcher-container select option {
+    zoom: 1.15;
+}
+
+.networkSwitcher-container span {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    display: block;
+    background: var(--color-grey);
+    height: 100%;
+    width: 2rem;
+}
+
+.networkSwitcher-container span::before,
+.networkSwitcher-container span::after {
+    --size: 0.3em;
+
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.networkSwitcher-container span::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid rgba(255, 255, 255, 0.9);
+    top: 35%;
+}
+
+.networkSwitcher-container span::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid rgba(255, 255, 255, 0.9);
+    top: 65%;
+}
+
+
+.disconnector {
     padding: 5px;
+    transition: var(--transition-duration);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .disconnector:hover {
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .tc-warning {
@@ -873,6 +956,10 @@ html, body {
 
 .bg-blue {
     background-color: var(--color-blue);
+}
+
+.bg-coral-blue {
+    background-color: var(--color-coral-blue);
 }
 
 .bg-green {

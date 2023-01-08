@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Back from "../components/Back";
 import Table from "../components/Table/Table";
-import Disconnector from "../components/Disconector";
 import useKollabShare from "../web3/useKollabShare";
 import loadingGif from "../assets/gifs/loading.gif";
-import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import "../css/style.css";
 import { useDisclosure } from "@chakra-ui/react";
 import InfoModal from "../components/infoModal";
+import { useWeb3React } from "@web3-react/core";
+import Options from "../components/Options";
 
 
 export default function Manage () {
@@ -173,7 +173,7 @@ export default function Manage () {
                     )}
                 </div>
             </div>
-            <Disconnector />
+            <Options />
             <Back />
             <InfoModal 
                 isOpen={isErrorOpen}

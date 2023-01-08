@@ -9,14 +9,17 @@ import {
 import { useDisclosure } from "@chakra-ui/react";
 import InfoModal from "../components/infoModal";
 import { ethers } from "ethers";
-import ethIcon from "../assets/icons/ethereum_large.png";
+import ethIcon from "../assets/icons/ethereum.png";
+import polygonIcon from "../assets/icons/polygon.png";
 import useWindowDimensions from "../utils/useWindowDimensions";
 import useKollabShare from "../web3/useKollabShare";
 import "../css/style.css";
+import { useWeb3React } from "@web3-react/core";
 
 export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
 
     const kollab_share = useKollabShare();
+    const { chainId } = useWeb3React();
     const { width, height } = useWindowDimensions();
     const [small, setSmall] = useState(false);
     const [error, setError] = useState();
@@ -40,7 +43,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
         return (" " + d.toLocaleDateString() + " " + d.toLocaleTimeString());
     }
 
-    function truncate(str, value, cu) {
+    function truncate(str, value) {
         if(str.length > 5) {
             if (str.includes('.')) {
                 const parts = str.split('.');
@@ -129,13 +132,13 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                     <div className={small ? "splitter-details-container full-height" : "splitter-details-container"}>
                         <div className="balance-container sticky">
                             <div className="balance">
-                                {width < 300 ? <></> : <img src={ethIcon} width="20px"/>}
+                                {width < 300 ? <></> : <img src={chainId === 1 || chainId === 5 ? ethIcon : polygonIcon} width={chainId === 1 || chainId === 5 ? "20px" : "40px"}/>}
                                 <p className="balance-val">
                                     {displayBalance()}
                                 </p>
                             </div>
                             <p className="balance-label">{isCreator ? 'Total Pot Value' : 'Personal Balance'}</p>
-                            <p className="balance-label-small vtspace-5">{isCreator ? "Personal Balance: " + ethers.utils.formatEther(data.personal_balance) + " ": "Total Pot Value: " + ethers.utils.formatEther(data.total_balance) + " "}Eth</p>
+                            <p className="balance-label-small vtspace-5">{isCreator ? "Personal Balance: " + ethers.utils.formatEther(data.personal_balance) + " ": "Total Pot Value: " + ethers.utils.formatEther(data.total_balance) + " "}{chainId === 1 || chainId === 5 ? "Eth" : "MATIC"}</p>
                         </div>
                         <div className="splitter-content">
                             <div className="content-header">

@@ -30,10 +30,6 @@ th, td {
     padding: 20px 30px;
 }
 
-thead {
-    background-color: var(--color-purple);
-}
-
 .title {
     display: flex;
     flex-direction: row;

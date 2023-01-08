@@ -7,10 +7,13 @@ import sortedAsc from "../../assets/icons/sorted-asc.png";
 import sortedDesc from "../../assets/icons/sorted-desc.png";
 import unsorted from "../../assets/icons/unsorted.png";
 import "../../css/table.css";
+import { useWeb3React } from "@web3-react/core";
 
 export default function Table({ _data, toDisplay }) {
 
-    const { height, width } = useWindowDimensions();
+    const { width } = useWindowDimensions();
+
+    const { chainId } = useWeb3React();
 
     const columns = useMemo(() => toDisplay ? COLUMNS_CURRENT : COLUMNS_CREATED);
     const data = useMemo(() => _data);
@@ -58,7 +61,7 @@ export default function Table({ _data, toDisplay }) {
 
     return(
         <table {...getTableProps()} cellSpacing="10">
-            <thead>
+            <thead className={chainId == 1 || chainId == 5 ? "bg-blue" : "bg-purple"}>
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
