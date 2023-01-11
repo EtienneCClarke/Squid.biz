@@ -10,7 +10,7 @@ import pie from "../assets/images/png/pie.png";
 import pipe from "../assets/images/png/pipe.png";
 import wave from "../assets/svg/wave.svg";
 import chevron from "../assets/svg/chevron-down.svg";
-import eth_white from "../assets/images/png/ethereum_white.png";
+import polygon from "../assets/images/png/polygon_white.png";
 import InfoModal from "../components/infoModal";
 import "../css/landing.css"
 import { useDisclosure } from "@chakra-ui/react";
@@ -74,7 +74,7 @@ export default function Landing() {
                         <h1 className="white bold">Achieving</h1>
                         <h1 className="white bold">more</h1>
                         <h1 className="white bold">together.</h1>
-                        <p className="white vtspace-50">Redirect cash flow easily and securely.</p>
+                        <p className="white vtspace-50">Code cash flow easily and securely.</p>
                         <Link to="scroll-expo" smooth={true} duration={1500} className="push-bottom no-select">
                             Learn More
                         </Link>
@@ -136,10 +136,9 @@ export default function Landing() {
                         <div className="price-box">
                             <div className="price-box-content">
                                 <div className="white bold">
-                                    <img src={eth_white} className="hrspace-10"/>
-                                    <h1>0.01 Eth</h1>
+                                    <img src={polygon} className="hrspace-10"/>
+                                    <h1>15 MATIC</h1>
                                 </div>
-                                <h3 className="vtspace-10 white push-right">+ Gas</h3>
                             </div>
                         </div>
                         <div className="price-box vtspace-25">

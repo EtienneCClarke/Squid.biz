@@ -57,7 +57,7 @@ export default function Create() {
 
     useEffect(() => {
         if(chainId === 1 || chainId === 5) { setFee("0.01")};
-        if(chainId === 137 || chainId === 80001) { setFee("0.01")};
+        if(chainId === 137 || chainId === 80001) { setFee("15")};
     }, [chainId])
 
     function addShareHolder() {
@@ -229,7 +229,7 @@ export default function Create() {
             </div>
             <div className="text-center vtspace-100">
                     <p className="total-shares">Total Shares:{' ' + totalShares}</p>
-                    <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? "0.01 Eth " : (chainId === 137 || chainId === 80001) ? "0.01 MATIC " : " (error) "}+ Gas</p>
+                    <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? "0.01 Eth " : (chainId === 137 || chainId === 80001) ? "15 MATIC " : " (error) "}+ Gas</p>
                     <p
                         className="button bg-blue txt-spacing vtspace-25"
                         onClick={createSplitter}
