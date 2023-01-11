@@ -56,7 +56,8 @@ export default function Create() {
     }
 
     useEffect(() => {
-        chainId == 137 || chainId == 80001 ? setFee("10") : setFee("0.01");
+        if(chainId === 1 || chainId === 5) { setFee("0.01")};
+        if(chainId === 137 || chainId === 80001) { setFee("0.01")};
     }, [chainId])
 
     function addShareHolder() {
@@ -126,21 +127,19 @@ export default function Create() {
                 setName('');
                 setDescription('');
                 setTempPayeeAddr('');
-                setTempPayeeShare(0);
-                setTotalShares(0);
+                setTempPayeeShare('');
+                setTotalShares('');
                 setShareholders([]);
                 setInfo('Contract creation can be monitored from your wallet.');
                 onInfoOpen();
             });
         } catch (e) {
-            if(chainId == 1 || chainId == 5) {
+            if(chainId) {
                 setError(e.reason);
-            } else if (chainId == 137 || chainId == 80001) {
-                setError(e.data.message);
+                onErrorOpen();
             } else {
-                setError(e);
+                console.error(e);
             }
-            onErrorOpen();
         }
     }
 
@@ -230,7 +229,7 @@ export default function Create() {
             </div>
             <div className="text-center vtspace-100">
                     <p className="total-shares">Total Shares:{' ' + totalShares}</p>
-                    <p className="creation-fee vtspace-15">Fee {chainId == 1 || chainId == 5 ? "0.01 Eth " : "10 Matic "}+ Gas</p>
+                    <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? "0.01 Eth " : (chainId === 137 || chainId === 80001) ? "0.01 MATIC " : " (error) "}+ Gas</p>
                     <p
                         className="button bg-blue txt-spacing vtspace-25"
                         onClick={createSplitter}

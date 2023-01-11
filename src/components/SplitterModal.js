@@ -132,7 +132,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                     <div className={small ? "splitter-details-container full-height" : "splitter-details-container"}>
                         <div className="balance-container sticky">
                             <div className="balance">
-                                {width < 300 ? <></> : <img src={chainId === 1 || chainId === 5 ? ethIcon : polygonIcon} width={chainId === 1 || chainId === 5 ? "20px" : "40px"}/>}
+                                {width < 300 ? <></> : <img src={chainId === 1 || chainId === 5 ? ethIcon : chainId === 137 || chainId === 80001 ? polygonIcon : null} width={chainId === 1 || chainId === 5 ? "20px" : "40px"}/>}
                                 <p className="balance-val">
                                     {displayBalance()}
                                 </p>
