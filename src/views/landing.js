@@ -136,7 +136,7 @@ export default function Landing() {
                         <div className="price-box">
                             <div className="price-box-content">
                                 <div className="white bold">
-                                    <img src={polygon} className="hrspace-10"/>
+                                    <img src={polygon} className="hrspace-10" draggable="false"/>
                                     <h1>15 MATIC</h1>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@ export default function Landing() {
                         <h2 className="bold">Pricing</h2>
                         <p className="vtspace-25">
                             Save thousands of pounds on legal fees and get your project 
-                            going with zero anxiety. For just 0.01 ETH <span>&#8211;</span> approximately $10 <span>&#8211; </span> 
+                            going with zero anxiety. For just 15 MATIC or 0.01 ETH <span>&#8211;</span> approximately $12 <span>&#8211; </span> 
                             you will have a secure, full reserve smart contract perfect 
                             for international projects or with new people. Don<span>&#39;</span>t 
                             miss out and get your idea off the ground today.

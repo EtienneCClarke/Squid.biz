@@ -146,7 +146,7 @@ export default function Create() {
     return (
         <div className="view flex flex-column flex-align-center scrollable-y">
             <div className="create-container">
-                <h1 className="title-large vtspace-75 text-center">Create New Kollab</h1>
+                <h1 className="title-large vtspace-75 text-center">Create New Squid</h1>
                 <h3 className="input-label vtspace-25 hlspace-15">Enter Details</h3>
                 <input
                     className={"text-input vtspace-15 " + nameError}

@@ -141,7 +141,7 @@ export default function Manage () {
                             setNav(true);
                         }}
                     >
-                        My Shares
+                        My Squids
                     </p>
                     <p
                         className={"manage-nav-title " + (!nav ? "manage-nav-active" : " ")}
@@ -149,7 +149,7 @@ export default function Manage () {
                             setNav(false);
                         }}
                     >
-                        Created Kollabs
+                        Created By Me
                     </p>
                 </div>
                 <div className="w-100">

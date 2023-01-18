@@ -15,8 +15,8 @@ export default function Privacy() {
                 </p>
                 <ul>
                     <li>
-                        DreamKollab’s Kollab Share mobile application software (<span>App</span>) 
-                        [available on our site] on [www.kollabshare.com] (<span>App Site</span>), once you 
+                        DreamKollab’s Squid.biz mobile application software (<span>App</span>) 
+                        [available on our site] on [www.squid.biz] (<span>App Site</span>), once you 
                         have downloaded or streamed a copy of the App onto your mobile 
                         telephone or handheld device (<span>Device</span>), and should be read in conjunction 
                         with our Terms and Conditions.
@@ -146,7 +146,7 @@ export default function Privacy() {
                 </p>
                 <h2>Data retention</h2>
                 <p>
-                    Please note that even If you delete your Smart Contract or addresses from the Kollabshare, 
+                    Please note that even If you delete your Smart Contract or addresses from the Squid, 
                     uninstall the App from your device, or request that your information be deleted, we still 
                     may retain some information that you have provided to us to maintain the App or to comply 
                     with the laws and regulations to which the App is subject. If you have any question or objection 

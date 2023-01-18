@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "../assets/images/png/squid_logo_white.png";
 import "../css/landing.css";
 
 export default function Nav() {
@@ -16,7 +17,8 @@ export default function Nav() {
 
     return(
         <header className={scrollNav ? "landing-header scroll-nav" : "landing-header"}>
-            <h4 className="bold no-select">Kollab Share</h4>
+            {/* <h4 className="bold no-select">Squid.biz</h4> */}
+            <h4 className="bold no-select"><span className="hrspace-10"><img src={logo} width="25px"/></span>Squid.biz</h4>
             <h4 className="bold no-select push-right"><a href="./connect">Connect</a></h4>
         </header>
     );

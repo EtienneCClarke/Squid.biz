@@ -150,7 +150,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                             </p>
                             <div className="content-info flex flex-row flex-space-between flex-wrap vbspace-25 w-100">
                                 <div className={"splitter-details  vtspace-25 " + (width < 1130 ? "h-center w-100" : "br")}>
-                                    <p>Splitter Address: <br/><span className="txt-bold">{data.address}</span></p>
+                                    <p>Squid Address: <br/><span className="txt-bold">{data.address}</span></p>
                                     <p className="vtspace-10">Your Shares:{" " + data.personal_shares}</p>
                                     <p>Total Shares:{" " + data.total_shares}</p>
                                     <p className="vtspace-10">Last Withdrawl:{date(data.last_withdraw)}</p>

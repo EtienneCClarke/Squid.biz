@@ -32,8 +32,8 @@ export default function Navigation () {
                         className="nav-icon"
                         alt="create-icon"
                     />
-                    <p className="nav-title">New Kollab</p>
-                    <p className="nav-label">Create new payment splitter</p>
+                    <p className="nav-title">CREATE</p>
+                    <p className="nav-label">Create new squid contract</p>
                 </div>
             </div>
             <div className="nav-container">
@@ -44,8 +44,8 @@ export default function Navigation () {
                     }}
                 >
                     <img src={manageIcon} className="nav-icon" alt="manage-icon" />
-                    <p className="nav-title">Current Shares</p>
-                    <p className="nav-label">Manage payment splitters</p>
+                    <p className="nav-title">MANAGE</p>
+                    <p className="nav-label">Manage your current squids</p>
                 </div>
             </div>
             <Options />

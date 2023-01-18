@@ -11,7 +11,7 @@ export default function Footer() {
         <footer id="footer">
             <div className="footer-content">
                 <div className="footer-left">
-                    <h2 className="bold">Kollab Share</h2>
+                    <h2 className="bold">Squid.biz</h2>
                     <p className="vtspace-15">Achieving more together.</p>
                     <div className="socials push-bottom">
                         <a href="https://www.facebook.com/DreamKollab"><img src={facebook} alt="Facebook"/></a>

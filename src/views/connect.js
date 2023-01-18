@@ -3,7 +3,7 @@ import { useDisclosure } from "@chakra-ui/react";
 import SelectWalletModal from "../components/selectWalletModal";
 import useWindowDimensions from "../utils/useWindowDimensions";
 import InfoModal from "../components/infoModal";
-import logo256 from "../assets/logo/logo256.png"
+import logo from "../assets/images/png/squid_logo_circle_purple.png";
 import "../css/style.css";
 
 export default function Connect () {
@@ -23,9 +23,9 @@ export default function Connect () {
     } = useDisclosure();
 
     return (
-        <div className="view scrollable-y flex flex-column flex-center flex-align-center">
-            <img src={logo256} alt="Dream Kollab Logo" className="logo"/>
-            <h1 className="title-large">Kollab Share</h1>
+        <div className="view scrollable-y flex flex-column flex-center flex-align-center bg-purple">
+            <a href="./"><img src={logo} alt="Dream Kollab Logo" draggable="false" className="logo"/></a>
+            <h1 className="title-large white">Squid</h1>
             <p 
                 className={"connect-button bg-blue " + (height < 700 ? "vtspace-75" : "vtspace-200")}
                 onClick={onConnectOpen}
@@ -33,7 +33,7 @@ export default function Connect () {
                 Connect Wallet
             </p>
             <p
-                className="plain-text-button vtspace-25"
+                className="plain-text-button vtspace-25 white"
                 onClick={onInfoOpen}
             >
                 What are crypto wallets?
@@ -51,7 +51,7 @@ export default function Connect () {
                 and provides the interface that lets you access your crypto.\
                 "}
             />
-            <p className="powered-tag">Powered By Dream Kollab</p>
+            <p className="powered-tag white">Powered By Dream Kollab</p>
             {/* <FAQButton /> */}
         </div>
     );

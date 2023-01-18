@@ -83,23 +83,19 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                             className="tc-warning"
                         >
                             By connecting a wallet you agree to the
-                            <span
+                            <a
                                 className="link"
-                                onClick={() => {
-                                    window.location.assign("https://kollabshare.com/terms_and_conditions");
-                                }}
+                                href="./terms_and_conditions"
                             >
-                                 {' '}terms and conditions{' '}
-                            </span>
+                                 {" "}terms and conditions{" "}
+                            </a>
                             and our
-                            <span
+                            <a
                                 className="link"
-                                onClick={() => {
-                                    window.location.assign("https://kollabshare.com/privacy_policy");
-                                }}
+                                href="./privacy_policy"
                             >
-                                 {' '}privacy policy{' '}
-                            </span>
+                                {" "}privacy policy
+                            </a>
                         </p>
                     </div>
                 </ModalBody>

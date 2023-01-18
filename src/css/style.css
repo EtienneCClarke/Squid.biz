@@ -118,11 +118,29 @@ html, body {
     max-height: 175px;
     min-width: 75px;
     min-height: 75px;
+    filter: drop-shadow(0px 15px 15px rgba(0, 0, 0, 0.3));
+    transition: var(--transition-duration-slow);
+    animation: float 7s infinite;
+}
+
+@keyframes float {
+	0% {
+		filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3));
+		transform: translatey(0px);
+	}
+	50% {
+		filter: drop-shadow(0px 40px 15px rgba(0,0,0,0.3));
+		transform: translatey(-25px);
+	}
+	100% {
+		filter: drop-shadow(0px 15px 15px rgba(0,0,0,0.3));
+		transform: translatey(0px);
+	}
 }
 
 .plain-text-button {
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--color-dark-grey);
     cursor: pointer;
     -webkit-touch-callout: none;
@@ -394,6 +412,10 @@ html, body {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+}
+
+#logo {
+    background: url("../assets/logo/squid_logo_white.svg");
 }
 
 .content-header {
@@ -777,7 +799,7 @@ html, body {
 
 .powered-tag {
     font-size: 0.5rem;
-    font-weight: 800;
+    font-weight: 500;
     color: var(--color-black);
     position: absolute;
     left: 50%;
@@ -967,7 +989,7 @@ html, body {
 }
 
 .bg-purple {
-    background-color: var(--color-purple);
+    background-color: var(--color-purple) !important;
 }
 
 .bg-pink {
@@ -996,6 +1018,12 @@ html, body {
 
 .bg-universal {
     background-color: var(--color-background);
+}
+
+/* ======================         Text       ====================== */
+
+.white {
+    color: var(--color-white);
 }
 
 /* ======================       Margins      ====================== */

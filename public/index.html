@@ -2,16 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon-purple.ico" id="light-scheme-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="Kollab Share"
+      name="Squid.biz"
       content=""
     />
-    <link rel="apple-touch-icon" href="logo192.png" />
+    <link rel="apple-touch-icon" href="squid_logo.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Kollab Share</title>
+    <title>Squid</title>
     <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
   </head>
@@ -20,6 +20,24 @@
     <div id="root"></div>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GFKGC9348"></script>
+    <script>
+      window.onload = (event) => {
+        lightSchemeIcon = document.querySelector('link#light-scheme-icon');
+        darkSchemeIcon = document.querySelector('link#dark-scheme-icon');
+        console.log(window);
+      }
+      
+
+      function onUpdate() {
+        if (matcher.matches) {
+          lightSchemeIcon.remove();
+          document.head.append(darkSchemeIcon);
+        } else {
+          document.head.append(lightSchemeIcon);
+          darkSchemeIcon.remove();
+        }
+      }
+    </script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

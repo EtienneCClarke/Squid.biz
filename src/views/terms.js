@@ -1,6 +1,6 @@
 import React from "react";
 import Back from "../components/Back";
-import logo256 from "../assets/logo/logo256.png"
+import logo256 from "../assets/images/png/squid_logo_circle_purple.png";
 import dreamkollab_logo from "../assets/logo/dreamkollab_with_text.JPG";
 
 export default function Terms() {
@@ -12,7 +12,7 @@ export default function Terms() {
                 <h2>PLEASE READ THESE TERMS AND CONDITIONS CAREFULLY BEFORE USING THIS SITE</h2>
                 <h2>Who we are and how to contact us</h2>
                 <p>
-                    KollabShare.com is a site operated by Dream Kollab Limited ("We"). We are registered in England and Wales 
+                    Squid.biz is a site operated by Dream Kollab Limited ("We"). We are registered in England and Wales 
                     under company number 13164361 and have our registered office at F14 Irwell House, 13 Slate Wharf, Castlefield, 
                     Manchester, M15 4SW. Our main trading address is F14 Irwell House, 13 Slate Wharf, Castlefield, Manchester, M15 4SW. 
                     We are regulated by the Financial Conduct Authority.
@@ -20,7 +20,7 @@ export default function Terms() {
                     To contact us, please email Contact@DreamKollab.com or telephone our customer service line on +447478755564.
                 </p>
                 <div className="flex flex-row w-100 flex-space-around flex-wrap flex-align-center">
-                    <img src={logo256} alt="dreamkollab logo" className="vtspace-50"/>
+                    <img src={logo256} alt="squid.biz" className="vtspace-50"/>
                     <img src={dreamkollab_logo} alt="dreamkollab logo" className="vtspace-50"/>
                 </div>
                 <h2 className="vtspace-50">1.	Account Setup </h2>
@@ -28,10 +28,10 @@ export default function Terms() {
                 <p>We have the right to disable any user identification code or password, whether chosen by you or allocated by us, at any time, if in our reasonable opinion you have failed to comply with any of the provisions of these terms of use.</p>
                 <p>If you know or suspect that anyone other than you knows your user identification code or password, you must promptly notify us at Contact@DreamKollab.com.</p>
                 <h2>2.	Services and Functions</h2>
-                <p>DreamKollab’s Kollab Share creates unique cryptocurrency wallet addresses (a “Smart Contract”) which users can divert revenue into based on predetermined shares. Users will create a Smart Contract which DreamKollab’s software will turn into a single payment address (a “Smart Contract Address”) and split the revenue based on the user’s share allocation. Each Smart Contract Address will be unique to a single blockchain.</p>
-                <p>A Kollab Share is a collection of crypto addresses each with an assigned number of shares. Once a Kollab Share has been created it can no longer be modified and all share values are fixed. If a payee wants to withdraw any monies from the Kollab Share they can only withdraw the amount they are entitled to which is determined by the amount of shares they have been allocated. The creator of the Kollab Share retains the ability to flush the contract and all payees will be transferred their share of any monies remaining.</p>
+                <p>DreamKollab’s Squid creates unique cryptocurrency wallet addresses (a “Smart Contract”) which users can divert revenue into based on predetermined shares. Users will create a Smart Contract which DreamKollab’s software will turn into a single payment address (a “Smart Contract Address”) and split the revenue based on the user’s share allocation. Each Smart Contract Address will be unique to a single blockchain.</p>
+                <p>A Squid is a collection of crypto addresses each with an assigned number of shares. Once a Squid has been created it can no longer be modified and all share values are fixed. If a payee wants to withdraw any monies from the Squid they can only withdraw the amount they are entitled to which is determined by the amount of shares they have been allocated. The creator of the Squid retains the ability to flush the contract and all payees will be transferred their share of any monies remaining.</p>
                 <h2>3.	Use of Website and App (“Services”)</h2>
-                <p>The Services operated and offered by DreamKollab’s Kollab Share are not intended to be offered or made available to any person who resides in any of the following: Cuba, Iran, North Korea, Syria and the Crimea, Donetsk and Luhansk Regions. The full range of Services offered by DreamKollab is subject to change at any time.</p>
+                <p>The Services operated and offered by DreamKollab’s Squid are not intended to be offered or made available to any person who resides in any of the following: Cuba, Iran, North Korea, Syria and the Crimea, Donetsk and Luhansk Regions. The full range of Services offered by DreamKollab is subject to change at any time.</p>
                 <p>By using any of our Services, you ("you", "user", "client", "customer"):</p>
                 <ul>
                     <li>By using any of our Services, you ("you", "user", "client", "customer"):</li>

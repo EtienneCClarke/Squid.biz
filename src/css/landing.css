@@ -65,6 +65,12 @@
     color: var(--color-white);
 }
 
+.landing-header h4:first-child{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .scroll-nav {
     transition: var(--transition-duration);
     background-color: var(--color-purple);
