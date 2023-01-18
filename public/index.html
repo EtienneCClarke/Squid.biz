@@ -21,24 +21,6 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GFKGC9348"></script>
     <script>
-      window.onload = (event) => {
-        lightSchemeIcon = document.querySelector('link#light-scheme-icon');
-        darkSchemeIcon = document.querySelector('link#dark-scheme-icon');
-        console.log(window);
-      }
-      
-
-      function onUpdate() {
-        if (matcher.matches) {
-          lightSchemeIcon.remove();
-          document.head.append(darkSchemeIcon);
-        } else {
-          document.head.append(lightSchemeIcon);
-          darkSchemeIcon.remove();
-        }
-      }
-    </script>
-    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
