@@ -89,7 +89,7 @@ export default function Privacy() {
                     that consent at any time by contacting us.
                 </p>
                 <table className="vtspace-50">
-                    <thead>
+                    <thead className="bg-purple">
                         <tr>
                             <th>Purpose/activity</th>
                             <th>Type of data</th>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Back from "../components/Back";
 import Table from "../components/Table/Table";
-import useKollabShare from "../web3/useKollabShare";
+import useSquid from "../web3/useSquid";
 import loadingGif from "../assets/gifs/loading.gif";
 import { ethers } from "ethers";
 import "../css/style.css";
@@ -19,7 +19,7 @@ export default function Manage () {
     const [created, setCreated] = useState();
     const [nav, setNav] = useState();
 
-    const kollab_share = useKollabShare();
+    const squid = useSquid();
     const { account } = useWeb3React();
 
     const {
@@ -34,7 +34,7 @@ export default function Manage () {
             created: []
         };
         try {
-            await kollab_share.getCreatedIds(account).then((res) => {
+            await squid.getCreatedIds(account).then((res) => {
                 res.forEach(element => {
                     uuids.created.push(ethers.BigNumber.from(element).toNumber());
                 });
@@ -43,7 +43,7 @@ export default function Manage () {
             console.log(e);
         }
         try {
-            await kollab_share.getIds(account).then((res) => {
+            await squid.getIds(account).then((res) => {
                 res.forEach(element => {
                     uuids.current.push(ethers.BigNumber.from(element).toNumber());
                 });
@@ -61,7 +61,7 @@ export default function Manage () {
             let temp_created = [];
             for(let i = 0; i < ids.current.length; i++) {
                 let shareholders = [];
-                await kollab_share.getShareholders(ids.current[i]).then((res) => {
+                await squid.getShareholders(ids.current[i]).then((res) => {
                     for(let i = 0; i < res.length; i+=2) {
                         shareholders.push({
                             address: res[i],
@@ -69,7 +69,7 @@ export default function Manage () {
                         });
                     }
                 });
-                await kollab_share.getShareData(ids.current[i], account).then((res) => {
+                await squid.getShareData(ids.current[i], account).then((res) => {
                     temp_current.push({
                         uuid: ids.current[i],
                         address: res[0],
@@ -80,15 +80,13 @@ export default function Manage () {
                         personal_balance: res[5],
                         total_balance: res[6],
                         last_withdraw: res[7],
-                        creator: res[8],
-                        type: res[9],
                         shareholders: shareholders
                     });
                 });
             }
             for(let i = 0; i < ids.created.length; i++) {
                 let shareholders = [];
-                await kollab_share.getShareholders(ids.created[i]).then((res) => {
+                await squid.getShareholders(ids.created[i]).then((res) => {
                     for(let i = 0; i < res.length; i+=2) {
                         shareholders.push({
                             address: res[i],
@@ -96,7 +94,7 @@ export default function Manage () {
                         });
                     }
                 })
-                await kollab_share.getShareData(ids.created[i], account).then((res) => {
+                await squid.getShareData(ids.created[i], account).then((res) => {
                     temp_created.push({
                         uuid: ids.created[i],
                         address: res[0],
@@ -108,7 +106,6 @@ export default function Manage () {
                         total_balance: res[6],
                         last_withdraw: res[7],
                         creator: res[8],
-                        type: res[9],
                         shareholders: shareholders
                     });
                 });

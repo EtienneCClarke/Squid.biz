@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ethers } from "ethers";
+import { ethers, utils } from "ethers";
 import { useDisclosure } from "@chakra-ui/react";
-import useKollabShare from "../web3/useKollabShare";
+import useSquid from "../web3/useSquid";
 import InfoModal from "../components/infoModal";
 import Back from "../components/Back";
 import addPayeeIcon from "../assets/svg/add-payee.svg";
@@ -14,7 +14,7 @@ import Options from "../components/Options";
 
 export default function Create() {
 
-    const kollab_share = useKollabShare();
+    const squid = useSquid();
     const { chainId } = useWeb3React();
     const [error, setError] = useState();
     const [info, setInfo] = useState();
@@ -58,7 +58,7 @@ export default function Create() {
     useEffect(() => {
         if(chainId === 1 || chainId === 5) { setFee("0.01")};
         if(chainId === 137 || chainId === 80001) { setFee("15")};
-    }, [chainId])
+    }, [chainId]);
 
     function addShareHolder() {
         !tempPayeeAddr || tempPayeeAddr === '' ? setAddrPayeeError('error-input') : setAddrPayeeError('');
@@ -112,16 +112,15 @@ export default function Create() {
         shareholders.forEach((shareholder) => {
             addresses.push(shareholder.address);
             shares.push(shareholder.share);
-        })
+        });
         try {
-            await kollab_share.create(
+            await squid.create(
                 name,
                 description,
                 addresses,
                 shares,
-                false,
                 {
-                    value: ethers.utils.parseEther(fee)
+                    value: ethers.utils.parseEther("15"),
                 }
             ).then(() => {
                 setName('');
@@ -229,7 +228,7 @@ export default function Create() {
             </div>
             <div className="text-center vtspace-100">
                     <p className="total-shares">Total Shares:{' ' + totalShares}</p>
-                    <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? "0.01 Eth " : (chainId === 137 || chainId === 80001) ? "15 MATIC " : " (error) "}+ Gas</p>
+                    <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? (fee + " Eth ") : (chainId === 137 || chainId === 80001) ? (fee + " MATIC ") : " (error) "}+ Gas</p>
                     <p
                         className="button bg-blue txt-spacing vtspace-25"
                         onClick={createSplitter}
@@ -254,5 +253,4 @@ export default function Create() {
             <Options />
         </div>
     );
-
 };

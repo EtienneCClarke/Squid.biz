@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { COLUMNS_CURRENT } from "./columnsCurrent";
 import { COLUMNS_CREATED } from "./columnsCreated";
 import { useTable, useSortBy } from "react-table";

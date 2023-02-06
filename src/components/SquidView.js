@@ -4,7 +4,7 @@ import DetailsIcon from "../assets/icons/more-details.png";
 import SplitterModal from "./SplitterModal";
 import "../css/table.css";
 
-export default function KollabView({data, isCreator}) {
+export default function SquidView({data, isCreator}) {
 
     const {
         isOpen,

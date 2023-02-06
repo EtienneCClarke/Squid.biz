@@ -1,6 +1,6 @@
 import React from "react";
 import { ethers } from "ethers";
-import KollabView from "../KollabView";
+import SquidView from "../SquidView";
 import "../../css/style.css";
 
 function truncate(str) {
@@ -61,7 +61,7 @@ export const COLUMNS_CURRENT = [
         Header: ' ',
         id: 'settings',
         Cell: ({row : {original}}) => (
-            <KollabView data={original} isCreator={false}/>
+            <SquidView data={original} isCreator={false}/>
         )
     }
 ]

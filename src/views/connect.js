@@ -44,11 +44,7 @@ export default function Connect () {
                 closeModal={onInfoClose}
                 Title={"What is a crypto wallet?"}
                 Content={"\
-                A cryptocurrency wallet is an application that functions as a wallet\
-                for your cryptocurrency. It is called a wallet because it is used similarly\
-                to a wallet you put cash and cards in. Instead of holding these physical items,\
-                it stores the passkeys you use to sign for your cryptocurrency  transactions\
-                and provides the interface that lets you access your crypto.\
+                Crypto wallets store your private keys, keeping your crypto safe and accessible. They also allow you to send, receive, and spend cryptocurrencies like Bitcoin and Ethereum.\
                 "}
             />
             <p className="powered-tag white">Powered By Dream Kollab</p>

@@ -1,23 +1,37 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 import { Link } from "react-scroll";
 import Partners from "../components/Partners";
 import Nav from "../components/navbar";
 import Footer from "../components/footer";
-import HeroA from "../assets/images/jpg/hero-a.jpg";
-import HeroB from "../assets/images/jpg/hero-b.jpg";
+import Verified from "../assets/svg/verified.svg";
+import phoneGraphic from "../assets/images/png/3d-phone-with-ui-and-shadow.png";
 import pie from "../assets/images/png/pie.png";
 import pipe from "../assets/images/png/pipe.png";
+import office from  "../assets/images/png/office.png";
 import wave from "../assets/svg/wave.svg";
 import chevron from "../assets/svg/chevron-down.svg";
 import polygon from "../assets/images/png/polygon_white.png";
 import InfoModal from "../components/infoModal";
-import "../css/landing.css"
+import "../css/landing.css";
 import { useDisclosure } from "@chakra-ui/react";
+import useMousePosition from "../utils/useMousePosition";
+import chakraUiCssReset from "@chakra-ui/css-reset";
 
 export default function Landing() {
 
     const [info, setInfo] = useState('');
+    const phone = useRef();
+    const cursor = useRef();
+    const position = useMousePosition();
+
+    useEffect(()=> {
+        let { width, height } = phone.current.getBoundingClientRect();
+        let scale = 700;
+        let x = ((position.x - (width * 0.5)) * -10) / scale;
+        let y = ((position.y - (height * 0.5)) * -10) / scale;
+        phone.current.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    }, [position]);
 
     const {
         isOpen,
@@ -65,6 +79,7 @@ export default function Landing() {
 
     return(
         <div className="landing-view">
+            <div ref={cursor} id="cursor"></div>
 
             <Nav />
 
@@ -74,24 +89,33 @@ export default function Landing() {
                         <h1 className="white bold">Achieving</h1>
                         <h1 className="white bold">more</h1>
                         <h1 className="white bold">together.</h1>
-                        <p className="white vtspace-50">Code cash flow easily and securely.</p>
+                        <p className="white vtspace-50">Tearing down barriers so innovation and prosperity will thrive.</p>
+                        <div className="tags white vtspace-50 no-select">
+                            <p>Web3</p>
+                            <p>Fintech</p>
+                            <p>Law</p>
+                        </div>
                         <Link to="scroll-expo" smooth={true} duration={1500} className="push-bottom no-select">
                             Learn More
                         </Link>
                     </div>
                     <div className="landing-hero-right no-select" draggable="false">
                         <img
-                            src={HeroA}
-                            alt="A group of people growing wealth together"
+                            src={phoneGraphic}
+                            alt="Phone showing all squid contracts"
                             draggable="false"
-                            className="no-select"
+                            className="no-select landing-phone"
+                            ref={phone}
                         />
-                        <img
-                            src={HeroB}
-                            alt="People sharing a pile of money"
-                            draggable="false"
-                            className="no-select"
-                        />
+                        <a
+                            className="audit-verification"
+                            href="https://solidity.finance/audits/SquidFactory/"
+                        >
+                            <span>
+                                <img src={Verified} alt="Checkmark" />
+                            </span>
+                            Verified by Solidity.Finance
+                        </a>
                     </div>
                 </div>
                 <div
@@ -106,7 +130,7 @@ export default function Landing() {
             </section>
 
             <section id="partners">
-                <img src={wave} className="partners-wave-top no-select" draggable="false" />
+            <img src={wave} className="partners-wave-top no-select" draggable="false" />
                 <div className="partners-container">
                     <Partners />
                 </div>
@@ -115,9 +139,16 @@ export default function Landing() {
             <section id="explanation">
                 <img src={wave} className="partners-wave-bottom no-select dropshadow" draggable="false" />
                 <div className="explanation-container" id="scroll-expo">
+                    <img src={office} draggable="false" className="no-select infographic" alt=""/>
+                    <div>
+                        <h2 className="bold">Smart Contracts Simplified.</h2>
+                        <p className="vtspace-25">Each Squid is a smart contract deployed onto the blockchain complete with a unique payment address. You define how much each person or wallet owns of the Squid upon creation.</p>
+                    </div>
+                </div>
+                <div className="explanation-container">
                     <div>
                         <h2 className="bold">Secure Sharing.</h2>
-                        <p className="vtspace-25">Each Kollab is a smart contract deployed onto the blockchain complete with a unique payment address. Once created nobody can change the percentages ensuring everyone is guarenteed their share. </p>
+                        <p className="vtspace-25">When the Squid is paid into each shareholder can withdraw their crypto without affecting anyone else. Once created nobody can change the percentages ensuring everyone is guarenteed their share. </p>
                     </div>
                     <img src={pie} draggable="false" className="no-select infographic" alt=""/>
                 </div>
@@ -125,7 +156,7 @@ export default function Landing() {
                     <img src={pipe} draggable="false" className="no-select infographic" alt=""/>
                     <div>
                         <h2 className="bold">De-Fi Infrastructure.</h2>
-                        <p className="vtspace-25">Create decentralised financial networks by plugging in different wallets, Kollabs, and DAOs to create  both personal and public systems to automate your finances.</p>
+                        <p className="vtspace-25">Create decentralised financial networks by plugging in different wallets, Squids, and DAOs to create  both personal and public systems to structure your finances.</p>
                     </div>
                 </div>
             </section>
@@ -150,7 +181,7 @@ export default function Landing() {
                         <h2 className="bold">Pricing</h2>
                         <p className="vtspace-25">
                             Save thousands of pounds on legal fees and get your project 
-                            going with zero anxiety. For just 15 MATIC or 0.01 ETH <span>&#8211;</span> approximately $12 <span>&#8211; </span> 
+                            going with zero anxiety. For just 15 MATIC or 0.01 ETH <span>&#8211;</span> approximately $15 <span>&#8211; </span> 
                             you will have a secure, full reserve smart contract perfect 
                             for international projects or with new people. Don<span>&#39;</span>t 
                             miss out and get your idea off the ground today.
@@ -165,7 +196,7 @@ export default function Landing() {
                     <div className="contact-info">
                         <h2 className="white bold">Get in touch</h2>
                         <p className="white vtspace-25">
-                            Want to understand further how Kollab Share can transform your business?
+                            Want to understand further how Squid.biz can transform your business?
                             Feel free to contact us and we will respond as soon as possible.
                         </p>
                     </div>

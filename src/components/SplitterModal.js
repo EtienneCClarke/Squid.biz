@@ -12,13 +12,13 @@ import { ethers } from "ethers";
 import ethIcon from "../assets/icons/ethereum.png";
 import polygonIcon from "../assets/icons/polygon.png";
 import useWindowDimensions from "../utils/useWindowDimensions";
-import useKollabShare from "../web3/useKollabShare";
+import useSquid from "../web3/useSquid";
 import "../css/style.css";
 import { useWeb3React } from "@web3-react/core";
 
 export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
 
-    const kollab_share = useKollabShare();
+    const squid = useSquid();
     const { chainId } = useWeb3React();
     const { width, height } = useWindowDimensions();
     const [small, setSmall] = useState(false);
@@ -81,7 +81,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
 
     async function payoutGlobal() {
         try {
-            await kollab_share.payoutAll(data.uuid).then(() => {
+            await squid.payoutAll(data.uuid, "0x0B1b943Cc624611dE858D1b4B9AD3fA6bDe1905B", true).then(() => {
                 setInfo("Withdrawl process has begun! This can be monitored from your wallet.");
                 onInfoOpen();
             });
@@ -93,7 +93,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
 
     async function payout() {
         try {
-            await kollab_share.payout(data.uuid).then(() => {
+            await squid.payout(data.uuid).then(() => {
                 setInfo("Withdrawl process has begun! This can be monitored from your wallet.");
                 onInfoOpen();
             });
@@ -132,7 +132,7 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                     <div className={small ? "splitter-details-container full-height" : "splitter-details-container"}>
                         <div className="balance-container sticky">
                             <div className="balance">
-                                {width < 300 ? <></> : <img src={chainId === 1 || chainId === 5 ? ethIcon : chainId === 137 || chainId === 80001 ? polygonIcon : null} width={chainId === 1 || chainId === 5 ? "20px" : "40px"}/>}
+                                {width < 300 ? <></> : <img src={chainId === 1 || chainId === 5 ? ethIcon : chainId === 137 || chainId === 80001 ? polygonIcon : null} width={chainId === 1 || chainId === 5 ? "20px" : "40px"} alt=""/>}
                                 <p className="balance-val">
                                     {displayBalance()}
                                 </p>

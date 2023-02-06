@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import Back from "../components/Back";
 import logo256 from "../assets/images/png/squid_logo_circle_purple.png";
 import dreamkollab_logo from "../assets/logo/dreamkollab_with_text.JPG";
 
 export default function Terms() {
+
+    function scrollTo(target) {
+
+    }
 
     return(
         <div className="view flex flex-column">
@@ -48,7 +52,6 @@ export default function Terms() {
                 <p>DreamKollab may communicate with you about its Services electronically. You are responsible for keeping your email address up to date in your Account Profile. If at any time you no longer wish to receive these communications, please contact Contact@DreamKollab.com.</p>
                 <h2>4.	Fees</h2>
                 <p>A 1% transaction fee will be charged on all payments received into a Smart Contract. </p>
-                <p>A 1% transaction fee will be charged on all payments received into a Smart Contract. </p>
                 <h2>5.	Liability</h2>
                 <p>By using the Services, you agree and acknowledge that DreamKollab accepts no responsibility for any loss or adverse outcome suffered by a user in the following circumstances:</p>
                 <ol>
@@ -61,7 +64,7 @@ export default function Terms() {
                 <h2>6.	There are other terms that may apply to you</h2>
                 <p>These terms of use refer to the following additional terms, which also apply to your use of our site:</p>
                 <ul>
-                    <li>Our Privacy Policy <a href="./privacy_policy" className="link">here</a>.  See further under How we may use your personal information.</li>
+                    <li>Our <a href="./privacy_policy" className="link">Privacy Policy</a>. See further under 11. How we may use your personal information.</li>
                 </ul>
                 <h2>7.	We may make changes to these terms</h2>
                 <p>We amend these terms from time to time. Every time you wish to use our Services, please check these terms to ensure you understand the terms that apply at that time. </p>
