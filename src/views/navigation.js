@@ -29,8 +29,9 @@ export default function Navigation () {
                 >
                     <img
                         src={createIcon}
-                        className="nav-icon"
+                        className="nav-icon no-select"
                         alt="create-icon"
+                        draggable="false"
                     />
                     <p className="nav-title">CREATE</p>
                     <p className="nav-label">Create new squid contract</p>
@@ -43,7 +44,12 @@ export default function Navigation () {
                         setManage(true);
                     }}
                 >
-                    <img src={manageIcon} className="nav-icon" alt="manage-icon" />
+                    <img
+                        src={manageIcon}
+                        className="nav-icon no-select"
+                        alt="manage-icon"
+                        draggable="false"
+                    />
                     <p className="nav-title">MANAGE</p>
                     <p className="nav-label">Manage your current squids</p>
                 </div>

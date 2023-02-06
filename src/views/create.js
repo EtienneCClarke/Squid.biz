@@ -15,7 +15,7 @@ import Options from "../components/Options";
 export default function Create() {
 
     const squid = useSquid();
-    const { chainId } = useWeb3React();
+    const { chainId, account } = useWeb3React();
     const [error, setError] = useState();
     const [info, setInfo] = useState();
     const [payeeAddrError, setAddrPayeeError] = useState();
@@ -28,7 +28,7 @@ export default function Create() {
     const [tempPayeeShare, setTempPayeeShare] = useState();
     const [shareholders, setShareholders] = useState([]);
     const [totalShares, setTotalShares] = useState(0);
-    const [fee, setFee] = useState("");
+    const [fee, setFee] = useState();
 
     const {
         isOpen: isErrorOpen,
@@ -56,8 +56,9 @@ export default function Create() {
     }
 
     useEffect(() => {
-        if(chainId === 1 || chainId === 5) { setFee("0.01")};
-        if(chainId === 137 || chainId === 80001) { setFee("15")};
+        if(chainId === 1) { setFee("0.01")};
+        if(chainId === 137) { setFee("15")};
+        if(chainId === 5 || chainId === 80001) { setFee("0")};
     }, [chainId]);
 
     function addShareHolder() {
@@ -120,7 +121,7 @@ export default function Create() {
                 addresses,
                 shares,
                 {
-                    value: ethers.utils.parseEther("15"),
+                    value: ethers.utils.parseUnits(fee, "ether"),
                 }
             ).then(() => {
                 setName('');

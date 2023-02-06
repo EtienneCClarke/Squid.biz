@@ -16,13 +16,13 @@ import InfoModal from "../components/infoModal";
 import "../css/landing.css";
 import { useDisclosure } from "@chakra-ui/react";
 import useMousePosition from "../utils/useMousePosition";
-import chakraUiCssReset from "@chakra-ui/css-reset";
 
 export default function Landing() {
 
     const [info, setInfo] = useState('');
     const phone = useRef();
     const cursor = useRef();
+    const form = useRef();
     const position = useMousePosition();
 
     useEffect(()=> {
@@ -45,8 +45,6 @@ export default function Landing() {
             element.scrollIntoView({behavior: 'smooth'});
         }
     };
-
-    const form = useRef();
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -110,6 +108,7 @@ export default function Landing() {
                         <a
                             className="audit-verification"
                             href="https://solidity.finance/audits/SquidFactory/"
+                            target="_blank"
                         >
                             <span>
                                 <img src={Verified} alt="Checkmark" />
@@ -148,7 +147,7 @@ export default function Landing() {
                 <div className="explanation-container">
                     <div>
                         <h2 className="bold">Secure Sharing.</h2>
-                        <p className="vtspace-25">When the Squid is paid into each shareholder can withdraw their crypto without affecting anyone else. Once created nobody can change the percentages ensuring everyone is guarenteed their share. </p>
+                        <p className="vtspace-25">When the Squid is paid into, each shareholder can withdraw their crypto without affecting anyone else. Once created nobody can change the percentages ensuring everyone is guarenteed their share. </p>
                     </div>
                     <img src={pie} draggable="false" className="no-select infographic" alt=""/>
                 </div>
