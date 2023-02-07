@@ -217,65 +217,6 @@ h4:hover::after {
     transition: var(--transition-duration);
 }
 
-.tags p:nth-child(1) {
-    animation: tags-a 15s infinite;
-}
-.tags p:nth-child(2) {
-    animation: tags-b 15s infinite;
-}
-.tags p:nth-child(3) {
-    animation: tags-c 15s infinite;
-}
-
-@keyframes tags-a {
-    16% {
-        /* background-color: rgba(255, 255, 255, 1); */
-        /* transform: scale(1.1); */
-        transform: translateY(-10px);
-    }
-    33% {
-        /* background-color: rgba(255, 255, 255, 0.5); */
-        /* transform: scale(1); */
-        transform: translateY(0px);
-    }
-}
-
-@keyframes tags-b {
-    33% {
-        transform: translateY(0px);
-        /* transform: scale(1); */
-        /* background-color: rgba(255, 255, 255, 0.5); */
-    }
-    49% {
-        transform: translateY(-10px);
-        /* transform: scale(1.1); */
-        /* background-color: rgba(255, 255, 255, 1); */
-    }
-    66% {
-        transform: translateY(0px);
-        /* transform: scale(1); */
-        /* background-color: rgba(255, 255, 255, 0.5); */
-    }
-}
-
-@keyframes tags-c {
-    66% {
-        transform: translateY(0px);
-        /* transform: scale(1); */
-        /* background-color: rgba(255, 255, 255, 0.5); */
-    }
-    82% {
-        transform: translateY(-10px);
-        /* transform: scale(1.1); */
-        /* background-color: rgba(255, 255, 255, 1); */
-    }
-    99% {
-        transform: translateY(0px);
-        /* transform: scale(1); */
-        /* background-color: rgba(255, 255, 255, 0.5); */
-    }
-}
-
 @keyframes phone {
     50% {
         transform: rotate(3deg) scale(1.05);
@@ -358,6 +299,11 @@ h4:hover::after {
 
 #explanation .infographic {
     max-width: 700px;
+    max-height: 60vh;
+}
+
+#explanation .infographic:last-of-type {
+    max-height: 80vh;
 }
 
 .explanation-container {
@@ -623,6 +569,9 @@ h4:hover::after {
         margin-top: 100px;
         flex-direction: column-reverse;
     }
+    .audit-verification {
+        right: -2rem;
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -683,6 +632,20 @@ h4:hover::after {
     }
 }
 
+@media screen and (max-height: 800px) {
+    .tags p {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+    .audit-verification {
+        padding: 1rem 1.5rem;
+        bottom: 3rem;
+    }
+    .price-box {
+        max-height: 25vh;
+    }
+}
+
 @media screen and (max-width: 640px) {
     .footer-content {
         flex-direction: column;
@@ -706,7 +669,7 @@ h4:hover::after {
     }
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 525px) {
     .landing-view h1 {
         font-size: 3rem !important;
     }
@@ -726,6 +689,10 @@ h4:hover::after {
     .form-row .text-input:last-child {
         margin-left: 0;
         margin-top: 15px;
+    }
+    .tags p {
+        font-size: 0.7rem;
+        padding: 0.5rem;
     }
 }
 
