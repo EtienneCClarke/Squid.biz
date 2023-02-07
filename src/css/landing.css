@@ -636,6 +636,7 @@ h4:hover::after {
     .tags p {
         font-size: 0.7rem;
         padding: 0.5rem;
+        margin-top: -25px !important;
     }
     .audit-verification {
         padding: 1rem 1.5rem;
@@ -643,6 +644,9 @@ h4:hover::after {
     }
     .price-box {
         max-height: 25vh;
+    }
+    .tagline {
+        margin-top: 25px !important;
     }
 }
 

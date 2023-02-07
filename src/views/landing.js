@@ -87,7 +87,7 @@ export default function Landing() {
                         <h1 className="white bold">Achieving</h1>
                         <h1 className="white bold">more</h1>
                         <h1 className="white bold">together.</h1>
-                        <p className="white vtspace-50">Tearing down barriers so innovation and prosperity will thrive.</p>
+                        <p className="white vtspace-50 tagline">Tearing down barriers so innovation and prosperity will thrive.</p>
                         <div className="tags white vtspace-50 no-select">
                             <p>Web3</p>
                             <p>Fintech</p>
