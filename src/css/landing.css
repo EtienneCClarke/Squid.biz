@@ -635,7 +635,7 @@ h4:hover::after {
 @media screen and (max-height: 800px) {
     .tags p {
         font-size: 0.7rem;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         margin-top: -25px !important;
     }
     .audit-verification {
