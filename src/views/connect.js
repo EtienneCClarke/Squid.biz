@@ -25,7 +25,7 @@ export default function Connect () {
     return (
         <div className="view scrollable-y flex flex-column flex-center flex-align-center bg-purple">
             <a href="./"><img src={logo} alt="Dream Kollab Logo" draggable="false" className="logo"/></a>
-            <h1 className="title-large white">Squid</h1>
+            <h1 className="title-large white">Squid.biz</h1>
             <p 
                 className={"connect-button bg-blue " + (height < 700 ? "vtspace-75" : "vtspace-200")}
                 onClick={onConnectOpen}
