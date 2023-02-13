@@ -26,8 +26,7 @@ export default function NetworkSwitcher() {
                 onChange={changeNetwork}
             >
                 <optgroup label="Mainnets">
-                    {/* <option value="1" selected={chainId == 1 ? 'selected' : ''}>Ethereum</option> */}
-                    <option disabled>Ethereum (disabled)</option>
+                    <option value="1" selected={chainId == 1 ? 'selected' : ''}>Ethereum</option>
                     <option value="137" selected={chainId == 137 ? 'selected' : ''}>Polygon</option>
                 </optgroup>
                 <optgroup label="Testnets">
