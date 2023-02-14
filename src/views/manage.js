@@ -80,6 +80,7 @@ export default function Manage () {
                         personal_balance: res[5],
                         total_balance: res[6],
                         last_withdraw: res[7],
+                        creator: res[8],
                         shareholders: shareholders
                     });
                 });
