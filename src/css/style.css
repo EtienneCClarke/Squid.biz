@@ -11,6 +11,7 @@
     --color-coral-blue: #2B927F;
     --color-green: #4BC57B;
     --color-purple: #7712F7;
+    --color-dark-purple: #470B94;
     --color-pink: #F53261;
     --color-black: #000000;
     --color-darkest-grey: #303030;
@@ -20,6 +21,7 @@
     --color-light-grey: #E8E8E8;
     --color-white: #FFFFFF;
     --transition-duration: 200ms;
+    --transition-duration-navigation: 500ms;
     --transition-duration-slow: 1500ms;
 }
 
@@ -46,6 +48,20 @@ html, body {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     font-size: min(16px, max(2vh, 10px));
+}
+
+.construction {
+    width: calc(100vw - 250px);
+    height: 100vh;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.construction h1 {
+    font-size: 3rem;
+    font-weight: 500;
 }
 
 .banner {
@@ -87,8 +103,14 @@ html, body {
 
 
 .view {
-    width: 100vw;
     min-height: 100vh;
+    background-color: var(--color-background) !important;
+}
+
+.app-view {
+    width: calc(100vw - min(250px, 25vw));
+    margin-left: auto;
+    height: 100vh;
     background-color: var(--color-background) !important;
 }
 
@@ -237,77 +259,141 @@ html, body {
 
 /* =====================      Navigation     ====================== */
 
-.nav-container {
+#navigation {
+    width: 250px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 50vh;
-    transition: var(--transition-duration);
-}
-
-.nav-container:first-child {
-    filter: drop-shadow(0px 8px 30px rgba(0, 0, 0, 0.1));
-}
-
-.nav-container:hover {
-    height: 60vh;
-}
-
-.nav-content {
-    padding: 10vh 10vw;
-}
-
-.nav-content:hover {
-    cursor: pointer;
-}
-
-.nav-title {
-    margin-top: 40px;
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: var(--color-grey);
-}
-
-.nav-label {
-    color: var(--color-grey);
-    font-size: 0.6rem;
-}
-
-.nav-icon {
-    min-width: 100px;
-    width: 10vh;
-    max-width: 400px;
-}
-
-.nav-curve {
+    background-color: var(--color-purple);
     position: absolute;
-    top: 50vh;
-    transition: var(--transition-duration);
+    left: 0;
+    top: 0;
+    z-index: 10;
+    transition: var(--transition-duration-navigation);
 }
 
-.faq-button {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+#navigation-header {
+    width: 100%;
+    margin-top: 5vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 10px;
-    background-color: var(--color-green);
-    cursor: pointer;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    justify-content: space-between;
+    word-wrap: break-all;
 }
+
+.close-nav-btn {
+    position: absolute;
+    width: 20px;
+    right: 10px;
+    top: 10px;
+    transition: var(--transition-duration);
+    opacity: 0.5;
+    display: none;
+}
+
+.open-nav-btn {
+    padding: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: var(--transition-duration);
+    border-radius: 10px;
+    display: none;
+}
+
+.open-nav-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.close-nav-btn:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.blockies {
+    border-radius: 50%;
+}
+
+#navigation-header p {
+    margin-top: 2vh;
+    font-size: 0.8rem;
+    max-width: 60%;
+    text-align: center;
+}
+
+#navigation-links {
+    margin-top:5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#navigation-links .link {
+    width: 100%;
+    height: min(60px, 20vh);
+    padding-inline: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: 50ms;
+}
+
+#navigation-links .link:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#navigation-links .active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 1100px) {
+    .app-view {
+        width: 100vw;
+    }
+    .options-container {
+        width: 100vw !important;
+    }
+    .close-nav-btn {
+        display: unset;
+    }
+    .open-nav-btn {
+        display: unset;
+    }
+    .construction {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #navigation {
+        width: 100vw;
+    }
+}
+
+#navigation-help {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-light-grey);
+    margin-top: auto;
+    margin-bottom: 2vh;
+}
+
+#navigation-help a {
+    padding-block: 2px;
+    margin-block: 3px;
+}
+
+
 
 /* =====================       Manage        ====================== */
 
 .manage-container {
-    width: 90vw;
     min-height: calc(100vh - 100px);
     max-width: 1500px;
     background-color: var(--color-white);
@@ -507,7 +593,8 @@ html, body {
 .create-container {
     display: flex;
     flex-direction: column;
-    width: 90vw;
+    margin-top: 3vh;
+    width: 90%;
     max-width: 1000px;
 }
 
@@ -700,19 +787,28 @@ html, body {
 
 .options-container {
     position: absolute;
-    top: 20px;
-    right: 15px;
+    top: 0;
+    right: 0;
+    background-color: var(--color-white);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: calc(100vw - min(250px, 25vw));
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    padding-block: 0.8rem;
+    padding-inline: 3rem;
+    justify-content: space-between;
 }
 
-@media screen and (width <= 400px){
-    .options-container {
-        flex-direction: column-reverse;
-        align-items: flex-end;
-    }
+.options-content-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.options-container-left img {
+    max-width: 100% !important;
 }
 
 .networkSwitcher-container {
@@ -780,7 +876,6 @@ html, body {
 
 
 .disconnector {
-    padding: 5px;
     transition: var(--transition-duration);
     border-radius: 10px;
     padding: 10px;
@@ -990,6 +1085,10 @@ html, body {
 
 .bg-purple {
     background-color: var(--color-purple) !important;
+}
+
+.bg-dark-purple {
+    background-color: var(--color-dark-purple) !important;
 }
 
 .bg-pink {

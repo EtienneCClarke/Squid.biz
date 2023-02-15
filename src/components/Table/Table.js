@@ -61,7 +61,7 @@ export default function Table({ _data, toDisplay }) {
 
     return(
         <table {...getTableProps()} cellSpacing="10">
-            <thead className={chainId == 1 || chainId == 5 ? "bg-blue" : chainId === 137 || chainId === 80001 ? "bg-purple" : "bg-black"}>
+            <thead className={chainId == 1 || chainId == 5 ? "bg-blue" : chainId === 137 || chainId === 80001 ? "bg-dark-purple" : "bg-black"}>
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (

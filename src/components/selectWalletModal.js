@@ -46,6 +46,7 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                                 activate(connectors.injected);
                                 setProvider("injected");
                                 closeModal();
+                                window.location.replace("/dashboard");
                             }}
                         >
                             MetaMask
@@ -59,6 +60,7 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                                 activate(connectors.coinbaseWallet);
                                 setProvider("coinbaseWallet");
                                 closeModal();
+                                window.location.replace("/dashboard");
                             }}
                         >
                             Coinbase
@@ -72,6 +74,7 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                                 activate(connectors.walletConnect);
                                 setProvider("walletConnect");
                                 closeModal();
+                                window.location.replace("/dashboard");
                             }}
                         >
                             WalletConnect
