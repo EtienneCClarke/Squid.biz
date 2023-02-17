@@ -59,7 +59,7 @@ export default function NetworkSwitcher() {
             });
             window.location.reload();
         } catch (e) {
-            window.location.reload();
+            alert("Could not make switch. Make sure target chain has been added to your wallet.");
         }
     }
 
