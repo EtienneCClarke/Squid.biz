@@ -4,7 +4,7 @@ import Options from "../components/Options";
 
 import { useWeb3React } from "@web3-react/core";
 import { useDashboard, useDashboardUpdate } from "../views/DashboardContext";
-import useWindowSize from "../utils/useWindowSize";
+import useWindowDimensions from "../utils/useWindowDimensions";
 
 import manageicon from "../assets/svg/manage-icon.svg";
 import createicon from "../assets/svg/create-icon.svg";
@@ -14,24 +14,24 @@ import "../css/style.css";
 
 export default function Navigation() {
 
-    const { account } = useWeb3React();
-    const windowSize = useWindowSize();
+    const { chainId, account } = useWeb3React();
+    const { width } = useWindowDimensions();
     const showView = useDashboardUpdate();
     const page = useDashboard();
 
     const nav = useRef();
 
     useEffect(() => {
-        
-        if(windowSize.width <= 1100) {
-            // nav.current.style.marginLeft = "-400px";
+        if(width <= 1100) {
+            nav.current.style.marginLeft = "-400px";
         } else {
             nav.current.style.marginLeft = "0px";
         }
-    }, [windowSize.width])
+    }, [width])
 
     function closeNavigation() {
-        nav.current.style.marginLeft = "-400px";
+        if(width < 1100) nav.current.style.marginLeft = "-250px";
+        if(width < 400) nav.current.style.marginLeft = "-400px";
     }
 
     function openNavigation() {
@@ -41,7 +41,15 @@ export default function Navigation() {
     return(
         <>
             <Options openNav={openNavigation}/>
-            <section id="navigation" ref={nav}>
+            <section
+                id="navigation"
+                className={
+                    chainId == 1 || chainId == 5 ? "bg-blue" :
+                    chainId == 137 || chainId == 80001 ? "bg-purple" : 
+                    "bg-black"
+                }
+                ref={nav}
+            >
 
                 <img
                     src={closeBtn}
@@ -63,7 +71,7 @@ export default function Navigation() {
 
                     <div
                         className={"link " + (page == "manage" ? "active" : "")}
-                        onClick={() => { showView("manage")}}
+                        onClick={() => { showView("manage"); if(width < 1100) closeNavigation()}}
                     >
                         <img src={manageicon} />
                         <p className="hlspace-20">Manage</p>
@@ -71,7 +79,7 @@ export default function Navigation() {
                     
                     <div
                         className={"link " + (page == "create" ? "active" : "")}
-                        onClick={() => { showView("create")}}
+                        onClick={() => { showView("create"); if(width < 1100) closeNavigation()}}
                     >
                         <img src={createicon} />
                         <p className="hlspace-20">Create</p>
@@ -79,7 +87,7 @@ export default function Navigation() {
                     
                     <div
                         className={"link " + (page == "pay" ? "active" : "")}
-                        onClick={() => { showView("pay")}}
+                        onClick={() => { showView("pay"); if(width < 1100) closeNavigation()}}
                     >
                         <img src={payicon} />
                         <p className="hlspace-20">Pay</p>
@@ -89,7 +97,7 @@ export default function Navigation() {
 
                 <div id="navigation-help">
 
-                    <a href="/faqs">Help</a>
+                    {/* <a href="/faqs">Help</a> */}
                     <a href="privacy_policy">Privacy</a>
                     <a href="terms_and_conditions">Terms &amp; Conditions</a>
 

@@ -8,6 +8,7 @@
     --color-background: #F2F2F2;
     --color-warning: #FF2424;
     --color-blue: #1212F7;
+    --color-dark-blue: #0B0B94;
     --color-coral-blue: #2B927F;
     --color-green: #4BC57B;
     --color-purple: #7712F7;
@@ -52,6 +53,7 @@ html, body {
 
 .construction {
     width: calc(100vw - 250px);
+    background-color: var(--color-background);
     height: 100vh;
     margin-left: auto;
     display: flex;
@@ -112,6 +114,8 @@ html, body {
     margin-left: auto;
     height: 100vh;
     background-color: var(--color-background) !important;
+    display: flex;
+    flex-direction: column;
 }
 
 .max-height-100 {
@@ -264,7 +268,6 @@ html, body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-purple);
     position: absolute;
     left: 0;
     top: 0;
@@ -379,14 +382,21 @@ html, body {
     padding-inline: 30px;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--color-light-grey);
+    color: rgba(255, 255, 255, 0.6);
     margin-top: auto;
     margin-bottom: 2vh;
+    transition: var(--transition-duration);
 }
 
 #navigation-help a {
+    position: relative;
     padding-block: 2px;
     margin-block: 3px;
+    width: fit-content;
+}
+
+#navigation-help a:hover {
+    color: var(--color-white);
 }
 
 
@@ -394,14 +404,70 @@ html, body {
 /* =====================       Manage        ====================== */
 
 .manage-container {
-    min-height: calc(100vh - 100px);
-    max-width: 1500px;
+    width: min(90%, 1500px);
     background-color: var(--color-white);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 30px;
     border-radius: 25px 25px 0 0;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.15);
+    flex-grow: 1;
+}
+
+.manage-menu {
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    width: min(90%, 1500px);
+}
+
+.search {
+    width: fit-content;
+    border: 1px solid var(--color-grey);
+    border-radius: 15px;
+    padding: 0px 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search input {
+    background-color: var(--color-background);
+    padding: 10px 10px 10px 0;
+    width: 25em;
+    font-size: 0.9rem;
+    color: var(--color-grey);
+    font-weight: 500;
+}
+
+@media screen and (max-width: 550px) {
+    .search {
+        width: unset;
+    }
+    .search input {
+        width: 100%;
+    }
+}
+
+.search input::-webkit-input-placeholder {
+    font-size: 0.9rem;
+    color: var(--color-grey);
+    font-weight: 500;
+}
+.search input::-moz-input-placeholder {
+    font-size: 0.9rem;
+    color: var(--color-grey);
+    font-weight: 500;
+}
+.search input::-ms-input-placeholder {
+    font-size: 0.9rem;
+    color: var(--color-grey);
+    font-weight: 500;
+}
+
+.search input:focus {
+    outline: none;
 }
 
 .manage-nav {
@@ -593,7 +659,7 @@ html, body {
 .create-container {
     display: flex;
     flex-direction: column;
-    margin-top: 3vh;
+    margin-top: 1vh;
     width: 90%;
     max-width: 1000px;
 }
@@ -792,23 +858,15 @@ html, body {
     background-color: var(--color-white);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     width: calc(100vw - min(250px, 25vw));
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding-block: 0.8rem;
-    padding-inline: 3rem;
-    justify-content: space-between;
+    padding: 0.5rem 0px;
 }
 
-.options-content-left {
+.options-content {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.options-container-left img {
-    max-width: 100% !important;
+    width: min(90%, 1500px);;
+    margin: auto;
 }
 
 .networkSwitcher-container {
@@ -820,10 +878,11 @@ html, body {
 
 .networkSwitcher-container select {
     font-size: 1rem;
-    padding: 0.3em 4em 0.5em 1.5em;
+    padding: 7px 25px 7px 25px;
     background: var(--color-light-grey);
     color: var(--color-darker-grey);
     font-weight: 500;
+    line-height: 100%;
     border: 0;
 }
 
@@ -876,9 +935,14 @@ html, body {
 
 
 .disconnector {
+    margin-left: auto;
     transition: var(--transition-duration);
     border-radius: 10px;
     padding: 10px;
+}
+
+.disconnector img {
+    max-width: 24px;
 }
 
 .disconnector:hover {
@@ -1073,6 +1137,10 @@ html, body {
 
 .bg-blue {
     background-color: var(--color-blue);
+}
+
+.bg-dark-blue {
+    background-color: var(--color-dark-blue);
 }
 
 .bg-coral-blue {

@@ -7,15 +7,15 @@ export default function Options (props) {
 
     return (
         <div className="options-container">
-            <div className="options-content-left">
+            <div className="options-content">
                 <img
                     src={burgerbtn}
                     className="open-nav-btn"
                     onClick={props.openNav}
                 />
                 <NetworkSwitcher />
+                <Disconnector />
             </div>
-            <Disconnector />
         </div>
     )
 }
