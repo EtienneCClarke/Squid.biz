@@ -22,6 +22,7 @@ export default function Footer() {
                 <div className="footer-right">
                     <a href="./connect">CONNECT</a>
                     <a href="./FAQs">FAQs</a>
+                    <a href="https://solidity.finance/audits/SquidFactory/" target="_blank">AUDIT</a>
                     <a href="./terms_and_conditions">TERMS AND CONDITIONS</a>
                     <a href="./privacy_policy">PRIVACY POLICY</a>
                     <a href="https://dreamkollab.com" target="_blank">DREAM KOLLAB</a>
