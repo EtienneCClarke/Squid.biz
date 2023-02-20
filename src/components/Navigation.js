@@ -97,9 +97,9 @@ export default function Navigation() {
 
                 <div id="navigation-help">
 
-                    {/* <a href="/faqs">Help</a> */}
-                    <a href="privacy_policy">Privacy</a>
-                    <a href="terms_and_conditions">Terms &amp; Conditions</a>
+                    <a href="/faqs" target="_blank">Help</a>
+                    <a href="privacy_policy" target="_blank">Privacy</a>
+                    <a href="terms_and_conditions" target="_blank">Terms &amp; Conditions</a>
 
                 </div>
             </section>
