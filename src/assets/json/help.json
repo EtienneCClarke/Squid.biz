@@ -1,0 +1,209 @@
+{
+    "FAQs": [
+        {
+            "question" : "Why does Squid.biz exist?",
+            "answers" : [
+                "We have a dream to tear down the barriers for those unable to afford access to the legal system. To create an environment of inclusive fair business and elevating creators to maximise entrepreneurial innovation and prosperity. "
+            ]
+        },
+        {
+            "question" : "What is Squid.biz?",
+            "answers" : [
+                "Squid.biz enables you to establish trust when starting a project. We have all become accustomed to chatting and gaming with people from all over the world but building business relationships are more difficult as we all live in different jurisdictions.",
+                "Enter Squid.biz! Squid.biz solves the fundamental problem of whom to trust to distribute money for those who can not afford it or do not want to rely on a legal framework to have agreements fulfilled. "
+            ]
+        },
+        {
+            "question" : "What is a smart contract?",
+            "answers" : [
+                "A smart contract is a computer program or a transaction protocol that is intended to automatically execute, control or document legally relevant events and actions according to the terms of a contract or an agreement."
+            ]
+        },
+        {
+            "question" : "What is a share?",
+            "answers" : [
+                "A part or portion of a larger amount which is divided among a number of people, or to which a number of people contribute."
+            ]
+        },
+        {
+            "question" : "What is a Squid?",
+            "answers" : [
+                "A Squid is a smart contract on the blockchain with a shared payment address that distributes money to each party based on how many shares of the Squid they own. It is called a Squid because when visualised it looks like a Squid."
+            ]
+        },
+        {
+            "question" : "What can I use Squid.biz for?",
+            "answers" : [
+                "The primary use is to establish trust between groups of people who otherwise may have difficulties. ‘Who is in charge of the accounts?’ is usually a big topic for discussion and can often cause viable projects to collapse before they have begun.",
+                "-> International Business.",
+                "-> Group projects.",
+                "-> Starting a company with friends.",
+                "You may also decide to use it for personal finance, for example, automatically adding to your savings or tax pots. Squid.biz is a flexible FinTech tool that empowers you to program cash flow securely."
+            ]
+        },
+        {
+            "question" : "How do I make a new contract?",
+            "answers" : [
+                "1. Connect your wallet.",
+                "2. Click on the “Create” tab.",
+                "3. Add each party's wallet address & number of shares they own.",
+                "4. Click the “Create” button.",
+                "5. Confirm Creation in your Crypto Wallet."
+            ]
+        },
+        {
+            "question" : "How to build trust for an international start-up business?",
+            "answers" : [
+                "Building trust with anyone can be difficult and takes time. Squid.biz has solved the major business dilemma - who shares the money? Traditionally, this was the role of a pricy accountant. Now, you can add all founders' wallet addresses & the number of shares owned and be immediately given a mutual payment address called a Squid."
+            ]
+        },
+        {
+            "question" : "What is cash flow?",
+            "answers" : [
+                "The total amount of money being transferred into and out of a business, especially as affecting liquidity."
+            ]
+        },
+        {
+            "question" : "What will it cost? ",
+            "answers" : [
+                "Approximately 15$. Squid.biz costs 15 MATIC on the Polygon Network and 0.01 ETH on the Ethereum Network. There is also a 1% transaction fee on funds passing through the contract."
+            ]
+        },
+        {
+            "question" : "How safe is it?",
+            "answers" : [
+                "Very safe. Squid.biz was thoroughly audited by Solidity Finance to ensure that it can withstand the hardest of attacks. It is decentralized, meaning that funds are not accessible to anyone other than the intended person. Even the Squid.biz team does not have access to your funds."
+            ],
+            "links": [
+                {
+                    "tag" : "Audit Report",
+                    "url" : "https://solidity.finance/audits/SquidFactory/"
+                }
+            ]
+        },
+        {
+            "question" : "What safeguards from scamming are there?",
+            "answers" : [
+                "There are several Safeguards from scamming:",
+                "Squid.biz is a peer-to-peerS protocol that only enables people who are owed their portion of revenue to access the funds. This means that a person from your disbursed team cannot run off with the funds.",
+                "We purposefully chose to prevent people from changing the number of parties to the contract and the number of shares each party owns. Meaning, you can prove that you will get your share of revenue by verifying the Squid Payment Address used matches the agreed Squid Smart Contract Payment Address.",
+                "The funds are not accessible to the Squid.biz team. Each Squid is a unique smart contract on the blockchain. At no point are the funds accessible to anyone other than the intended recipients as determined at the creation of the contract.",
+                "If a Squid is being used to scam it can be locked. This will prevent any additional funds from being able to enter the smart contract as well as preventing funds inside the contract from being withdrawn. Locked funds are not accessible to anyone whilst being locked and when unlocked will only be accessible to the intended recipients as determined at the creation of the contract."
+            ]
+        },
+        {
+            "question" : "How many people can be on one Squid? ",
+            "answers" : [
+                "We have tested Squid.biz with up to 150+ addresses, the more addresses you add the larger the gas fee will be to execute a global payout. We do not recommend exceeding 150 as this may lead to issues with the blockchain. If you require more than 150 addresses per squid we recommend making multiple Squids, nesting them into a parent Squid and the creator using the “Global Payout” function found in the “Created by me” tab to pay out the revenue into each Squid."
+            ]
+        },
+        {
+            "question" : "The minimum number of people on a Squid?",
+            "answers" : [
+                "There must be at least ONE wallet address in a Squid. Use cases could be used to provide a layer of security - such as a quarantine - or to automate your personal finances into different wallet addresses for example for tax or automating your personal finances."
+            ]
+        },
+        {
+            "question" : "Can I nest Squids?",
+            "answers" : [
+                "Yes, you can nest Squids inside other Squids. If you do nest a Squid, the creator of the top Squid will need to use the “Global Payout” feature on the “Created By Me” tab to release funds to the nested Squids. This is because Squid Contracts are NOT wallets."
+            ]
+        },
+        {
+            "question" : "Can I put Squids inside other Squids?",
+            "answers" : [
+                "Yes, you can put Squids inside other Squids. If you do nest a Squid, the creator of the top Squid will need to use the “Global Payout” feature on the “Created By Me” tab to release funds to the nested Squids. This is because Squid Contracts are NOT wallets."
+            ]
+        },
+        {
+            "question" : "How many people have used it so far? ",
+            "answers" : [
+                "You can monitor how many contracts have been created on EtherScan and PolyScan. Links to these are found below:"
+            ],
+            "links": [
+                {
+                    "tag" : "Etherscan",
+                    "url" : "https://etherscan.io/address/0xbd60a99742b114f11bF6BB7DcE12222bfe9e0aD1"
+                },
+                {
+                    "tag" : "Polygonscan",
+                    "url" : "https://polygonscan.com/address/0x2459188ea90caf76b8c6cbb72c48116ba39cf2f9"
+                }
+            ]
+        },
+        {
+            "question" : "Who audited it?",
+            "answers" : [
+                "Our Smart Contracts are Audited by Solidity.Finance, a highly adept team who have secured over $50 Billion in assets through Smart Contracts. Their clients include Bored Apes Yacht Club & Yuga Labs. "
+            ],
+            "links": [
+                {
+                    "tag" : "Audit Report",
+                    "url" : "https://solidity.finance/audits/SquidFactory/"
+                },
+                {
+                    "tag" : "Solidity Finance",
+                    "url" : "https://solidity.finance/"
+                }
+            ]
+        },
+        {
+            "question" : "Can anyone use it?",
+            "answers" : [
+                "Squid.biz is built to be simple and useful. Its minimalist design makes it very easy to use. All you need is a Crypto Wallet and you are good to go."
+            ]
+        },
+        {
+            "question" : "Is it available globally? ",
+            "answers" : [
+                "Squid.biz is a solution enabling people who do not have access or cannot afford to rely on a legal system to work together by ensuring the revenue from projects is shared with the parties of the project wherever they may be."
+            ]
+        },
+        {
+            "question" : "Can I cancel a Squid? ",
+            "answers" : [
+                "Squids are not able to be cancelled as they are minted on the blockchain. However, a new Squid can be created with a unique payment address. This new Squid can be used to replace the one you wish to remove.",
+                "The Squid Payment address will be different and everyone party to the Squid will be able to agree this is the correct payment address. It also means that if the group decided to remove a member, the removed member will be able to see that the payment address used for business purposes and the squid payment address do not match. This means that conversations as to why they have been removed will be had to ensure fair and equitable business."
+            ]
+        },
+        {
+            "question" : "What is the difference between this and PayPal? ",
+            "answers" : [
+                "PayPal is a centralised Payment service operating primarily with fiat. Squid.biz is a decentralized FinTech tool enabling people to have a mutual payment address whilst remaining as a disbursed team.",
+                "People party to the PayPal account are in charge of distributing the funds to the team. Squid.biz works by apportioning ownership of the revenue to each party to the contract meaning that if somebody owns 12% they receive 12% of revenue passing through the mutual payment address.",
+                "PayPal also works on fractionalized reserve banking meaning they have access to the funds held in their accounts. Squid.biz does not have access to any funds passing through the contract as each Squid is a unique payment address minted onto the blockchain."
+            ]
+        },
+        {
+            "question" : "Is there an expiry on a Squid?",
+            "answers" : [
+                "Squids are minted onto the blockchain and do not expire. A Squid created today will last for as long as the blockchain does - forever."
+            ]
+        },
+        {
+            "question" : "Why did you call it Squid? ",
+            "answers" : [
+                "When visualised, the smart contract looks like a Squid. Money flows into the contract and is then distributed to the different parties. "
+            ]
+        },
+        {
+            "question" : "Can I repeat a Squid?",
+            "answers" : [
+                "Each Squid has a unique Payment Address. You can create a duplicate Squid with the same parties to the contract and number of shares as many times as you wish, however, each of these will be a unique smart contract on the blockchain."
+            ]
+        },
+        {
+            "question" : "Can I delete a user from a Squid if they quit?",
+            "answers" : [
+                "Users cannot be deleted but another Squid can be created with a new unique payment address. This is an intentional feature to maximise security and ensure fair and equitable trade. You do not want to be booted from a Squid without being notified. The unique payment address works as a secure way to verify whether you are still party to the contract"
+            ]
+        },
+        {
+            "question" : "Can I be deleted without knowing?",
+            "answers" : [
+                "No - you cannot be deleted. ",
+                "You do have the responsibility to verify that the correct payment address is being used. Every Squid payment address is unique so make sure to verify that the address being used matches the agreed Squid. This will give you a chance to verify rather than trust other parties."
+            ]
+        }
+    ]
+}

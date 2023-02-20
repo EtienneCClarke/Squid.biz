@@ -8,6 +8,7 @@ import Connect from "./views/connect";
 import Dashboard from "./views/Dashboard.js"
 import Privacy from "./views/privacy";
 import Terms from "./views/terms";
+import FAQ from "./views/FAQ";
 
 export default function App () {
 
@@ -41,6 +42,9 @@ export default function App () {
         </Route>
         <Route exact path="/terms_and_conditions">
           <Terms />
+        </Route>
+        <Route exact path="/FAQs">
+          <FAQ />
         </Route>
         <Route exact path="*">
           <Landing />

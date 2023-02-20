@@ -5,7 +5,7 @@ import loadingGif from "../assets/gifs/loading.gif";
 import searchIcon from "../assets/svg/search.svg";
 import { ethers } from "ethers";
 import "../css/style.css";
-import { filter, list, useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import InfoModal from "../components/infoModal";
 import { useWeb3React } from "@web3-react/core";
 
