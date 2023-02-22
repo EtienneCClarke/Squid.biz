@@ -73,7 +73,7 @@ export default function Create() {
 
     function checkForm() {
         let flag = 0;
-        if(!name || name === '' || name.length > 25) {
+        if(!name || name === '' || name.length > 20) {
             flag +=1;
             setNameError('error-input');
         } else {
@@ -96,8 +96,8 @@ export default function Create() {
 
     function remainingCharacters(target) {
         if(target === 'name') {
-            if(!name) { return 25; }
-            return (25 - name.length);
+            if(!name) { return 20; }
+            return (20 - name.length);
         } else if (target === 'description') {
             if(!description) { return 50; }
             return (50 - description.length);
@@ -153,12 +153,12 @@ export default function Create() {
                         type="text"
                         placeholder="Name"
                         value={name}
-                        maxLength={25}
+                        maxLength={20}
                         onChange={(txt) => {
                             setName(txt.target.value);
                         }}
                     />
-                    <p className="label-small push-right vtspace-5">{remainingCharacters("name")} / 25</p>
+                    <p className="label-small push-right vtspace-5">{remainingCharacters("name")} / 20</p>
                     <textarea
                         className={"text-input vtspace-15 " + descriptionError}
                         placeholder="Description"
