@@ -3,14 +3,13 @@ import { ethers, utils } from "ethers";
 import { useDisclosure } from "@chakra-ui/react";
 import useSquid from "../web3/useSquid";
 import InfoModal from "../components/infoModal";
-import Back from "../components/Back";
+import Navigation from "../components/Navigation";
 import addPayeeIcon from "../assets/svg/add-payee.svg";
 import delPayeeIcon from "../assets/svg/del-payee.svg";
 import { TransitionGroup } from "react-transition-group";
 import { CSSTransition } from "react-transition-group";
 import "../css/style.css";
 import { useWeb3React } from "@web3-react/core";
-import Options from "../components/Options";
 
 export default function Create() {
 
@@ -74,7 +73,7 @@ export default function Create() {
 
     function checkForm() {
         let flag = 0;
-        if(!name || name === '' || name.length > 25) {
+        if(!name || name === '' || name.length > 20) {
             flag +=1;
             setNameError('error-input');
         } else {
@@ -97,8 +96,8 @@ export default function Create() {
 
     function remainingCharacters(target) {
         if(target === 'name') {
-            if(!name) { return 25; }
-            return (25 - name.length);
+            if(!name) { return 20; }
+            return (20 - name.length);
         } else if (target === 'description') {
             if(!description) { return 50; }
             return (50 - description.length);
@@ -144,114 +143,114 @@ export default function Create() {
     }
 
     return (
-        <div className="view flex flex-column flex-align-center scrollable-y">
-            <div className="create-container">
-                <h1 className="title-large vtspace-75 text-center">Create New Squid</h1>
-                <h3 className="input-label vtspace-25 hlspace-15">Enter Details</h3>
-                <input
-                    className={"text-input vtspace-15 " + nameError}
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    maxLength={25}
-                    onChange={(txt) => {
-                        setName(txt.target.value);
-                    }}
-                />
-                <p className="label-small push-right vtspace-5">{remainingCharacters("name")} / 25</p>
-                <textarea
-                    className={"text-input vtspace-15 " + descriptionError}
-                    placeholder="Description"
-                    rows={3}
-                    value={description}
-                    maxLength={50}
-                    onChange={(txt) => {
-                        setDescription(txt.target.value)
-                    }}
-                />
-                <p className="label-small push-right vtspace-5">{remainingCharacters("description")} / 50</p>
-                <h3 className="input-label vtspace-25 hlspace-15">Add Payee</h3>
-                <div className="add-payee-form vtspace-10">
+        <>
+            <div className="app-view flex flex-column flex-align-center scrollable-y">
+                <div className="create-container">
+                    <h1 className="title-large vtspace-75 text-center">Create New Squid</h1>
+                    <h3 className="input-label vtspace-25 hlspace-15">Enter Details</h3>
                     <input
-                        className={"text-input " + payeeAddrError}
+                        className={"text-input vtspace-15 " + nameError}
                         type="text"
-                        placeholder="Wallet Address (0xFf9...)"
-                        value={tempPayeeAddr}
+                        placeholder="Name"
+                        value={name}
+                        maxLength={20}
                         onChange={(txt) => {
-                            setTempPayeeAddr(txt.target.value);
+                            setName(txt.target.value);
                         }}
                     />
-                    <input 
-                        className={"text-input w-50 hlspace-10 " + payeeShareError}
-                        type="number"
-                        placeholder="Shares"
-                        value={tempPayeeShare}
-                        onChange={(num) => {
-                            setTempPayeeShare(num.target.value);
+                    <p className="label-small push-right vtspace-5">{remainingCharacters("name")} / 20</p>
+                    <textarea
+                        className={"text-input vtspace-15 " + descriptionError}
+                        placeholder="Description"
+                        rows={3}
+                        value={description}
+                        maxLength={50}
+                        onChange={(txt) => {
+                            setDescription(txt.target.value)
                         }}
                     />
-                    <img
-                        alt="Add Payee"
-                        className="add-payee-button hlspace-15"
-                        src={addPayeeIcon}
-                        onClick={addShareHolder}
-                    />
+                    <p className="label-small push-right vtspace-5">{remainingCharacters("description")} / 50</p>
+                    <h3 className="input-label vtspace-25 hlspace-15">Add Payee</h3>
+                    <div className="add-payee-form vtspace-10">
+                        <input
+                            className={"text-input " + payeeAddrError}
+                            type="text"
+                            placeholder="Wallet Address (0xFf9...)"
+                            value={tempPayeeAddr}
+                            onChange={(txt) => {
+                                setTempPayeeAddr(txt.target.value);
+                            }}
+                        />
+                        <input 
+                            className={"text-input w-50 hlspace-10 " + payeeShareError}
+                            type="number"
+                            placeholder="Shares"
+                            value={tempPayeeShare}
+                            onChange={(num) => {
+                                setTempPayeeShare(num.target.value);
+                            }}
+                        />
+                        <img
+                            alt="Add Payee"
+                            className="add-payee-button hlspace-15"
+                            src={addPayeeIcon}
+                            onClick={addShareHolder}
+                        />
+                    </div>
+                    <div className="shareholders-title">
+                        <h3 className="input-label vtspace-25 hlspace-15">Payees</h3>
+                        <h3 className="input-label vtspace-25 text-center">Shares</h3>
+                    </div>
+                    <TransitionGroup component="div">
+                        {shareholders.map((shareholder) => {
+                            return(
+                                <CSSTransition key={shareholder.address} timeout={200} classNames="shareholder">
+                                    <div className="shareholders-row">
+                                        <p>
+                                            {shareholder.address}
+                                        </p>
+                                        <p className="text-center">
+                                            {shareholder.share}
+                                        </p>
+                                        <img
+                                            alt="Delete Payee"
+                                            className="del-payee-icon push-right"
+                                            src={delPayeeIcon}
+                                            onClick={() => {
+                                                setShareholders(shareholders.filter((s) => s !== shareholder));
+                                                setTotalShares(totalShares - parseInt(shareholder.share));
+                                            }}
+                                        />
+                                    </div>
+                                </CSSTransition>
+                            );
+                        })}
+                    </TransitionGroup>
                 </div>
-                <div className="shareholders-title">
-                    <h3 className="input-label vtspace-25 hlspace-15">Payees</h3>
-                    <h3 className="input-label vtspace-25 text-center">Shares</h3>
+                <div className="text-center vtspace-100">
+                        <p className="total-shares">Total Shares:{' ' + totalShares}</p>
+                        <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? (fee + " Eth ") : (chainId === 137 || chainId === 80001) ? (fee + " MATIC ") : " (error) "}+ Gas</p>
+                        <p
+                            className="button bg-blue txt-spacing vtspace-25"
+                            onClick={createSplitter}
+                        >
+                            CREATE
+                        </p>
                 </div>
-                <TransitionGroup component="div">
-                    {shareholders.map((shareholder) => {
-                        return(
-                            <CSSTransition key={shareholder.address} timeout={200} classNames="shareholder">
-                                <div className="shareholders-row">
-                                    <p>
-                                        {shareholder.address}
-                                    </p>
-                                    <p className="text-center">
-                                        {shareholder.share}
-                                    </p>
-                                    <img
-                                        alt="Delete Payee"
-                                        className="del-payee-icon push-right"
-                                        src={delPayeeIcon}
-                                        onClick={() => {
-                                            setShareholders(shareholders.filter((s) => s !== shareholder));
-                                            setTotalShares(totalShares - parseInt(shareholder.share));
-                                        }}
-                                    />
-                                </div>
-                            </CSSTransition>
-                        );
-                    })}
-                </TransitionGroup>
+                <p className="powered-tag-flex">Powered By Dream Kollab</p>
+                <InfoModal 
+                    isOpen={isErrorOpen}
+                    closeModal={onErrorClose}
+                    Title={"Something went wrong!"}
+                    Content={error}
+                />
+                <InfoModal 
+                    isOpen={isInfoOpen}
+                    closeModal={onInfoClose}
+                    Title="Alert"
+                    Content={info}
+                />
             </div>
-            <div className="text-center vtspace-100">
-                    <p className="total-shares">Total Shares:{' ' + totalShares}</p>
-                    <p className="creation-fee vtspace-15">Fee {(chainId === 1 || chainId === 5) ? (fee + " Eth ") : (chainId === 137 || chainId === 80001) ? (fee + " MATIC ") : " (error) "}+ Gas</p>
-                    <p
-                        className="button bg-blue txt-spacing vtspace-25"
-                        onClick={createSplitter}
-                    >
-                        CREATE
-                    </p>
-            </div>
-            <p className="powered-tag-flex">Powered By Dream Kollab</p>
-            <InfoModal 
-                isOpen={isErrorOpen}
-                closeModal={onErrorClose}
-                Title={"Something went wrong!"}
-                Content={error}
-            />
-            <InfoModal 
-                isOpen={isInfoOpen}
-                closeModal={onInfoClose}
-                Title="Alert"
-                Content={info}
-            />
-            <Back />
-            <Options />
-        </div>
+        </>
     );
 };

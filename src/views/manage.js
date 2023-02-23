@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import Back from "../components/Back";
+import React, { useEffect, useState, useRef } from "react";
 import Table from "../components/Table/Table";
 import useSquid from "../web3/useSquid";
 import loadingGif from "../assets/gifs/loading.gif";
+import searchIcon from "../assets/svg/search.svg";
 import { ethers } from "ethers";
 import "../css/style.css";
 import { useDisclosure } from "@chakra-ui/react";
 import InfoModal from "../components/infoModal";
 import { useWeb3React } from "@web3-react/core";
-import Options from "../components/Options";
 
 
 export default function Manage () {
@@ -21,6 +20,9 @@ export default function Manage () {
 
     const squid = useSquid();
     const { account } = useWeb3React();
+
+    const table = useRef();
+    const [search, setSearch] = useState("");
 
     const {
         isOpen: isErrorOpen,
@@ -129,56 +131,87 @@ export default function Manage () {
         fetchData();
     }, []);
 
+    function filter(data) {
+        if(loading) return;
+        let res = [];
+        for(let i = 0; i < data.length; i++) {
+            if(
+                data[i].uuid.toString().toLowerCase().includes(search.toLowerCase()) ||
+                data[i].name.toLowerCase().includes(search.toLowerCase()) ||
+                data[i].address.toLowerCase().includes(search.toLowerCase()) ||
+                data[i].creator.toLowerCase().includes(search.toLowerCase())
+            ) { res.push(data[i]); }
+        }
+        return res;
+    }
+
     return (
-        <div className="view scrollable-y">
-            <div className="manage-container">
-                <div className="manage-nav">
-                    <p
-                        className={"manage-nav-title " + (nav ? "manage-nav-active" : " ")}
-                        onClick={()=> {
-                            setNav(true);
-                        }}
-                    >
-                        My Squids
-                    </p>
-                    <p
-                        className={"manage-nav-title " + (!nav ? "manage-nav-active" : " ")}
-                        onClick={() => {
-                            setNav(false);
-                        }}
-                    >
-                        Created By Me
-                    </p>
+        <>
+            <div className="app-view scrollable-y">
+                <div className="manage-menu">
+                    <div className="search">
+                        <input
+                            type="text"
+                            value={search}
+                            onChange={e => setSearch(e.target.value)}
+                            placeholder="Search"
+                        />
+                        <img src={searchIcon} alt=""/>
+                    </div>
                 </div>
-                <div className="w-100">
-                    {loading ? (
-                        <div>
-                            <img className="vtspace-50 h-center" src={loadingGif} alt="loading"/>
-                            <p className="loading-text vtspace-25">Retrieving information from the blockchain...</p>
-                        </div>
-                    ) : (
-                        nav ? (
-                            <Table
-                                _data={current}
-                                toDisplay={nav}
-                            />
+                <div className="manage-container">
+                    <div className="manage-nav">
+                        <p
+                            className={"manage-nav-title " + (nav ? "manage-nav-active" : " ")}
+                            onClick={()=> {
+                                setNav(true);
+                            }}
+                        >
+                            My Squids
+                        </p>
+                        <p
+                            className={"manage-nav-title " + (!nav ? "manage-nav-active" : " ")}
+                            onClick={() => {
+                                setNav(false);
+                            }}
+                        >
+                            Created By Me
+                        </p>
+                    </div>
+                    <div className="w-100">
+                        {loading ? (
+                            <div>
+                                <img className="vtspace-50 h-center" src={loadingGif} alt="loading"/>
+                                <p className="loading-text vtspace-25">Retrieving information from the blockchain...</p>
+                            </div>
                         ) : (
-                            <Table
-                                _data={created}
-                                toDisplay={nav}
-                            />
-                        )
-                    )}
+                            nav ? (
+                                <>
+                                    <Table
+                                        ref={table}
+                                        _data={filter(current)}
+                                        toDisplay={nav}
+                                    />
+                                </>
+                            ) : (
+                                <>
+                                    <Table
+                                        ref={table}
+                                        _data={filter(created)}
+                                        toDisplay={nav}
+                                    />
+                                </>
+                            )
+                        )}
+                    </div>
                 </div>
+                <InfoModal 
+                    isOpen={isErrorOpen}
+                    closeModal={onErrorClose}
+                    Title={"Something went wrong!"}
+                    Content={error}
+                />
             </div>
-            <Options />
-            <Back />
-            <InfoModal 
-                isOpen={isErrorOpen}
-                closeModal={onErrorClose}
-                Title={"Something went wrong!"}
-                Content={error}
-            />
-        </div>
+        </>
     );
 };

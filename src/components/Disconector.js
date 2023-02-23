@@ -19,7 +19,6 @@ export default function Disconnector() {
             onClick={onOpen}
         >
             <img 
-                width={"20px"}
                 src={disconnect}
             />
             <DisconnectModal isOpen={isOpen} closeModal={onClose} />
