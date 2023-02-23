@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { COLUMNS_CURRENT } from "./columnsCurrent";
 import { COLUMNS_CREATED } from "./columnsCreated";
 import { useTable, useSortBy } from "react-table";
@@ -18,21 +18,35 @@ export default function Table({ _data, toDisplay }) {
     const columns = useMemo(() => toDisplay ? COLUMNS_CURRENT : COLUMNS_CREATED);
     const data = useMemo(() => _data);
 
+    const table = useRef();
+
     const hideColumns = () => {
-        if(width < 330) {
-            return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance', 'uuid'] : ['address', 'global_balance', 'uuid']);
+        if(width < 360) {
+            return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance', 'uuid'] : ['creator', 'address', 'global_balance', 'uuid']);
         }
-        if(width < 500 && width >= 330) {
-            return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance'] : ['address', 'global_balance']);
+        if(width < 475 && width >= 360) {
+            return(toDisplay ? ['global_balance', 'address', 'creator', 'personal_balance'] : ['creator', 'address', 'global_balance']);
         }
-        if(width >= 500 && width < 650) {
-            return(toDisplay ? ['global_balance', 'address', 'creator'] : ['address']);
+        if(width < 600 && width >= 475) {
+            return(toDisplay ? ['global_balance', 'creator', 'address'] : ['creator', 'address']);
         }
-        if(width < 1100 && width >= 650) {
-            return(toDisplay ? ['address', 'creator'] : ['address']);
+        if(width < 815 && width >= 600) {
+            return(toDisplay ? ['creator', 'address'] : ['creator', 'address', ]);
         }
-        if(width < 1550 && width >= 990) {
-            return(toDisplay ? ['creator'] : ['']);
+        if(width < 940 && width >= 815) {
+            return(toDisplay ? ['global_balance', 'creator', 'personal_balance'] : ['creator', 'global_balance']);
+        }
+        if(width < 1100 && width >= 940) {
+            return(toDisplay ? ['global_balance', 'creator'] : ['creator', 'global_balance']);
+        }
+        if(width < 1190 && width >= 1100) {
+            return(toDisplay ? ['global_balance', 'personal_balance', 'creator'] : ['creator', 'global_balance']);
+        }
+        if(width < 1310 && width >= 1190) {
+            return(toDisplay ? ['global_balance', 'creator'] : ['creator']);
+        }
+        if(width < 1760 && width >= 1310) {
+            return(toDisplay ? ['creator'] : ['creator']);
         }
         return [];
     }
@@ -60,8 +74,8 @@ export default function Table({ _data, toDisplay }) {
     );
 
     return(
-        <table {...getTableProps()} cellSpacing="10">
-            <thead className={chainId == 1 || chainId == 5 ? "bg-blue" : chainId === 137 || chainId === 80001 ? "bg-purple" : "bg-black"}>
+        <table ref={table} {...getTableProps()} cellSpacing="10">
+            <thead className={chainId == 1 || chainId == 5 ? "bg-dark-blue" : chainId === 137 || chainId === 80001 ? "bg-dark-purple" : "bg-black"}>
                 {headerGroups.map((headerGroup) => (
                     <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
