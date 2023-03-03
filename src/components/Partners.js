@@ -9,6 +9,7 @@ import over from "../assets/logo/partners/over.png";
 import mvmf from "../assets/logo/partners/mvmf.png";
 import nifact from "../assets/logo/partners/nickelfactory.png";
 import fridao from "../assets/logo/partners/fridao.jpg";
+import smechain from "../assets/logo/partners/thesmechain.png";
 
 import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination/pagination.min.css';
@@ -44,6 +45,9 @@ export default function Partners() {
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={over} className="partner-logo no-select" draggable="false"/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img src={smechain} className="partner-logo no-select" draggable="false"/>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={mvmf} className="partner-logo no-select" draggable="false"/>

@@ -69,15 +69,15 @@ export default function SelectWalletModal ({ isOpen, closeModal }) {
                             </div>
                         </div>
                         <div
-                            className="connector-button flex flex-row flex-align-center"
+                            className="connector-button flex flex-row flex-align-center disabled"
                             onClick={() => {
-                                activate(connectors.walletConnect);
-                                setProvider("walletConnect");
-                                closeModal();
-                                window.location.replace("/dashboard");
+                                // activate(connectors.walletConnect);
+                                // setProvider("walletConnect");
+                                // closeModal();
+                                // window.location.replace("/dashboard");
                             }}
                         >
-                            WalletConnect
+                            WalletConnect (Soon)
                             <div className="connector-icon push-right">
                                 <img src={WalletConnectLogo} alt="wallet connect logo"/>
                             </div>

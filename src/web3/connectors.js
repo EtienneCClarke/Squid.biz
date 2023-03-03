@@ -3,10 +3,10 @@ import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { InjectedConnector } from '@web3-react/injected-connector';
 
 const RPC_URLS = {
-  1: process.env.REACT_APP_ALCHEMY_RPC_ETHEREUM,
-  2: process.env.REACT_APP_ALCHEMY_RPC_GOERLI,
-  3: process.env.REACT_APP_ALCHEMY_RPC_POLYGON,
-  4: process.env.REACT_APP_ALCHEMY_RPC_MUMBAI
+  1: process.env.REACT_APP_RPC_ETHEREUM,
+  5: process.env.REACT_APP_RPC_GOERLI,
+  137: process.env.REACT_APP_RPC_POLYGON,
+  80001: process.env.REACT_APP_RPC_MUMBAI
 }
 
 const coinbaseWallet = new WalletLinkConnector({

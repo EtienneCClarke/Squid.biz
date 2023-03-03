@@ -4,30 +4,28 @@ import Partners from "../components/Partners";
 import Nav from "../components/navbar";
 import Footer from "../components/footer";
 import Verified from "../assets/svg/verified.svg";
-import phoneGraphic from "../assets/images/png/3d-phone-with-ui-and-shadow.png";
+import heroGraphic from "../assets/images/png/hero.png";
 import pie from "../assets/images/png/pie.png";
 import pipe from "../assets/images/png/pipe.png";
 import office from  "../assets/images/png/office.png";
+import SF from "../assets/images/png/solidity_finance.png";
 import wave from "../assets/svg/wave.svg";
 import chevron from "../assets/svg/chevron-down.svg";
 import polygon from "../assets/images/png/polygon_white.png";
+import paulclarke from "../assets/images/people/paulcclarke.jpg";
+import etienneclarke from "../assets/images/people/etienneclarke.png";
+import kenm from "../assets/images/people/kenm.png";
+import jamie  from "../assets/images/people/jamie.jpeg";
+import sorcham from "../assets/images/people/sorcham.png";
+import jrich from "../assets/images/people/jrich.png";
+import adamj from "../assets/images/people/adamj.png";
 import "../css/landing.css";
-import useMousePosition from "../utils/useMousePosition";
 import Contact from "../components/Contact";
 
 export default function Landing() {
 
-    const phone = useRef();
+    const revolvingText = useRef();
     const cursor = useRef();
-    const position = useMousePosition();
-
-    useEffect(()=> {
-        let { width, height } = phone.current.getBoundingClientRect();
-        let scale = 700;
-        let x = ((position.x - (width * 0.5)) * -10) / scale;
-        let y = ((position.y - (height * 0.5)) * -10) / scale;
-        phone.current.style.transform = `translateX(${x}px) translateY(${y}px)`;
-    }, [position]);
 
     function scroll(target) {
         const element = document.getElementsByClassName(target)[0];
@@ -35,6 +33,25 @@ export default function Landing() {
             element.scrollIntoView({behavior: 'smooth'});
         }
     };
+
+    useEffect(() => {
+        // revolvingText.current.style.top = "0";
+        revolvingText.current.style.opacity = "1";
+        let words = ["creatives.", "musicians.", "royalties.", "entrepreneurs.", "artists.", "journalists.", "businesses.", "sales."]
+        let index = 0;
+        const interval = setInterval(() => {
+            revolvingText.current.style.opacity = "0";
+            setTimeout(() => {
+                revolvingText.current.innerHTML = words[index];
+            }, 500);
+            setTimeout(() => {
+                revolvingText.current.style.opacity = "1";
+            }, 1000);
+            index++;
+            if(index == words.length) { index = 0; }
+        }, 3500);
+        return () => clearInterval(interval);
+    }, [])
 
     return(
         <div className="landing-view">
@@ -45,26 +62,19 @@ export default function Landing() {
             <section className="landing-hero">
                 <div className="landing-hero-content">
                     <div className="landing-hero-left">
-                        <h1 className="white bold">Achieving</h1>
-                        <h1 className="white bold">more</h1>
-                        <h1 className="white bold">together.</h1>
-                        <p className="white vtspace-50 tagline">Tearing down barriers so innovation and prosperity will thrive.</p>
-                        <div className="tags white vtspace-50 no-select">
-                            <p>Web3</p>
-                            <p>Fintech</p>
-                            <p>Law</p>
-                        </div>
-                        <Link to="scroll-expo" smooth={true} duration={1500} className="push-bottom no-select">
-                            Learn More
-                        </Link>
+                        <h1 className="white semi-bold">Share revenue with<br/>your team.</h1>
+                        <h3 className="white vtspace-25">
+                            Leveraging smart contracts for&nbsp;
+                            <span ref={revolvingText} className="yellow bold">creatives.</span>
+                        </h3>
+                        <p className="white vtspace-25">Empowering you to monetize and split revenue from a project in a simple, secure, and transparent way.</p>
+                        <a href="/connect" className="connect-cta vtspace-50">
+                            Create your first Squid
+                        </a>
                     </div>
                     <div className="landing-hero-right no-select" draggable="false">
                         <img
-                            src={phoneGraphic}
-                            alt="Phone showing all squid contracts"
-                            draggable="false"
-                            className="no-select landing-phone"
-                            ref={phone}
+                            src={heroGraphic}
                         />
                         <a
                             className="audit-verification"
@@ -74,7 +84,7 @@ export default function Landing() {
                             <span>
                                 <img src={Verified} alt="Checkmark" />
                             </span>
-                            Verified by Solidity.Finance
+                            Verified by Solidity Finance
                         </a>
                     </div>
                 </div>
@@ -102,13 +112,13 @@ export default function Landing() {
                     <img src={office} draggable="false" className="no-select infographic" alt=""/>
                     <div>
                         <h2 className="bold">Smart Contracts Simplified.</h2>
-                        <p className="vtspace-25">Each Squid is a smart contract deployed onto the blockchain complete with a unique payment address. You define how much each person or wallet owns of the Squid upon creation.</p>
+                        <p className="vtspace-25">Each Squid is a Smart Contract deployed onto the blockchain complete with a unique payment address. You define how much each person or wallet owns of a Squid upon creation and any money passing through the Smart Contract will forever be shared according to the agreement.</p>
                     </div>
                 </div>
                 <div className="explanation-container">
                     <div>
                         <h2 className="bold">Secure Sharing.</h2>
-                        <p className="vtspace-25">When the Squid is paid into, each shareholder can withdraw their crypto without affecting anyone else. Once created nobody can change the percentages ensuring everyone is guarenteed their share. </p>
+                        <p className="vtspace-25">When the Squid is paid into, each shareholder can withdraw their crypto without affecting anyone else. Once created nobody can change the percentages ensuring everyone is guarenteed their share.</p>
                     </div>
                     <img src={pie} draggable="false" className="no-select infographic" alt=""/>
                 </div>
@@ -118,6 +128,23 @@ export default function Landing() {
                         <h2 className="bold">De-Fi Infrastructure.</h2>
                         <p className="vtspace-25">Create decentralised financial networks by plugging in different wallets, Squids, and DAOs to create  both personal and public systems to structure your finances.</p>
                     </div>
+                </div>
+                <div className="explanation-container">
+                    <div>
+                        <h2 className="bold">Trusted.</h2>
+                        <p className="vtspace-25">
+                            Our technology has been professionally audited by Solidity Finance who have secured over $50bn of on-chain value including the Bored Ape Yacht Club. To see Solidity Finances audit click 
+                            <a
+                                className="link"
+                                href="https://solidity.finance/audits/SquidFactory/"
+                                target="_blank"
+                            >
+                                    {" "}here
+                            </a>
+                            .
+                        </p>
+                    </div>
+                    <img src={SF} draggable="false" className="no-select infographic" alt=""/>
                 </div>
             </section>
 
@@ -148,7 +175,64 @@ export default function Landing() {
                         </p>
                     </div>
                 </div>
-                <a className="bold" href="./connect">Get Started</a>
+                <a className="bold" href="./connect">Create Squid</a>
+            </section>
+
+            <section id="team">
+                <div className="content">
+                    <h2 className="white semi-bold">Meet The Team</h2>
+                    <div id="team-profiles">
+                        <div>
+                            <img src={paulclarke} alt="" />
+                            <div>
+                                <h5 className="white bold">Paul C Clarke</h5>
+                                <p>CEO</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src={etienneclarke} alt="" />
+                            <div>
+                                <h5 className="white bold">Etienne C Clarke</h5>
+                                <p>CTO</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src={kenm} alt="" />
+                            <div>
+                                <h5 className="white bold">Ken M.</h5>
+                                <p>COO</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src={sorcham} alt="" />
+                            <div>
+                                <h5 className="white bold">Sorcha Mulligan</h5>
+                                <p>The SME Chain / Growth Advisor</p>
+                            </div>
+                        </div>
+                        <div>
+                        <img src={jrich} alt="" />
+                            <div>
+                                <h5 className="white bold">JRich</h5>
+                                <p>Music Industry Advisor</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src={jamie} alt="" />
+                            <div>
+                                <h5 className="white bold">Crypto Jamie</h5>
+                                <p>Educational Influencer</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img src={adamj} alt="" />
+                            <div>
+                                <h5 className="white bold">Adam Jones</h5>
+                                <p>Ethereum Towers / Marketing Advisor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <Contact />
