@@ -21,7 +21,6 @@ export default function Manage () {
     const squid = useSquid();
     const { account } = useWeb3React();
 
-    const table = useRef();
     const [search, setSearch] = useState("");
 
     const {
@@ -133,16 +132,21 @@ export default function Manage () {
 
     function filter(data) {
         if(loading) return;
-        let res = [];
-        for(let i = 0; i < data.length; i++) {
-            if(
-                data[i].uuid.toString().toLowerCase().includes(search.toLowerCase()) ||
-                data[i].name.toLowerCase().includes(search.toLowerCase()) ||
-                data[i].address.toLowerCase().includes(search.toLowerCase()) ||
-                data[i].creator.toLowerCase().includes(search.toLowerCase())
-            ) { res.push(data[i]); }
+        try {
+            let res = [];
+            for(let i = 0; i < data.length; i++) {
+                if(
+                    data[i].uuid.toString().toLowerCase().includes(search.toLowerCase()) ||
+                    data[i].name.toLowerCase().includes(search.toLowerCase()) ||
+                    data[i].address.toLowerCase().includes(search.toLowerCase()) ||
+                    data[i].creator.toLowerCase().includes(search.toLowerCase())
+                ) { res.push(data[i]); }
+            }
+            return res;
+        } catch (e) {
+            console.log("Something went wrong! Try refreshing the page...")
+            return data;
         }
-        return res;
     }
 
     return (
@@ -188,7 +192,6 @@ export default function Manage () {
                             nav ? (
                                 <>
                                     <Table
-                                        ref={table}
                                         _data={filter(current)}
                                         toDisplay={nav}
                                     />
@@ -196,7 +199,6 @@ export default function Manage () {
                             ) : (
                                 <>
                                     <Table
-                                        ref={table}
                                         _data={filter(created)}
                                         toDisplay={nav}
                                     />

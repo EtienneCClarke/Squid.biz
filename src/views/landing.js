@@ -213,7 +213,7 @@ export default function Landing() {
                         <div>
                         <img src={jrich} alt="" />
                             <div>
-                                <h5 className="white bold">JRich</h5>
+                                <h5 className="white bold">JRich ENT.</h5>
                                 <p>Music Industry Advisor</p>
                             </div>
                         </div>
