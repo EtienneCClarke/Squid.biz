@@ -115,7 +115,7 @@ export default function Manage () {
             setCreated(temp_created);
             setCurrent(temp_current);
         } catch (e) {
-            setError("Could not load data, This happens when the blockchain is experiencing high demand.");
+            setError("Could not load data, Network is currently experiencing high demand.");
             onErrorOpen();
         }
     }
