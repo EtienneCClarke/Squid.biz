@@ -16,7 +16,7 @@ export default function Manage () {
     const [loading, setLoading] = useState(true);
     const [current, setCurrent] = useState();
     const [created, setCreated] = useState();
-    const [nav, setNav] = useState();
+    const [nav, setNav] = useState("current");
 
     const squid = useSquid();
     const { account } = useWeb3React();
@@ -115,13 +115,12 @@ export default function Manage () {
             setCreated(temp_created);
             setCurrent(temp_current);
         } catch (e) {
-            setError(e.reason);
+            setError("Could not load data, This happens when the blockchain is experiencing high demand.");
             onErrorOpen();
         }
     }
 
     useEffect(() => {
-        setNav('current');
         const fetchData = async () => {
             await getData().then(() => {
                 setLoading(false);
@@ -131,7 +130,6 @@ export default function Manage () {
     }, []);
 
     function filter(data) {
-        if(loading) return;
         try {
             let res = [];
             for(let i = 0; i < data.length; i++) {
@@ -144,8 +142,7 @@ export default function Manage () {
             }
             return res;
         } catch (e) {
-            console.log("Something went wrong! Try refreshing the page...")
-            return data;
+            return [];
         }
     }
 
@@ -185,7 +182,7 @@ export default function Manage () {
                     <div className="w-100">
                         {loading ? (
                             <div>
-                                <img className="vtspace-50 h-center" src={loadingGif} alt="loading"/>
+                                <img className="vtspace-50 h-center" src={loadingGif} alt="loading..."/>
                                 <p className="loading-text vtspace-25">Retrieving information from the blockchain...</p>
                             </div>
                         ) : (
