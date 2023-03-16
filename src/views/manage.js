@@ -12,14 +12,14 @@ import { useWeb3React } from "@web3-react/core";
 
 export default function Manage () {
 
+    const { account } = useWeb3React();
     const [error, setError] = useState();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState();
     const [current, setCurrent] = useState();
     const [created, setCreated] = useState();
     const [nav, setNav] = useState("current");
 
     const squid = useSquid();
-    const { account } = useWeb3React();
 
     const [search, setSearch] = useState("");
 
@@ -29,104 +29,80 @@ export default function Manage () {
         onClose: onErrorClose
     } = useDisclosure();
 
-    async function getIds() {
+    async function getSquidIDs() {
         let uuids = {
             current: [],
             created: []
         };
-        try {
-            await squid.getCreatedIds(account).then((res) => {
-                res.forEach(element => {
-                    uuids.created.push(ethers.BigNumber.from(element).toNumber());
-                });
+        await squid.getCreatedIds(account)
+        .then((res) => {
+            res.forEach(element => {
+                uuids.created.push(ethers.BigNumber.from(element).toNumber());
             });
-        } catch (e) {
-            console.log(e);
-        }
-        try {
-            await squid.getIds(account).then((res) => {
-                res.forEach(element => {
-                    uuids.current.push(ethers.BigNumber.from(element).toNumber());
-                });
+        });
+        await squid.getIds(account)
+        .then((res) => {
+            res.forEach(element => {
+                uuids.current.push(ethers.BigNumber.from(element).toNumber());
             });
-        } catch (e) {
-            console.log(e);
-        }
+        });
         return uuids;
     }
 
-    async function getData() {
-        try {
-            const ids = await getIds();
-            let temp_current = [];
-            let temp_created = [];
-            for(let i = 0; i < ids.current.length; i++) {
-                let shareholders = [];
-                await squid.getShareholders(ids.current[i]).then((res) => {
-                    for(let i = 0; i < res.length; i+=2) {
-                        shareholders.push({
-                            address: res[i],
-                            share: res[i+1]
-                        });
-                    }
-                });
-                await squid.getShareData(ids.current[i], account).then((res) => {
-                    temp_current.push({
-                        uuid: ids.current[i],
-                        address: res[0],
-                        name: res[1],
-                        description: res[2],
-                        personal_shares: res[3],
-                        total_shares: res[4],
-                        personal_balance: res[5],
-                        total_balance: res[6],
-                        last_withdraw: res[7],
-                        creator: res[8],
-                        shareholders: shareholders
-                    });
-                });
-            }
-            for(let i = 0; i < ids.created.length; i++) {
-                let shareholders = [];
-                await squid.getShareholders(ids.created[i]).then((res) => {
-                    for(let i = 0; i < res.length; i+=2) {
-                        shareholders.push({
-                            address: res[i],
-                            share: res[i+1]
-                        });
-                    }
-                })
-                await squid.getShareData(ids.created[i], account).then((res) => {
-                    temp_created.push({
-                        uuid: ids.created[i],
-                        address: res[0],
-                        name: res[1],
-                        description: res[2],
-                        personal_shares: res[3],
-                        total_shares: res[4],
-                        personal_balance: res[5],
-                        total_balance: res[6],
-                        last_withdraw: res[7],
-                        creator: res[8],
-                        shareholders: shareholders
-                    });
-                });
-            }
-            setCreated(temp_created);
-            setCurrent(temp_current);
-        } catch (e) {
-            setError("Could not load data, This happens when the blockchain is experiencing high demand.");
-            onErrorOpen();
+    async function getSquidData(ids) {
+        let data = {
+            "current" : [],
+            "created" : []
         }
+        for(let i = 0; i < ids.current.length; i++) {
+            let shareholders = [];
+            await squid.getShareholders(ids.current[i])
+            .then((res) => {
+                for(let i = 0; i < res.length; i+=2) {
+                    shareholders.push({
+                        address: res[i],
+                        share: res[i+1]
+                    });
+                }
+            })
+            await squid.getShareData(ids.current[i], account)
+            .then((res) => {
+                data.current.push({
+                    uuid: ids.current[i],
+                    address: res[0],
+                    name: res[1],
+                    description: res[2],
+                    personal_shares: res[3],
+                    total_shares: res[4],
+                    personal_balance: res[5],
+                    total_balance: res[6],
+                    last_withdraw: res[7],
+                    creator: res[8],
+                    shareholders: shareholders
+                })
+            });
+        }
+
+        return ids;
+
     }
 
     useEffect(() => {
-        const fetchData = async () => {
-            await getData().then(() => {
-                setLoading(false);
+        setLoading(true);
+        getSquidIDs()
+        .then((ids) => {
+            getSquidData(ids)
+            .then((res) => {
+                console.log(res);
             });
-        };
-        fetchData();
+        })
+        .catch(() => {
+            setError("Could not load squid data. This occurs when the network is experiencing high demand.");
+            onErrorOpen();
+        })
+        .finally(() => {
+            setLoading(false);
+        })
     }, []);
 
     function filter(data) {
