@@ -11,7 +11,7 @@ import office from  "../assets/images/png/office.png";
 import SF from "../assets/images/png/solidity_finance.png";
 import wave from "../assets/svg/wave.svg";
 import chevron from "../assets/svg/chevron-down.svg";
-import polygon from "../assets/images/png/polygon_white.png";
+import polygon from "../assets/svg/polygon_white_small.svg";
 import paulclarke from "../assets/images/people/paulcclarke.jpg";
 import etienneclarke from "../assets/images/people/etienneclarke.png";
 import kenm from "../assets/images/people/kenm.png";
@@ -155,12 +155,12 @@ export default function Landing() {
                             <div className="price-box-content">
                                 <div className="white bold">
                                     <img src={polygon} className="hrspace-10" draggable="false"/>
-                                    <h1>15 MATIC</h1>
+                                    <h1>0 MATIC</h1>
                                 </div>
                             </div>
                         </div>
                         <div className="price-box vtspace-25">
-                            <h1 className="white bold">1% Fee</h1>
+                            <h1 className="white bold">4% Fee</h1>
                             <h3 className="white">per transaction</h3>
                         </div>
                     </div>
