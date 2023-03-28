@@ -45,7 +45,8 @@ export default function Navigation() {
                 id="navigation"
                 className={
                     chainId == 1 || chainId == 5 ? "bg-blue" :
-                    chainId == 137 || chainId == 80001 ? "bg-purple" : 
+                    chainId == 137 || chainId == 80001 ? "bg-purple" :
+                    chainId == 43114 || chainId == 43113 ? "bg-orange" :
                     "bg-black"
                 }
                 ref={nav}

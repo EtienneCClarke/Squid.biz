@@ -49,10 +49,75 @@ export default function Manage () {
         return uuids;
     }
 
+<<<<<<< HEAD
     async function getSquidData(ids) {
         let data = {
             "current" : [],
             "created" : []
+=======
+    async function getData() {
+        try {
+            const ids = await getIds();
+            let temp_current = [];
+            let temp_created = [];
+            for(let i = 0; i < ids.current.length; i++) {
+                let shareholders = [];
+                await squid.getShareholders(ids.current[i]).then((res) => {
+                    for(let i = 0; i < res.length; i+=2) {
+                        shareholders.push({
+                            address: res[i],
+                            share: res[i+1]
+                        });
+                    }
+                });
+                await squid.getShareData(ids.current[i], account).then((res) => {
+                    temp_current.push({
+                        uuid: ids.current[i],
+                        address: res[0],
+                        name: res[1],
+                        description: res[2],
+                        personal_shares: res[3],
+                        total_shares: res[4],
+                        personal_balance: res[5],
+                        total_balance: res[6],
+                        last_withdraw: res[7],
+                        creator: res[8],
+                        shareholders: shareholders
+                    });
+                });
+            }
+            for(let i = 0; i < ids.created.length; i++) {
+                let shareholders = [];
+                await squid.getShareholders(ids.created[i]).then((res) => {
+                    for(let i = 0; i < res.length; i+=2) {
+                        shareholders.push({
+                            address: res[i],
+                            share: res[i+1]
+                        });
+                    }
+                })
+                await squid.getShareData(ids.created[i], account).then((res) => {
+                    temp_created.push({
+                        uuid: ids.created[i],
+                        address: res[0],
+                        name: res[1],
+                        description: res[2],
+                        personal_shares: res[3],
+                        total_shares: res[4],
+                        personal_balance: res[5],
+                        total_balance: res[6],
+                        last_withdraw: res[7],
+                        creator: res[8],
+                        shareholders: shareholders
+                    });
+                });
+            }
+            setCreated(temp_created);
+            setCurrent(temp_current);
+        } catch (e) {
+            setError("Could not load data, Network is currently experiencing high demand.");
+            onErrorOpen();
+>>>>>>> main
         }
         for(let i = 0; i < ids.current.length; i++) {
             let shareholders = [];

@@ -11,6 +11,7 @@ import InfoModal from "../components/infoModal";
 import { ethers } from "ethers";
 import ethIcon from "../assets/icons/ethereum.png";
 import polygonIcon from "../assets/icons/polygon.png";
+import avaxIcon from "../assets/images/png/Avalanche_logo.png";
 import useWindowDimensions from "../utils/useWindowDimensions";
 import useSquid from "../web3/useSquid";
 import "../css/style.css";
@@ -132,7 +133,22 @@ export default function SplitterModal({ isOpen, closeModal, data, isCreator}) {
                     <div className={small ? "splitter-details-container full-height" : "splitter-details-container"}>
                         <div className="balance-container sticky">
                             <div className="balance">
-                                {width < 300 ? <></> : <img src={chainId === 1 || chainId === 5 ? ethIcon : chainId === 137 || chainId === 80001 ? polygonIcon : null} width={chainId === 1 || chainId === 5 ? "20px" : "40px"} alt=""/>}
+                                {
+                                    width < 300 ? <></> :
+                                    <img 
+                                        src={
+                                            chainId === 1 || chainId === 5 ? ethIcon :
+                                            chainId === 137 || chainId === 80001 ? polygonIcon :
+                                            chainId === 43114 || chainId === 43113 ? avaxIcon :
+                                            null
+                                        }
+                                        width={
+                                            chainId === 1 || chainId === 5 ? "20px" :
+                                            chainId === 137 || chainId === 80001 ? "30px" :
+                                            chainId === 43114 || chainId === 43113 ? "30px" :
+                                            "0px"
+                                        }
+                                        alt=""/>}
                                 <p className="balance-val">
                                     {displayBalance()}
                                 </p>

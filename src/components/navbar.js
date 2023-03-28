@@ -27,7 +27,7 @@ export default function Nav() {
                 </span>
                 Squid.biz
             </h4>
-            <h4 className="bold no-select push-right"><a href="./connect">Connect</a></h4>
+            <h4 className="bold no-select push-right"><a href="./connect">Connect Wallet</a></h4>
         </header>
     );
 }
