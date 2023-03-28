@@ -12,6 +12,8 @@
     --color-coral-blue: #2B927F;
     --color-green: #4BC57B;
     --color-yellow: #FAFF00;
+    --color-orange: #A91A1B;
+    --color-dark-orange: #671010;
     --color-darker-green: #0f522a;
     --color-purple: #7712F7;
     --color-dark-purple: #470B94;
@@ -554,10 +556,12 @@ html, body {
     justify-content: center;
     min-height: min-content;
     overflow-x: scroll;
+    padding: 1em 0;
 }
 
 .balance-val {
     margin-left: 20px;
+    line-height: 100%;
     font-weight: 700;
     font-size: 4rem;
 }
@@ -1344,6 +1348,14 @@ html, body {
 
 .bg-green {
     background-color: var(--color-green);
+}
+
+.bg-orange {
+    background-color: var(--color-orange);
+}
+
+.bg-dark-orange {
+    background-color: var(--color-dark-orange);
 }
 
 .bg-purple {
