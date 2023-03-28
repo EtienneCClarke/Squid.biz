@@ -229,7 +229,7 @@ export default function Create() {
                 </div>
                 <div className="text-center vtspace-100">
                         <p className="total-shares">Total Shares:{' ' + totalShares}</p>
-                        <p className="creation-fee vtspace-15"><span className="pink">Firesale!</span>&nbsp;Fee {(chainId === 1 || chainId === 5) ? (fee + " Eth ") : (chainId === 137 || chainId === 80001) ? (fee + " MATIC ") : " (error) "}+ Gas</p>
+                        <p className="creation-fee vtspace-15"><span className="pink">Early Bird Offer!</span>&nbsp;Fee {(chainId === 1 || chainId === 5) ? (fee + " Eth ") : (chainId === 137 || chainId === 80001) ? (fee + " MATIC ") : " (error) "}+ Gas</p>
                         <p
                             className="button bg-blue txt-spacing vtspace-25"
                             onClick={createSplitter}
