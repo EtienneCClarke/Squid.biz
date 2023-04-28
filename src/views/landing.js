@@ -200,7 +200,7 @@ export default function Landing() {
                             <img src={kenm} alt="" />
                             <div>
                                 <h5 className="white bold">Ken M.</h5>
-                                <p>COO</p>
+                                <p>Angel Investor</p>
                             </div>
                         </div>
                         <div>
