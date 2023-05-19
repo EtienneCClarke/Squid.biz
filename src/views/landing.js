@@ -218,13 +218,6 @@ export default function Landing() {
                             </div>
                         </div>
                         <div>
-                            <img src={jamie} alt="" />
-                            <div>
-                                <h5 className="white bold">Crypto Jamie</h5>
-                                <p>Educational Influencer</p>
-                            </div>
-                        </div>
-                        <div>
                             <img src={adamj} alt="" />
                             <div>
                                 <h5 className="white bold">Adam Jones</h5>

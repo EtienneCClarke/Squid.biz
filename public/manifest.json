@@ -1,15 +1,10 @@
 {
-  "short_name": "Kollab Share",
-  "name": "Kollab Share Web3 dApp",
+  "short_name": "Squid",
+  "name": "Squid.Biz Web3 dApp",
   "icons": [
     {
       "src": "favicon.png",
       "sizes": "100x100",
-      "type": "image/png"
-    },
-    {
-      "src": "logo256.png",
-      "sizes": "256x256",
       "type": "image/png"
     }
   ],
