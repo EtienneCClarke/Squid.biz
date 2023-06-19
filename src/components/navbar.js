@@ -20,14 +20,14 @@ export default function Nav() {
         <header className={scrollNav ? "landing-header scroll-nav" : "landing-header"}>
             <h4
                 className="bold no-select"
-                onClick={() => {window.location.pathname = "/"}}
+                onClick={() => {window.location.href = "/"}}
             >
                 <span className="hrspace-10">
                     <img src={logo} width="30px"/>
                 </span>
                 Squid.biz
             </h4>
-            <h4 className="bold no-select push-right"><a href="./connect">Connect Wallet</a></h4>
+            <h4 className="bold no-select push-right"><a href="https://app.squid.biz">Connect Wallet</a></h4>
         </header>
     );
 }
