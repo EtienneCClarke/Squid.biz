@@ -51,7 +51,7 @@ export default function Terms() {
                 <p>If you disagree with these Terms of Service or any part of them, you must not use this any of our Services.</p>
                 <p>DreamKollab may communicate with you about its Services electronically. You are responsible for keeping your email address up to date in your Account Profile. If at any time you no longer wish to receive these communications, please contact Contact@DreamKollab.com.</p>
                 <h2>4.	Fees</h2>
-                <p>A 1% transaction fee will be charged on all payments received into a Smart Contract. </p>
+                <p>A 4% transaction fee will be charged on all payments received into a Smart Contract. </p>
                 <h2>5.	Liability</h2>
                 <p>By using the Services, you agree and acknowledge that DreamKollab accepts no responsibility for any loss or adverse outcome suffered by a user in the following circumstances:</p>
                 <ol>
