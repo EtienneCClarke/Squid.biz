@@ -160,7 +160,7 @@ export default function Landing() {
                             </div>
                         </div>
                         <div className="price-box vtspace-25">
-                            <h1 className="white bold">4% Fee</h1>
+                            <h1 className="white bold">0% Fee</h1>
                             <h3 className="white">per transaction</h3>
                         </div>
                     </div>
@@ -168,9 +168,9 @@ export default function Landing() {
                         <h2 className="bold">Pricing</h2>
                         <p className="vtspace-25">
                             Save thousands of pounds on legal fees and get your project 
-                            going with zero anxiety. For just 15 MATIC or 0.01 ETH <span>&#8211;</span> approximately $15 <span>&#8211; </span> 
-                            you will have a secure, full reserve smart contract perfect 
-                            for international projects or with new people. Don<span>&#39;</span>t 
+                            going with zero anxiety. For zero cost you will have a secure,
+                            full reserve smart contract perfect for international projects
+                            or with new people. Don<span>&#39;</span>t 
                             miss out and get your idea off the ground today.
                         </p>
                     </div>
